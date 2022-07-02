@@ -21,9 +21,9 @@ knitr::opts_chunk$set(
 ```
 
 
-# legislators <img src="man/figures/logo.png" width="50" />
+<img src="man/figures/logo.png" width="200" />
 
-### A package to detect  U.S. legislator names in messy text with typos and inconsistent name formats
+## A package to detect  U.S. legislator names in messy text with typos and inconsistent name formats
 
 
 Install this package with 
@@ -108,7 +108,7 @@ cr
 
 In this example, all observations are in the 110th Congress, so we only search for members who served in the 110th. Because each row's `speaker` text contains only one member in this case, `data_row_id` and `match_id` are the same. Where multiple members are detected, there may be multiple matches per `data_row_id`.
 
-# TODO 
+## TODO 
 
 ###  `augmentCongress()`
 

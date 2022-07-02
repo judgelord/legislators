@@ -1,9 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# legislators <img src="man/figures/logo.png" width="50" />
+<img src="man/figures/logo.png" width="200" />
 
-### A package to detect U.S. legislator names in messy text with typos and inconsistent name formats
+## A package to detect U.S. legislator names in messy text with typos and inconsistent name formats
 
 Install this package with
 
@@ -190,7 +190,7 @@ text contains only one member in this case, `data_row_id` and `match_id`
 are the same. Where multiple members are detected, there may be multiple
 matches per `data_row_id`.
 
-# TODO
+## TODO
 
 ### `augmentCongress()`
 

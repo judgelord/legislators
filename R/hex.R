@@ -3,7 +3,7 @@
 
 library(hexSticker)
 
-hexSticker::sticker("man/figures/sticker.png",
+hexSticker::sticker("man/figures/sticker3.png",
                     package="legislators",
                     p_size=24,
                     p_x = 1,
