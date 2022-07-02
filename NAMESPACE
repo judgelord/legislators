@@ -1,0 +1,7 @@
+import("magrittr", "crayon", "dplyr", "stringr", "tidyr", "purrr")
+export("add_first", "addFirst",
+       "complete_chamber", "complete_first",
+       "extractMemberName", "extractName", "extractNamesPerCongress",
+       "findTypos",  "ocr.errors",  "cleanFROMcolumn",
+       "formatFirstName", "formatLastName",
+       "str_detect_replace")
