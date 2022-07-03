@@ -3,9 +3,9 @@
 
 <img src="man/figures/logo.png" width="200" />
 
-## A package to detect U.S. legislator names in messy text with typos and inconsistent name formats
+## Tools to detect U.S. legislator names in messy text with typos and inconsistent name formats
 
-Install this package with
+### Installation
 
     devtools::install_github("judgelord/legislators")
 
@@ -24,35 +24,35 @@ this and other corrections, it constructs a regular expression search
 given Congress). `pattern` differs from Congress to Congress because
 some member move from the House to the Senate and because members with
 similar names join or leave Congress. Users can customize the provided
-`members` data and supply their updted version to
+`members` data and supply their updated version to
 `extractMemberNames()`.
 
 ``` r
 data("members")
 
-members[c("chamber", "congress", "bioname", "pattern")] 
+members
 ```
 
-    #> # A tibble: 6,566 × 4
-    #>    chamber   congress bioname                        pattern                                                                                                                                            
-    #>    <chr>        <int> <chr>                          <chr>                                                                                                                                              
-    #>  1 President      108 BUSH, George Walker            "george bush|george walker bush|\\bg bush|george w bush|\\bna bush|(^|senator |representative )bush\\b|bush, george|bush george|bush, g\\b|preside…
-    #>  2 House          108 DEAL, John Nathan              "john deal|john nathan deal|\\bj deal|john n deal|nathan deal|nathan nathan deal|nathan n deal|\\bn deal|(^|senator |representative )deal\\b|deal,…
-    #>  3 Senate         108 CAMPBELL, Ben Nighthorse       "ben campbell|ben nighthorse campbell|\\bb campbell|ben n campbell|benjamin campbell|benjamin nighthorse campbell|benjamin n campbell|(^|senator |…
-    #>  4 House          108 HALL, Ralph Moody              "ralph hall|ralph moody hall|\\br hall|ralph m hall|\\bna hall|(^|senator |representative )hall\\b|hall, ralph|hall ralph|hall, r\\b|representativ…
-    #>  5 House          108 TAUZIN, Wilbert Joseph (Billy) "wilbert tauzin|wilbert joseph tauzin|\\bw tauzin|wilbert j tauzin|billy tauzin|billy joseph tauzin|billy j tauzin|\\bb tauzin|(^|senator |represe…
-    #>  6 Senate         108 SHELBY, Richard C.             "richard shelby|richard c shelby|\\br shelby|rich shelby|rich c shelby|(^|senator |representative )shelby\\b|shelby, rich|shelby, richard|shelby r…
-    #>  7 Senate         108 JEFFORDS, James Merrill        "james jeffords|james merrill jeffords|\\bj jeffords|james m jeffords|jim jeffords|jim merrill jeffords|jim m jeffords|(^|senator |representative …
-    #>  8 House          108 GOODE, Virgil H., Jr.          "virgil goode|virgil h goode|\\bv goode|\\bna goode|(^|senator |representative )goode\\b|goode, virgil|goode virgil|goode, v\\b|representative goo…
-    #>  9 Senate         108 CHAFEE, Lincoln Davenport      "lincoln chafee|lincoln davenport chafee|\\bl chafee|lincoln d chafee|\\bna chafee|(^|senator |representative )chafee\\b|chafee, lincoln|chafee li…
-    #> 10 Senate         108 MILLER, Zell Bryan             "zell miller|zell bryan miller|\\bz miller|zell b miller|(^|senator |representative )miller\\b.{1,4}ga|miller, zell|miller zell|miller, z\\b|senat…
-    #> # … with 6,556 more rows
+    #> # A tibble: 49,938 × 11
+    #>    chamber   congress bioname                      pattern                                                                    icpsr state district_code nominate_dim1 nominate_dim2 first_name last_name
+    #>    <chr>        <dbl> <chr>                        <chr>                                                                      <dbl> <int>         <dbl>         <dbl>         <dbl> <chr>      <chr>    
+    #>  1 President      117 TRUMP, Donald John           "donald trump|donald john trump|\\bd trump|donald j trump|don trump|don j… 99912    NA             0         0.403         0.162 Donald     TRUMP    
+    #>  2 President      117 BIDEN, Joseph Robinette, Jr. "joseph biden|joseph robinette biden|\\bj biden|joseph r biden|joe biden|… 99913    NA             0        -0.32          0.283 Joseph     BIDEN    
+    #>  3 House          117 ROGERS, Mike Dennis          "mike rogers|mike dennis rogers|\\bm rogers|mike d rogers|michael rogers|… 20301     1             3         0.36          0.461 Mike       ROGERS   
+    #>  4 House          117 SEWELL, Terri                "terri sewell|\\bt sewell|terri a sewell|\\bna sewell|(^|senator |represe… 21102     1             7        -0.393         0.4   Terri      SEWELL   
+    #>  5 House          117 BROOKS, Mo                   "mo brooks|\\bm brooks|\\bna brooks|(^|senator |representative )brooks\\b… 21193     1             5         0.644        -0.397 Mo         BROOKS   
+    #>  6 House          117 PALMER, Gary James           "gary palmer|gary james palmer|\\bg palmer|gary j palmer|\\bna palmer|(^|… 21500     1             6         0.685         0.073 Gary       PALMER   
+    #>  7 House          117 CARL, Jerry L.               "jerry carl|jerry l carl|\\bj carl|\\bna carl|(^|senator |representative … 22108     1             1         0.53          0.509 Jerry      CARL     
+    #>  8 House          117 MOORE, Barry                 "barry moore|\\bb moore.{1,4}al|(^|senator |representative )moore\\b.{1,4… 22140     1             2         0.644        -0.066 Barry      MOORE    
+    #>  9 House          117 ADERHOLT, Robert             "robert aderholt|\\br aderholt|robert b aderholt|bob aderholt|bob b aderh… 29701     1             4         0.379         0.578 Robert     ADERHOLT 
+    #> 10 House          117 YOUNG, Donald Edwin          "donald young|donald edwin young|\\bd young|donald e young|don young|don … 14066     2             1         0.283         0.022 Donald     YOUNG    
+    #> # … with 49,928 more rows
 
 Before searching the text, several functions clean it and “fix” common
 human typos and OCR errors that frustrate matching. Some of these
 corrections are currently supplied by `MemberNameTypos.R`. In future
 versions, `typos` will be supplied as a dataframe instead, and all types
-of corrections (cleaning, typos, OCR erros) will be optional.
+of corrections (cleaning, typos, OCR errors) will be optional.
 Additionally, users will be able to customize the `typos` dataframe and
 provide it as an argument to `extractMemberNames()`.
 
@@ -84,12 +84,12 @@ names and ICPSR ID numbers of members of Congress in a supplied vector
 of text.
 
 -   in the future, `extractMemberName()` may default to returning a list
-    of dataframes the same length of the supplied data
+    of dataframes the same length as the supplied data
 
 For example, we can use `extractMemberName()` to detect the names of
 members of Congress in the text of the Congressional Record. Let’s start
-with text of the Congressional Record from 3/1/2007, scraped and parsed
-using methods described [here](https://github.com/judgelord/cr).
+with text from the Congressional Record from 3/1/2007, scraped and
+parsed using methods described [here](https://github.com/judgelord/cr).
 
 ``` r
 data("cr2007_03_01")
@@ -132,14 +132,14 @@ head(cr2007_03_01$speaker)
 
 This is an extremely simple example because the text strings containing
 the names of the members of Congress (`speaker`) are short and do not
-contain much other text. However, `extractMemberName()` is also capable
-of searching longer and much messier texts, including text where names
-are not consistently formatted or where they contain common typos
-introduced by humans or common OCR errors. Indeed, these functions were
-developed to identify members of Congress in ugly text data like
+contain much other text. However, `extractMemberName()` can also search
+longer and much messier texts, including text where names are not
+consistently formatted or where they contain common typos introduced by
+humans or common OCR errors. Indeed, these functions were developed to
+identify members of Congress in ugly text data like
 [this](https://judgelord.github.io/corr/corr_pres.html#22).
 
-To better match member names, this function currently requires either
+To better match member names, this function currently requires either:
 
 -   a column “congress” (this can be created from a date) or
 -   a vector of congresses to limit the search to (`congresses`)
@@ -169,20 +169,20 @@ cr <- extractMemberName(data = cr2007_03_01,
 cr
 ```
 
-    #> # A tibble: 194 × 16
-    #>    data_row_id match_id icpsr bioname                    string                           pattern        chamber congress date       speaker  header      url       url_txt   first_name last_name state
-    #>    <chr>       <chr>    <dbl> <chr>                      <chr>                            <chr>          <chr>      <dbl> <date>     <chr>    <chr>       <chr>     <chr>     <chr>      <chr>     <chr>
-    #>  1 000001      000001   20124 GRAVES, Samuel             hon sam graves;mr graves         "samuel grave… House        110 2007-03-01 HON. SA… RECOGNIZIN… https://… https://… Samuel     GRAVES    miss…
-    #>  2 000002      000002   29906 UDALL, Mark                hon mark udall;mr udall          "mark udall|\… House        110 2007-03-01 HON. MA… INTRODUCIN… https://… https://… Mark       UDALL     colo…
-    #>  3 000003      000003   20136 LANGEVIN, James            hon james r langevin;mr langevin "james langev… House        110 2007-03-01 HON. JA… BIOSURVEIL… https://… https://… James      LANGEVIN  rhod…
-    #>  4 000004      000004   20501 COSTA, Jim                 hon jim costa;mr costa           "jim costa|\\… House        110 2007-03-01 HON. JI… A TRIBUTE … https://… https://… Jim        COSTA     cali…
-    #>  5 000005      000005   20124 GRAVES, Samuel             hon sam graves;mr graves         "samuel grave… House        110 2007-03-01 HON. SA… RECOGNIZIN… https://… https://… Samuel     GRAVES    miss…
-    #>  6 000006      000006   29339 BISHOP, Sanford Dixon, Jr. hon sanford d bishop;mr bishop   "sanford bish… House        110 2007-03-01 HON. SA… IN HONOR O… https://… https://… Sanford    BISHOP    geor…
-    #>  7 000007      000007   15072 TOWNS, Edolphus            hon edolphus towns;mr towns      "edolphus tow… House        110 2007-03-01 HON. ED… NEW PUNJAB… https://… https://… Edolphus   TOWNS     new …
-    #>  8 000008      000008   29576 DAVIS, Thomas M., III      hon tom davis;mr tom davis       "thomas davis… House        110 2007-03-01 HON. TO… HONORING T… https://… https://… Thomas     DAVIS     virg…
-    #>  9 000009      000009   20124 GRAVES, Samuel             hon sam graves;mr graves         "samuel grave… House        110 2007-03-01 HON. SA… RECOGNIZIN… https://… https://… Samuel     GRAVES    miss…
-    #> 10 000010      000010   29906 UDALL, Mark                hon mark udall;mr udall          "mark udall|\… House        110 2007-03-01 HON. MA… INTRODUCTI… https://… https://… Mark       UDALL     colo…
-    #> # … with 184 more rows
+    #> # A tibble: 193 × 16
+    #>    data_row_id match_id icpsr bioname                    string                           pattern        chamber congress date       speaker  header       url      url_txt   first_name last_name state
+    #>    <chr>       <chr>    <dbl> <chr>                      <chr>                            <chr>          <chr>      <dbl> <date>     <chr>    <chr>        <chr>    <chr>     <chr>      <chr>     <int>
+    #>  1 000001      000001   20124 GRAVES, Samuel             hon sam graves;mr graves         "samuel grave… House        110 2007-03-01 HON. SA… RECOGNIZING… https:/… https://… Samuel     GRAVES       26
+    #>  2 000002      000002   29906 UDALL, Mark                hon mark udall;mr udall          "mark udall|\… House        110 2007-03-01 HON. MA… INTRODUCING… https:/… https://… Mark       UDALL         6
+    #>  3 000003      000003   20136 LANGEVIN, James            hon james r langevin;mr langevin "james langev… House        110 2007-03-01 HON. JA… BIOSURVEILL… https:/… https://… James      LANGEVIN     41
+    #>  4 000004      000004   20501 COSTA, Jim                 hon jim costa;mr costa           "jim costa|\\… House        110 2007-03-01 HON. JI… A TRIBUTE T… https:/… https://… Jim        COSTA         5
+    #>  5 000005      000005   20124 GRAVES, Samuel             hon sam graves;mr graves         "samuel grave… House        110 2007-03-01 HON. SA… RECOGNIZING… https:/… https://… Samuel     GRAVES       26
+    #>  6 000006      000006   29339 BISHOP, Sanford Dixon, Jr. hon sanford d bishop;mr bishop   "sanford bish… House        110 2007-03-01 HON. SA… IN HONOR OF… https:/… https://… Sanford    BISHOP       11
+    #>  7 000007      000007   15072 TOWNS, Edolphus            hon edolphus towns;mr towns      "edolphus tow… House        110 2007-03-01 HON. ED… NEW PUNJAB … https:/… https://… Edolphus   TOWNS        33
+    #>  8 000008      000008   29576 DAVIS, Thomas M., III      hon tom davis;mr tom davis       "thomas davis… House        110 2007-03-01 HON. TO… HONORING TH… https:/… https://… Thomas     DAVIS        48
+    #>  9 000009      000009   20124 GRAVES, Samuel             hon sam graves;mr graves         "samuel grave… House        110 2007-03-01 HON. SA… RECOGNIZING… https:/… https://… Samuel     GRAVES       26
+    #> 10 000010      000010   29906 UDALL, Mark                hon mark udall;mr udall          "mark udall|\… House        110 2007-03-01 HON. MA… INTRODUCTIO… https:/… https://… Mark       UDALL         6
+    #> # … with 183 more rows
 
 In this example, all observations are in the 110th Congress, so we only
 search for members who served in the 110th. Because each row’s `speaker`
@@ -194,12 +194,11 @@ matches per `data_row_id`.
 
 ### `augmentCongress()`
 
-`augmentCongress()` will augments a dataframe that includes at least one
+`augmentCongress()` will augment a dataframe that includes at least one
 unique identifier to include a suite of other common identifiers.
 
 Because `extractMemberName` links each detected name to ICPSR IDs from
-voteview.com, we already have some information, like party
-(`party_name`), state, district, and ideology scores (`nominate.dim1`)
+voteview.com, we already have some information, like state and district
 for each legislator detected in the text.
 
 ``` r
@@ -218,31 +217,31 @@ library(dplyr)
     #>     intersect, setdiff, setequal, union
 
 ``` r
-full_join(cr, members) |> select(data_row_id, match_id, bioname, icpsr, congress, state, district_code, party_name, nominate.dim1, url)
+full_join(cr, members) |> select(data_row_id, match_id, bioname, icpsr, congress, state, district_code, url)
 ```
 
     #> Joining, by = c("icpsr", "bioname", "pattern", "chamber", "congress", "first_name", "last_name", "state")
 
-    #> # A tibble: 6,667 × 10
-    #>    data_row_id match_id bioname                    icpsr congress state        district_code party_name       nominate.dim1 url                                                                         
-    #>    <chr>       <chr>    <chr>                      <dbl>    <dbl> <chr>                <int> <chr>                    <dbl> <chr>                                                                       
-    #>  1 000001      000001   GRAVES, Samuel             20124      110 missouri                 6 Republican Party         0.442 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-rema…
-    #>  2 000002      000002   UDALL, Mark                29906      110 colorado                 2 Democratic Party        -0.353 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-rema…
-    #>  3 000003      000003   LANGEVIN, James            20136      110 rhode island             2 Democratic Party        -0.375 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-rema…
-    #>  4 000004      000004   COSTA, Jim                 20501      110 california              20 Democratic Party        -0.191 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-rema…
-    #>  5 000005      000005   GRAVES, Samuel             20124      110 missouri                 6 Republican Party         0.442 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-rema…
-    #>  6 000006      000006   BISHOP, Sanford Dixon, Jr. 29339      110 georgia                  2 Democratic Party        -0.282 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-rema…
-    #>  7 000007      000007   TOWNS, Edolphus            15072      110 new york                10 Democratic Party        -0.519 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-rema…
-    #>  8 000008      000008   DAVIS, Thomas M., III      29576      110 virginia                11 Republican Party         0.282 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-rema…
-    #>  9 000009      000009   GRAVES, Samuel             20124      110 missouri                 6 Republican Party         0.442 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-rema…
-    #> 10 000010      000010   UDALL, Mark                29906      110 colorado                 2 Democratic Party        -0.353 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-rema…
-    #> # … with 6,657 more rows
+    #> # A tibble: 50,038 × 8
+    #>    data_row_id match_id bioname                    icpsr congress state district_code url                                                                                                  
+    #>    <chr>       <chr>    <chr>                      <dbl>    <dbl> <int>         <dbl> <chr>                                                                                                
+    #>  1 000001      000001   GRAVES, Samuel             20124      110    26             6 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-2
+    #>  2 000002      000002   UDALL, Mark                29906      110     6             2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-3
+    #>  3 000003      000003   LANGEVIN, James            20136      110    41             2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-4
+    #>  4 000004      000004   COSTA, Jim                 20501      110     5            20 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-5
+    #>  5 000005      000005   GRAVES, Samuel             20124      110    26             6 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-1
+    #>  6 000006      000006   BISHOP, Sanford Dixon, Jr. 29339      110    11             2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-2
+    #>  7 000007      000007   TOWNS, Edolphus            15072      110    33            10 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-3
+    #>  8 000008      000008   DAVIS, Thomas M., III      29576      110    48            11 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-1
+    #>  9 000009      000009   GRAVES, Samuel             20124      110    26             6 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E433-2
+    #> 10 000010      000010   UDALL, Mark                29906      110     6             2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E433-3
+    #> # … with 50,028 more rows
 
 -   [ ] integrate with the
     [`congress`](https://github.com/ippsr/congress) and/or
-    `congressData` packages. For example, we may want a function,
-    `augmentCongress` to simply join in identifiers for other datasets
-    on ICPSR numbers. Perhaps this is best left to `congress`.
+    `congressData` packages. For example, we may want `augmentCongress`
+    to simply join in identifiers for other datasets on ICPSR numbers.
+    Perhaps this is best left to `congress`.
 
 <!-- -->
 

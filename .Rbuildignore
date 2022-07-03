@@ -1,6 +1,8 @@
 ^legislators\.Rproj$
 ^\.Rproj\.user$
-^R\hex.R
+^hex$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^data/make_members$
+^data/raw$

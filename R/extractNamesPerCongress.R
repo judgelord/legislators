@@ -18,7 +18,7 @@ extractNamesPerCongress <- function(congress_i, data, members = members){
     nonobs <- "but empty string, so probably non-observations"
 
     base::message(red(paste(
-      paste0("Bad dates in ", unique(data$agency), ", ", congress_i, "th congress?"),
+      paste0("Bad dates in ", congress_i, "th congress?"),
       paste(data %>%
               mutate(string = ifelse(
                 nchar(string <3) |
@@ -54,7 +54,7 @@ extractNamesPerCongress <- function(congress_i, data, members = members){
   if(congress_i %in% members$congress){
     members %<>% filter(congress == congress_i)
 
-    base::message( green(str_c("Searching ", unique(data$agency), " data for members of the ", congress_i, "th, n = ",
+    base::message( green(str_c("Searching ",  " data for members of the ", congress_i, "th, n = ",
                                nrow(data), " (", length(unique(data$string)), " distinct strings)."#,
                                # broken by dplyr 1.0.0, reverted in and works with 1.0.1
                                #" Most common string: \"", count(data, string) %>% top_n(1, n) %>% .[1,1], "\""

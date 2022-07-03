@@ -102,16 +102,16 @@ members of Congress. This dataframe builds on the basic structure of
 voteview.com data, especially the <code>bioname</code> field. From this
 and other corrections, it constructs a regular expression search
 <code>pattern</code> and conditions under which this pattern should
-yield a match (e.g. when that pattern has a unique match to a member of
+yield a match (e.g., when that pattern has a unique match to a member of
 Congress in a given Congress). <code>pattern</code> differs from
 Congress to Congress because some member move from the House to the
 Senate and because members with similar names join or leave Congress.
 Users can customize the provided <code>members</code> data and supply
-their updted version to <code>extractMemberNames()</code>.</p>
+their updated version to <code>extractMemberNames()</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"members"</span><span class="op">)</span>
 
-<span class="va">members</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"chamber"</span>, <span class="st">"congress"</span>, <span class="st">"bioname"</span>, <span class="st">"pattern"</span><span class="op">)</span><span class="op">]</span>  |&gt; <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="va">members</span> |&gt; <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; ">
 <table class="table table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -127,6 +127,27 @@ bioname
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 pattern
 </th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+icpsr
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+state
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+district_code
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+nominate_dim1
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+nominate_dim2
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+first_name
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+last_name
+</th>
 </tr></thead>
 <tbody>
 <tr>
@@ -134,15 +155,73 @@ pattern
 President
 </td>
 <td style="text-align:left;">
-108
+117
 </td>
 <td style="text-align:left;">
-BUSH, George Walker
+TRUMP, Donald John
 </td>
 <td style="text-align:left;">
-george bush|george walker bush|bush|george w bush|bush|(^|senator
-|representative )bushbush, george|bush george|bush, gpresident bushg w
-bush
+donald trump|donald john trump|trump|donald j trump|don trump|don john
+trump|don j trump|(^|senator |representative )trumptrump, don|trump,
+donald|trump donald|trump, dpresident trumpd j trump
+</td>
+<td style="text-align:left;">
+99912
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0.403
+</td>
+<td style="text-align:left;">
+0.162
+</td>
+<td style="text-align:left;">
+Donald
+</td>
+<td style="text-align:left;">
+TRUMP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+President
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+BIDEN, Joseph Robinette, Jr. 
+</td>
+<td style="text-align:left;">
+joseph biden|joseph robinette biden|biden|joseph r biden|joe biden|joe
+robinette biden|joe r biden|(^|senator |representative )bidenbiden,
+joe|biden, joseph|biden joseph|biden, jpresident bidenj r biden
+</td>
+<td style="text-align:left;">
+99913
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+-0.32
+</td>
+<td style="text-align:left;">
+0.283
+</td>
+<td style="text-align:left;">
+Joseph
+</td>
+<td style="text-align:left;">
+BIDEN
 </td>
 </tr>
 <tr>
@@ -150,48 +229,37 @@ bush
 House
 </td>
 <td style="text-align:left;">
-108
+117
 </td>
 <td style="text-align:left;">
-DEAL, John Nathan
+ROGERS, Mike Dennis
 </td>
 <td style="text-align:left;">
-john deal|john nathan deal|deal|john n deal|nathan deal|nathan nathan
-deal|nathan n deal|deal|(^|senator |representative )dealdeal,
-nathan|deal, john|deal john|deal, jdeal, nrepresentative dealj n deal
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
+mike rogers|mike dennis rogers|rogers|mike d rogers|michael
+rogers|michael dennis rogers|michael d rogers|(^|senator |representative
+)rogers{1,4}al|rogers, michael|rogers, mike|rogers mike|rogers,
+mrepresentative rogers{1,4}al|m d rogers
 </td>
 <td style="text-align:left;">
-108
+20301
 </td>
 <td style="text-align:left;">
-CAMPBELL, Ben Nighthorse
+1
 </td>
 <td style="text-align:left;">
-ben campbell|ben nighthorse campbell|campbell|ben n campbell|benjamin
-campbell|benjamin nighthorse campbell|benjamin n campbell|(^|senator
-|representative )campbellcampbell, benjamin|campbell, ben|campbell
-ben|campbell, bsenator campbellb n campbell
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-House
+3
 </td>
 <td style="text-align:left;">
-108
+0.36
 </td>
 <td style="text-align:left;">
-HALL, Ralph Moody
+0.461
 </td>
 <td style="text-align:left;">
-ralph hall|ralph moody hall|hall|ralph m hall|hall|(^|senator
-|representative )hallhall, ralph|hall ralph|hall, rrepresentative hallr
-m hall
+Mike
+</td>
+<td style="text-align:left;">
+ROGERS
 </td>
 </tr>
 <tr>
@@ -199,49 +267,36 @@ m hall
 House
 </td>
 <td style="text-align:left;">
-108
+117
 </td>
 <td style="text-align:left;">
-TAUZIN, Wilbert Joseph (Billy)
+SEWELL, Terri
 </td>
 <td style="text-align:left;">
-wilbert tauzin|wilbert joseph tauzin|tauzin|wilbert j tauzin|billy
-tauzin|billy joseph tauzin|billy j tauzin|tauzin|(^|senator
-|representative )tauzintauzin, billy|tauzin, wilbert|tauzin
-wilbert|tauzin, wtauzin, brepresentative tauzinw j tauzin
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
+terri sewell|sewell|terri a sewell|sewell|(^|senator |representative
+)sewellsewell, terri|sewell terri|sewell, trepresentative sewellt a
+sewell
 </td>
 <td style="text-align:left;">
-108
+21102
 </td>
 <td style="text-align:left;">
-SHELBY, Richard C.
+1
 </td>
 <td style="text-align:left;">
-richard shelby|richard c shelby|shelby|rich shelby|rich c
-shelby|(^|senator |representative )shelbyshelby, rich|shelby,
-richard|shelby richard|shelby, rsenator shelbyr c shelby
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
+7
 </td>
 <td style="text-align:left;">
-108
+-0.393
 </td>
 <td style="text-align:left;">
-JEFFORDS, James Merrill
+0.4
 </td>
 <td style="text-align:left;">
-james jeffords|james merrill jeffords|jeffords|james m jeffords|jim
-jeffords|jim merrill jeffords|jim m jeffords|(^|senator |representative
-)jeffordsjeffords, jim|jeffords, james|jeffords james|jeffords, jsenator
-jeffordsj m jeffords
+Terri
+</td>
+<td style="text-align:left;">
+SEWELL
 </td>
 </tr>
 <tr>
@@ -249,470 +304,35 @@ jeffordsj m jeffords
 House
 </td>
 <td style="text-align:left;">
-108
+117
 </td>
 <td style="text-align:left;">
-GOODE, Virgil H., Jr. 
+BROOKS, Mo
 </td>
 <td style="text-align:left;">
-virgil goode|virgil h goode|goode|goode|(^|senator |representative
-)goodegoode, virgil|goode virgil|goode, vrepresentative goodev h goode
+mo brooks|brooks|brooks|(^|senator |representative )brooksbrooks,
+mo|brooks mo|brooks, mrepresentative brooks/td&gt;
 </td>
-</tr>
-<tr>
 <td style="text-align:left;">
-Senate
+21193
 </td>
 <td style="text-align:left;">
-108
+1
 </td>
 <td style="text-align:left;">
-CHAFEE, Lincoln Davenport
+5
 </td>
 <td style="text-align:left;">
-lincoln chafee|lincoln davenport chafee|chafee|lincoln d
-chafee|chafee|(^|senator |representative )chafeechafee, lincoln|chafee
-lincoln|chafee, lsenator chafeel d chafee
+0.644
 </td>
-</tr>
-<tr>
 <td style="text-align:left;">
-Senate
+-0.397
 </td>
 <td style="text-align:left;">
-108
+Mo
 </td>
 <td style="text-align:left;">
-MILLER, Zell Bryan
-</td>
-<td style="text-align:left;">
-zell miller|zell bryan miller|miller|zell b miller|(^|senator
-|representative )miller{1,4}ga|miller, zell|miller zell|miller, zsenator
-millerz b miller
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-VOINOVICH, George Victor
-</td>
-<td style="text-align:left;">
-george voinovich|george victor voinovich|voinovich|george v
-voinovich|voinovich|(^|senator |representative )voinovichvoinovich,
-george|voinovich george|voinovich, gsenator voinovichg v voinovich
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-EDWARDS, John
-</td>
-<td style="text-align:left;">
-john edwards|edwards|edwards|(^|senator |representative
-)edwards{1,4}nc|edwards, john|edwards john|edwards, jsenator
-edwards/td&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-BAYH, Evan
-</td>
-<td style="text-align:left;">
-evan bayh|bayh|bayh|(^|senator |representative )bayhbayh, evan|bayh
-evan|bayh, esenator bayh/td&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-FITZGERALD, Peter G.
-</td>
-<td style="text-align:left;">
-peter fitzgerald|peter g fitzgerald|fitzgerald|pete fitzgerald|pete g
-fitzgerald|(^|senator |representative )fitzgeraldfitzgerald,
-pete|fitzgerald, peter|fitzgerald peter|fitzgerald, psenator fitzgeraldp
-g fitzgerald
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-ENZI, Michael B.
-</td>
-<td style="text-align:left;">
-michael enzi|michael b enzi|enzi|mike enzi|mike b enzi|(^|senator
-|representative )enzienzi, mike|enzi, michael|enzi michael|enzi,
-msenator enzim b enzi
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-SMITH, Gordon Harold
-</td>
-<td style="text-align:left;">
-gordon smith|gordon harold smith|smith|gordon h smith|(^|senator
-|representative )smith{1,4}or|smith, gordon|smith gordon|smith, gsenator
-smithg h smith
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-HAGEL, Charles Timothy (Chuck)
-</td>
-<td style="text-align:left;">
-charles hagel|charles timothy hagel|hagel|charles t hagel|chuck
-hagel|chuck timothy hagel|chuck t hagel|(^|senator |representative
-)hagelhagel, chuck|hagel, charles|hagel charles|hagel, csenator hagelc t
-hagel
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-COLLINS, Susan Margaret
-</td>
-<td style="text-align:left;">
-susan collins|susan margaret collins|collins|susan m
-collins|collins|(^|senator |representative )collins{1,4}me|collins,
-susan|collins susan|collins, ssenator collinss m collins
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-LANDRIEU, Mary L.
-</td>
-<td style="text-align:left;">
-mary landrieu|mary l landrieu|landrieu|landrieu|(^|senator
-|representative )landrieulandrieu, mary|landrieu mary|landrieu, msenator
-landrieum l landrieu
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-SESSIONS, Jefferson Beauregard III (Jeff)
-</td>
-<td style="text-align:left;">
-jefferson sessions|jefferson beauregard sessions|sessions|jefferson b
-sessions|jeff sessions|jeff beauregard sessions|jeff b
-sessions|(^|senator |representative )sessions{1,4}al|sessions,
-jeff|sessions, jefferson|sessions jefferson|sessions, jsenator sessionsj
-b sessions
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-FRIST, William H.
-</td>
-<td style="text-align:left;">
-william frist|william h frist|frist|bill frist|bill h
-frist|frist|(^|senator |representative )fristfrist, bill|frist,
-william|frist william|frist, wfrist, bsenator fristw h frist
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-FEINGOLD, Russell Dana
-</td>
-<td style="text-align:left;">
-russell feingold|russell dana feingold|feingold|russell d feingold|russ
-feingold|russ dana feingold|russ d feingold|(^|senator |representative
-)feingoldfeingold, russ|feingold, russell|feingold russell|feingold,
-rsenator feingoldr d feingold
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-MURRAY, Patty
-</td>
-<td style="text-align:left;">
-patty murray|patty lynn murray|murray|patty l murray|(patricia|pat)
-murray|(patricia|pat) lynn murray|(patricia|pat) l murray|(^|senator
-|representative )murraymurray, (patricia|pat)|murray, patty|murray
-patty|murray, psenator murrayp l murray
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-BENNETT, Robert
-</td>
-<td style="text-align:left;">
-robert bennett|bennett|robert f bennett|bob bennett|bob f
-bennett|bennett|(^|senator |representative )bennettbennett, bob|bennett,
-robert|bennett robert|bennett, rbennett, bsenator bennettr f bennett
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-HUTCHISON, Kathryn Ann Bailey (Kay)
-</td>
-<td style="text-align:left;">
-kathryn hutchison|kathryn bailey|kathryn ann hutchison|hutchison|kathryn
-a hutchison|kathryn bailey hutchison|bailey, kathryn|bailey, kkay
-hutchison|kay ann hutchison|kay a hutchison|kay bailey|(^|senator
-|representative )hutchisonhutchison, kay|hutchison, kathryn|hutchison
-kathryn|hutchison, ksenator hutchisonk a hutchison
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-FEINSTEIN, Dianne
-</td>
-<td style="text-align:left;">
-dianne feinstein|dianne (goldman|berman|goldman berman)|dianne emiel
-feinstein|feinstein|dianne e feinstein|dianne (goldman|berman|goldman
-berman) feinstein|(goldman|berman|goldman berman),
-dianne|(goldman|berman|goldman berman), dfeinstein|(^|senator
-|representative )feinsteinfeinstein, dianne|feinstein dianne|feinstein,
-dsenator feinsteind e feinstein
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-CORNYN, John
-</td>
-<td style="text-align:left;">
-john cornyn|cornyn|cornyn|(^|senator |representative )cornyncornyn,
-john|cornyn john|cornyn, jsenator cornyn/td&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-ALEXANDER, Lamar
-</td>
-<td style="text-align:left;">
-lamar alexander|alexander|(^|senator |representative
-)alexander{1,4}tn|alexander, lamar|alexander lamar|alexander, lsenator
-alexander/td&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-DOLE, Elizabeth Hanford
-</td>
-<td style="text-align:left;">
-elizabeth dole|elizabeth hanford dole|dole|elizabeth h
-dole|dole|(^|senator |representative )doledole, elizabeth|dole
-elizabeth|dole, esenator dolee h dole
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-COLEMAN, Norm
-</td>
-<td style="text-align:left;">
-norm coleman|coleman|coleman|(^|senator |representative )colemancoleman,
-norm|coleman norm|coleman, nsenator coleman/td&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-PRYOR, Mark
-</td>
-<td style="text-align:left;">
-mark pryor|pryor|mark l pryor|pryor|(^|senator |representative
-)pryorpryor, mark|pryor mark|pryor, msenator pryorm l pryor
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-MURKOWSKI, Lisa
-</td>
-<td style="text-align:left;">
-lisa murkowski|murkowski|murkowski|(^|senator |representative
-)murkowskimurkowski, lisa|murkowski lisa|murkowski, lsenator
-murkowski/td&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-CLINTON, Hillary Rodham
-</td>
-<td style="text-align:left;">
-hillary clinton|hillary rodham clinton|clinton|hillary r
-clinton|clinton|(^|senator |representative )clintonclinton,
-hillary|clinton hillary|clinton, hsenator clintonh r clinton
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-CORZINE, Jon Stevens
-</td>
-<td style="text-align:left;">
-jon corzine|jon stevens corzine|corzine|jon s corzine|corzine|(^|senator
-|representative )corzinecorzine, jon|corzine jon|corzine, jsenator
-corzinej s corzine
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-NELSON, Earl Benjamin (Ben)
-</td>
-<td style="text-align:left;">
-earl nelson|earl benjamin nelson|nelson|earl b
-nelson|(benjamin|ben|e.b.) nelson|(benjamin|ben|e.b.) benjamin
-nelson|(benjamin|ben|e.b.) b nelson|(^|senator |representative
-)nelson{1,4}ne|nelson, (benjamin|ben|e.b.)|nelson, earl|nelson
-earl|nelson, esenator nelson{1,4}ne|e b nelson
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
-</td>
-<td style="text-align:left;">
-108
-</td>
-<td style="text-align:left;">
-DAYTON, Mark
-</td>
-<td style="text-align:left;">
-mark dayton|dayton|dayton|(^|senator |representative )daytondayton,
-mark|dayton mark|dayton, msenator dayton/td&gt;
+BROOKS
 </td>
 </tr>
 <tr>
@@ -720,47 +340,36 @@ mark|dayton mark|dayton, msenator dayton/td&gt;
 House
 </td>
 <td style="text-align:left;">
-108
+117
 </td>
 <td style="text-align:left;">
-McHUGH, John Michael
+PALMER, Gary James
 </td>
 <td style="text-align:left;">
-john mchugh|john michael mchugh|mchugh|john m mchugh|mchugh|(^|senator
-|representative )mchughmchugh, john|mchugh john|mchugh, jrepresentative
-mchughj m mchugh
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-House
+gary palmer|gary james palmer|palmer|gary j palmer|palmer|(^|senator
+|representative )palmerpalmer, gary|palmer gary|palmer, grepresentative
+palmerg j palmer
 </td>
 <td style="text-align:left;">
-108
+21500
 </td>
 <td style="text-align:left;">
-DUNN, Jennifer Blackburn
+1
 </td>
 <td style="text-align:left;">
-jennifer dunn|jennifer blackburn dunn|dunn|jennifer b
-dunn|dunn|(^|senator |representative )dunndunn, jennifer|dunn
-jennifer|dunn, jrepresentative dunnj b dunn
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senate
+6
 </td>
 <td style="text-align:left;">
-108
+0.685
 </td>
 <td style="text-align:left;">
-CANTWELL, Maria E.
+0.073
 </td>
 <td style="text-align:left;">
-maria cantwell|maria e cantwell|cantwell|cantwell|(^|senator
-|representative )cantwellcantwell, maria|cantwell maria|cantwell,
-msenator cantwellm e cantwell
+Gary
+</td>
+<td style="text-align:left;">
+PALMER
 </td>
 </tr>
 <tr>
@@ -768,51 +377,36 @@ msenator cantwellm e cantwell
 House
 </td>
 <td style="text-align:left;">
-108
+117
 </td>
 <td style="text-align:left;">
-GOODLATTE, Robert William
+CARL, Jerry L.
 </td>
 <td style="text-align:left;">
-robert goodlatte|robert william goodlatte|goodlatte|robert w
-goodlatte|bob goodlatte|bob william goodlatte|bob w
-goodlatte|goodlatte|(^|senator |representative )goodlattegoodlatte,
-bob|goodlatte, robert|goodlatte robert|goodlatte, rgoodlatte,
-brepresentative goodlatter w goodlatte
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-House
+jerry carl|jerry l carl|carl|carl|(^|senator |representative
+)carl{1,4}al|carl, jerry|carl jerry|carl, jrepresentative carl{1,4}al|j
+l carl
 </td>
 <td style="text-align:left;">
-108
+22108
 </td>
 <td style="text-align:left;">
-SCOTT, Robert C.
+1
 </td>
 <td style="text-align:left;">
-robert scott|robert c scott|scott|(bob|bobby) scott|(bob|bobby) c
-scott|scott|(^|senator |representative )scott{1,4}va|scott,
-(bob|bobby)|scott, robert|scott robert|scott, rscott, brepresentative
-scott{1,4}va|r c scott
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-House
+1
 </td>
 <td style="text-align:left;">
-108
+0.53
 </td>
 <td style="text-align:left;">
-JOHNSON, Eddie Bernice
+0.509
 </td>
 <td style="text-align:left;">
-eddie johnson|eddie bernice johnson|johnson|eddie b johnson|bernice
-johnson|bernice bernice johnson|bernice b johnson|johnson|(^|senator
-|representative )johnson{1,4}tx|johnson, bernice|johnson, eddie|johnson
-eddie|johnson, ejohnson, brepresentative johnson{1,4}tx|e b johnson
+Jerry
+</td>
+<td style="text-align:left;">
+CARL
 </td>
 </tr>
 <tr>
@@ -820,49 +414,35 @@ eddie|johnson, ejohnson, brepresentative johnson{1,4}tx|e b johnson
 House
 </td>
 <td style="text-align:left;">
-108
+117
 </td>
 <td style="text-align:left;">
-GREEN, Raymond Eugene (Gene)
+MOORE, Barry
 </td>
 <td style="text-align:left;">
-raymond green|raymond eugene green|green|raymond e green|gene green|gene
-eugene green|gene e green|green|(^|senator |representative
-)green{1,4}tx|green, gene|green, raymond|green raymond|green, rgreen,
-grepresentative green{1,4}tx|r e green
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-House
+barry moore|moore.{1,4}al|(^|senator |representative
+)moore{1,4}al|moore, barry|moore barry|representative moore{1,4}al
 </td>
 <td style="text-align:left;">
-108
+22140
 </td>
 <td style="text-align:left;">
-BONILLA, Henry
+1
 </td>
 <td style="text-align:left;">
-henry bonilla|bonilla|bonilla|(^|senator |representative
-)bonillabonilla, henry|bonilla henry|bonilla, hrepresentative
-bonilla/td&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-House
+2
 </td>
 <td style="text-align:left;">
-108
+0.644
 </td>
 <td style="text-align:left;">
-CLYBURN, James Enos
+-0.066
 </td>
 <td style="text-align:left;">
-james clyburn|james enos clyburn|clyburn|james e clyburn|jim clyburn|jim
-enos clyburn|jim e clyburn|(^|senator |representative )clyburnclyburn,
-jim|clyburn, james|clyburn james|clyburn, jrepresentative clyburnj e
-clyburn
+Barry
+</td>
+<td style="text-align:left;">
+MOORE
 </td>
 </tr>
 <tr>
@@ -870,45 +450,37 @@ clyburn
 House
 </td>
 <td style="text-align:left;">
-108
+117
 </td>
 <td style="text-align:left;">
-GONZALEZ, Charles A.
+ADERHOLT, Robert
 </td>
 <td style="text-align:left;">
-charles gonzalez|charles a gonzalez|gonzalez|charlie gonzalez|charlie a
-gonzalez|(^|senator |representative )gonzalezgonzalez, charlie|gonzalez,
-charles|gonzalez charles|gonzalez, crepresentative gonzalezc a gonzalez
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-House
+robert aderholt| aderholt|robert b aderholt|bob aderholt|bob b
+aderholt|aderholt|(^|senator |representative )aderholtaderholt,
+bob|aderholt, robert|aderholt robert|aderholt, raderholt,
+brepresentative aderholtr b aderholt
 </td>
 <td style="text-align:left;">
-108
+29701
 </td>
 <td style="text-align:left;">
-BACA, Joe
+1
 </td>
 <td style="text-align:left;">
-joe baca|baca|joseph baca|(^|senator |representative )bacabaca,
-joseph|baca, joe|baca joe|baca, jrepresentative baca/td&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-House
+4
 </td>
 <td style="text-align:left;">
-108
+0.379
 </td>
 <td style="text-align:left;">
-GREEN, Mark
+0.578
 </td>
 <td style="text-align:left;">
-mark green|green|green|(^|senator |representative )green{1,4}wi|green,
-mark|green mark|green, mrepresentative green{1,4}wi
+Robert
+</td>
+<td style="text-align:left;">
+ADERHOLT
 </td>
 </tr>
 <tr>
@@ -916,15 +488,37 @@ mark|green mark|green, mrepresentative green{1,4}wi
 House
 </td>
 <td style="text-align:left;">
-108
+117
 </td>
 <td style="text-align:left;">
-BALDWIN, Tammy
+YOUNG, Donald Edwin
 </td>
 <td style="text-align:left;">
-tammy baldwin|baldwin|baldwin|(^|senator |representative
-)baldwinbaldwin, tammy|baldwin tammy|baldwin, trepresentative
-baldwin/td&gt;
+donald young|donald edwin young|young|donald e young|don young|don edwin
+young|don e young|(^|senator |representative )young{1,4}ak|young,
+don|young, donald|young donald|young, drepresentative young{1,4}ak|d e
+young
+</td>
+<td style="text-align:left;">
+14066
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0.283
+</td>
+<td style="text-align:left;">
+0.022
+</td>
+<td style="text-align:left;">
+Donald
+</td>
+<td style="text-align:left;">
+YOUNG
 </td>
 </tr>
 <tr>
@@ -932,15 +526,1473 @@ baldwin/td&gt;
 House
 </td>
 <td style="text-align:left;">
-108
+117
 </td>
 <td style="text-align:left;">
-RYAN, Paul D.
+GRIJALVA, Raúl M.
 </td>
 <td style="text-align:left;">
-paul ryan|paul d ryan|ryan|ryan|(^|senator |representative
-)ryan{1,4}wi|ryan, paul|ryan paul|ryan, prepresentative ryan{1,4}wi|p d
-ryan
+raul grijalva|raul m grijalva| grijalva|(^|senator |representative
+)grijalvagrijalva, raul|grijalva raul|grijalva, rrepresentative
+grijalvar m grijalva
+</td>
+<td style="text-align:left;">
+20305
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+-0.598
+</td>
+<td style="text-align:left;">
+-0.255
+</td>
+<td style="text-align:left;">
+Raul
+</td>
+<td style="text-align:left;">
+GRIJALVA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+KIRKPATRICK, Ann
+</td>
+<td style="text-align:left;">
+ann kirkpatrick|kirkpatrick|kirkpatrick|(^|senator |representative
+)kirkpatrickkirkpatrick, ann|kirkpatrick ann|kirkpatrick,
+arepresentative kirkpatrick/td&gt;
+</td>
+<td style="text-align:left;">
+20902
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+-0.168
+</td>
+<td style="text-align:left;">
+-0.006
+</td>
+<td style="text-align:left;">
+Ann
+</td>
+<td style="text-align:left;">
+KIRKPATRICK
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+GOSAR, Paul
+</td>
+<td style="text-align:left;">
+paul gosar|gosar|paul a gosar|gosar|(^|senator |representative
+)gosargosar, paul|gosar paul|gosar, prepresentative gosarp a gosar
+</td>
+<td style="text-align:left;">
+21103
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+0.697
+</td>
+<td style="text-align:left;">
+-0.478
+</td>
+<td style="text-align:left;">
+Paul
+</td>
+<td style="text-align:left;">
+GOSAR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+SCHWEIKERT, David
+</td>
+<td style="text-align:left;">
+david schweikert|schweikert|dave schweikert|(^|senator |representative
+)schweikertschweikert, dave|schweikert, david|schweikert
+david|schweikert, drepresentative schweikert/td&gt;
+</td>
+<td style="text-align:left;">
+21105
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+0.578
+</td>
+<td style="text-align:left;">
+-0.294
+</td>
+<td style="text-align:left;">
+David
+</td>
+<td style="text-align:left;">
+SCHWEIKERT
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+GALLEGO, Ruben
+</td>
+<td style="text-align:left;">
+ruben gallego| gallego|gallego|(^|senator |representative
+)gallegogallego, ruben|gallego ruben|gallego, rrepresentative
+gallego/td&gt;
+</td>
+<td style="text-align:left;">
+21502
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+-0.448
+</td>
+<td style="text-align:left;">
+0.005
+</td>
+<td style="text-align:left;">
+Ruben
+</td>
+<td style="text-align:left;">
+GALLEGO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+BIGGS, Andrew S.
+</td>
+<td style="text-align:left;">
+andrew biggs|andrew s biggs|biggs|andy biggs|andy s biggs|(^|senator
+|representative )biggsbiggs, andy|biggs, andrew|biggs andrew|biggs,
+arepresentative biggsa s biggs
+</td>
+<td style="text-align:left;">
+21705
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+0.853
+</td>
+<td style="text-align:left;">
+-0.522
+</td>
+<td style="text-align:left;">
+Andrew
+</td>
+<td style="text-align:left;">
+BIGGS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+O’HALLERAN, Thomas C.
+</td>
+<td style="text-align:left;">
+thomas o’halleran|thomas c o’halleran|o’halleran|tom o’halleran|tom c
+o’halleran|(^|senator |representative )o’hallerano’halleran,
+tom|o’halleran, thomas|o’halleran thomas|o’halleran, trepresentative
+o’hallerant c o’halleran
+</td>
+<td style="text-align:left;">
+21739
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+-0.195
+</td>
+<td style="text-align:left;">
+0.17
+</td>
+<td style="text-align:left;">
+Thomas
+</td>
+<td style="text-align:left;">
+O’HALLERAN
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+LESKO, Debbie
+</td>
+<td style="text-align:left;">
+debbie lesko|lesko|lesko|(^|senator |representative )leskolesko,
+debbie|lesko debbie|lesko, drepresentative lesko/td&gt;
+</td>
+<td style="text-align:left;">
+21757
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+0.607
+</td>
+<td style="text-align:left;">
+-0.059
+</td>
+<td style="text-align:left;">
+Debbie
+</td>
+<td style="text-align:left;">
+LESKO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+STANTON, Greg
+</td>
+<td style="text-align:left;">
+greg stanton|stanton|stanton|(^|senator |representative
+)stanton{1,4}az|stanton, greg|stanton greg|stanton, grepresentative
+stanton{1,4}az
+</td>
+<td style="text-align:left;">
+21968
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+-0.288
+</td>
+<td style="text-align:left;">
+0.033
+</td>
+<td style="text-align:left;">
+Greg
+</td>
+<td style="text-align:left;">
+STANTON
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+CRAWFORD, Rick
+</td>
+<td style="text-align:left;">
+rick crawford| crawford|rick a crawford|eric crawford|eric a
+crawford|crawford|(^|senator |representative )crawfordcrawford,
+eric|crawford, rick|crawford rick|crawford, rcrawford, erepresentative
+crawfordr a crawford
+</td>
+<td style="text-align:left;">
+21106
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0.428
+</td>
+<td style="text-align:left;">
+0.491
+</td>
+<td style="text-align:left;">
+Rick
+</td>
+<td style="text-align:left;">
+CRAWFORD
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+WOMACK, Steve
+</td>
+<td style="text-align:left;">
+steve womack|womack|steve a womack|stephen womack|stephen a
+womack|(^|senator |representative )womackwomack, stephen|womack,
+steve|womack steve|womack, srepresentative womacks a womack
+</td>
+<td style="text-align:left;">
+21108
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+0.355
+</td>
+<td style="text-align:left;">
+0.584
+</td>
+<td style="text-align:left;">
+Steve
+</td>
+<td style="text-align:left;">
+WOMACK
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+HILL, French
+</td>
+<td style="text-align:left;">
+french hill| hill|(j. french|james) hill|hill|(^|senator |representative
+)hillhill, (j. french|james)|hill, french|hill french|hill, fhill,
+jrepresentative hill/td&gt;
+</td>
+<td style="text-align:left;">
+21503
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+0.444
+</td>
+<td style="text-align:left;">
+0.258
+</td>
+<td style="text-align:left;">
+French
+</td>
+<td style="text-align:left;">
+HILL
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+WESTERMAN, Bruce Eugene
+</td>
+<td style="text-align:left;">
+bruce westerman|bruce eugene westerman|westerman|bruce e
+westerman|westerman|(^|senator |representative )westermanwesterman,
+bruce|westerman bruce|westerman, brepresentative westermanb e westerman
+</td>
+<td style="text-align:left;">
+21563
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+0.55
+</td>
+<td style="text-align:left;">
+0.341
+</td>
+<td style="text-align:left;">
+Bruce
+</td>
+<td style="text-align:left;">
+WESTERMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+PELOSI, Nancy
+</td>
+<td style="text-align:left;">
+nancy pelosi|nancy patricia pelosi|pelosi|nancy p
+pelosi|pelosi|(^|senator |representative )pelosipelosi, nancy|pelosi
+nancy|pelosi, nrepresentative pelosin p pelosi
+</td>
+<td style="text-align:left;">
+15448
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+-0.49
+</td>
+<td style="text-align:left;">
+-0.206
+</td>
+<td style="text-align:left;">
+Nancy
+</td>
+<td style="text-align:left;">
+PELOSI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+SCHIFF, Adam
+</td>
+<td style="text-align:left;">
+adam schiff|adam bennett schiff|schiff|adam b schiff|schiff|(^|senator
+|representative )schiffschiff, adam|schiff adam|schiff, arepresentative
+schiffa b schiff
+</td>
+<td style="text-align:left;">
+20104
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+28
+</td>
+<td style="text-align:left;">
+-0.35
+</td>
+<td style="text-align:left;">
+-0.13
+</td>
+<td style="text-align:left;">
+Adam
+</td>
+<td style="text-align:left;">
+SCHIFF
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+ISSA, Darrell
+</td>
+<td style="text-align:left;">
+darrell issa|issa|darrell e issa|issa|(^|senator |representative
+)issaissa, darrell|issa darrell|issa, drepresentative issad e issa
+</td>
+<td style="text-align:left;">
+20107
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:left;">
+0.498
+</td>
+<td style="text-align:left;">
+-0.052
+</td>
+<td style="text-align:left;">
+Darrell
+</td>
+<td style="text-align:left;">
+ISSA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+NUNES, Devin
+</td>
+<td style="text-align:left;">
+devin nunes|nunes|nunes|(^|senator |representative )nunesnunes,
+devin|nunes devin|nunes, drepresentative nunes/td&gt;
+</td>
+<td style="text-align:left;">
+20307
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+0.45
+</td>
+<td style="text-align:left;">
+0.223
+</td>
+<td style="text-align:left;">
+Devin
+</td>
+<td style="text-align:left;">
+NUNES
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+SÁNCHEZ, Linda T.
+</td>
+<td style="text-align:left;">
+linda sanchez|linda t sanchez|sanchez|sanchez|(^|senator |representative
+)sanchezsanchez, linda|sanchez linda|sanchez, lrepresentative sanchezl t
+sanchez
+</td>
+<td style="text-align:left;">
+20310
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+38
+</td>
+<td style="text-align:left;">
+-0.507
+</td>
+<td style="text-align:left;">
+-0.135
+</td>
+<td style="text-align:left;">
+Linda
+</td>
+<td style="text-align:left;">
+SANCHEZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+COSTA, Jim
+</td>
+<td style="text-align:left;">
+jim costa|costa|james costa|(^|senator |representative )costacosta,
+james|costa, jim|costa jim|costa, jrepresentative costa/td&gt;
+</td>
+<td style="text-align:left;">
+20501
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+-0.192
+</td>
+<td style="text-align:left;">
+0.458
+</td>
+<td style="text-align:left;">
+Jim
+</td>
+<td style="text-align:left;">
+COSTA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+MATSUI, Doris
+</td>
+<td style="text-align:left;">
+doris matsui|matsui|doris o matsui|matsui|(^|senator |representative
+)matsuimatsui, doris|matsui doris|matsui, drepresentative matsuid o
+matsui
+</td>
+<td style="text-align:left;">
+20538
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+-0.435
+</td>
+<td style="text-align:left;">
+-0.159
+</td>
+<td style="text-align:left;">
+Doris
+</td>
+<td style="text-align:left;">
+MATSUI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+McNERNEY, Jerry
+</td>
+<td style="text-align:left;">
+jerry mcnerney|mcnerney|gerald mcnerney|mcnerney|(^|senator
+|representative )mcnerneymcnerney, gerald|mcnerney, jerry|mcnerney
+jerry|mcnerney, jmcnerney, grepresentative mcnerney/td&gt;
+</td>
+<td style="text-align:left;">
+20702
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+-0.263
+</td>
+<td style="text-align:left;">
+-0.156
+</td>
+<td style="text-align:left;">
+Jerry
+</td>
+<td style="text-align:left;">
+McNERNEY
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+MCCARTHY, Kevin
+</td>
+<td style="text-align:left;">
+kevin mccarthy|mccarthy|mccarthy|(^|senator |representative
+)mccarthymccarthy, kevin|mccarthy kevin|mccarthy, krepresentative
+mccarthy/td&gt;
+</td>
+<td style="text-align:left;">
+20703
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:left;">
+0.454
+</td>
+<td style="text-align:left;">
+0.231
+</td>
+<td style="text-align:left;">
+Kevin
+</td>
+<td style="text-align:left;">
+McCARTHY
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+SPEIER, Karen Lorraine Jacqueline (Jackie)
+</td>
+<td style="text-align:left;">
+karen speier|karen lorraine jacqueline speier|speier|karen l
+speier|jackie speier|jackie lorraine jacqueline speier|jackie l
+speier|speier|(^|senator |representative )speierspeier, jackie|speier,
+karen|speier karen|speier, kspeier, jrepresentative speierk l speier
+</td>
+<td style="text-align:left;">
+20762
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+-0.381
+</td>
+<td style="text-align:left;">
+-0.42
+</td>
+<td style="text-align:left;">
+Karen
+</td>
+<td style="text-align:left;">
+SPEIER
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+McCLINTOCK, Tom
+</td>
+<td style="text-align:left;">
+tom mcclintock|tom miller mcclintock|mcclintock|tom m mcclintock|thomas
+mcclintock|thomas miller mcclintock|thomas m mcclintock|(^|senator
+|representative )mcclintockmcclintock, thomas|mcclintock, tom|mcclintock
+tom|mcclintock, trepresentative mcclintockt m mcclintock
+</td>
+<td style="text-align:left;">
+20903
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+0.697
+</td>
+<td style="text-align:left;">
+-0.431
+</td>
+<td style="text-align:left;">
+Tom
+</td>
+<td style="text-align:left;">
+McCLINTOCK
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+CHU, Judy
+</td>
+<td style="text-align:left;">
+judy chu|chu|chu|(^|senator |representative )chuchu, judy|chu judy|chu,
+jrepresentative chu/td&gt;
+</td>
+<td style="text-align:left;">
+20955
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:left;">
+-0.488
+</td>
+<td style="text-align:left;">
+-0.374
+</td>
+<td style="text-align:left;">
+Judy
+</td>
+<td style="text-align:left;">
+CHU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+GARAMENDI, John
+</td>
+<td style="text-align:left;">
+john garamendi|garamendi|garamendi|(^|senator |representative
+)garamendigaramendi, john|garamendi john|garamendi, jrepresentative
+garamendi/td&gt;
+</td>
+<td style="text-align:left;">
+20958
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+-0.308
+</td>
+<td style="text-align:left;">
+-0.097
+</td>
+<td style="text-align:left;">
+John
+</td>
+<td style="text-align:left;">
+GARAMENDI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+BASS, Karen
+</td>
+<td style="text-align:left;">
+karen bass|bass|bass|(^|senator |representative )bassbass, karen|bass
+karen|bass, krepresentative bass/td&gt;
+</td>
+<td style="text-align:left;">
+21110
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+37
+</td>
+<td style="text-align:left;">
+-0.583
+</td>
+<td style="text-align:left;">
+-0.104
+</td>
+<td style="text-align:left;">
+Karen
+</td>
+<td style="text-align:left;">
+BASS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+LaMALFA, Doug
+</td>
+<td style="text-align:left;">
+doug lamalfa|lamalfa|douglas lamalfa|(^|senator |representative
+)lamalfalamalfa, douglas|lamalfa, doug|lamalfa doug|lamalfa,
+drepresentative lamalfa/td&gt;
+</td>
+<td style="text-align:left;">
+21302
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0.533
+</td>
+<td style="text-align:left;">
+0.042
+</td>
+<td style="text-align:left;">
+Doug
+</td>
+<td style="text-align:left;">
+LaMALFA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+HUFFMAN, Jared
+</td>
+<td style="text-align:left;">
+jared huffman|huffman|huffman|(^|senator |representative
+)huffmanhuffman, jared|huffman jared|huffman, jrepresentative
+huffman/td&gt;
+</td>
+<td style="text-align:left;">
+21303
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+-0.429
+</td>
+<td style="text-align:left;">
+-0.545
+</td>
+<td style="text-align:left;">
+Jared
+</td>
+<td style="text-align:left;">
+HUFFMAN
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+BERA, Ami
+</td>
+<td style="text-align:left;">
+ami bera|bera|bera|(^|senator |representative )berabera, ami|bera
+ami|bera, arepresentative bera/td&gt;
+</td>
+<td style="text-align:left;">
+21304
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+-0.235
+</td>
+<td style="text-align:left;">
+0.017
+</td>
+<td style="text-align:left;">
+Ami
+</td>
+<td style="text-align:left;">
+BERA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+SWALWELL, Eric
+</td>
+<td style="text-align:left;">
+eric swalwell|swalwell|swalwell|(^|senator |representative
+)swalwellswalwell, eric|swalwell eric|swalwell, erepresentative
+swalwell/td&gt;
+</td>
+<td style="text-align:left;">
+21306
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+-0.366
+</td>
+<td style="text-align:left;">
+-0.099
+</td>
+<td style="text-align:left;">
+Eric
+</td>
+<td style="text-align:left;">
+SWALWELL
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+VALADAO, David G.
+</td>
+<td style="text-align:left;">
+david valadao|david g valadao|valadao|dave valadao|dave g
+valadao|(^|senator |representative )valadaovaladao, dave|valadao,
+david|valadao david|valadao, drepresentative valadaod g valadao
+</td>
+<td style="text-align:left;">
+21307
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+0.26
+</td>
+<td style="text-align:left;">
+0.394
+</td>
+<td style="text-align:left;">
+David
+</td>
+<td style="text-align:left;">
+VALADAO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+BROWNLEY, Julia
+</td>
+<td style="text-align:left;">
+julia brownley|brownley|brownley|(^|senator |representative
+)brownleybrownley, julia|brownley julia|brownley, jrepresentative
+brownley/td&gt;
+</td>
+<td style="text-align:left;">
+21308
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+-0.287
+</td>
+<td style="text-align:left;">
+0.054
+</td>
+<td style="text-align:left;">
+Julia
+</td>
+<td style="text-align:left;">
+BROWNLEY
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+CÁRDENAS, Tony
+</td>
+<td style="text-align:left;">
+tony cardenas|cardenas|cardenas|(^|senator |representative
+)cardenascardenas, tony|cardenas tony|cardenas, trepresentative
+cardenas/td&gt;
+</td>
+<td style="text-align:left;">
+21309
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+-0.385
+</td>
+<td style="text-align:left;">
+0.017
+</td>
+<td style="text-align:left;">
+Tony
+</td>
+<td style="text-align:left;">
+CARDENAS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+RUIZ, Raul
+</td>
+<td style="text-align:left;">
+raul ruiz| ruiz|ruiz|(^|senator |representative )ruizruiz, raul|ruiz
+raul|ruiz, rrepresentative ruiz/td&gt;
+</td>
+<td style="text-align:left;">
+21311
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:left;">
+-0.246
+</td>
+<td style="text-align:left;">
+0.06
+</td>
+<td style="text-align:left;">
+Raul
+</td>
+<td style="text-align:left;">
+RUIZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+TAKANO, Mark
+</td>
+<td style="text-align:left;">
+mark takano|takano|takano|(^|senator |representative )takanotakano,
+mark|takano mark|takano, mrepresentative takano/td&gt;
+</td>
+<td style="text-align:left;">
+21312
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+41
+</td>
+<td style="text-align:left;">
+-0.464
+</td>
+<td style="text-align:left;">
+-0.264
+</td>
+<td style="text-align:left;">
+Mark
+</td>
+<td style="text-align:left;">
+TAKANO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+LOWENTHAL, Alan
+</td>
+<td style="text-align:left;">
+alan lowenthal|lowenthal|alan s lowenthal|lowenthal|(^|senator
+|representative )lowenthallowenthal, alan|lowenthal alan|lowenthal,
+arepresentative lowenthala s lowenthal
+</td>
+<td style="text-align:left;">
+21313
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+47
+</td>
+<td style="text-align:left;">
+-0.449
+</td>
+<td style="text-align:left;">
+-0.382
+</td>
+<td style="text-align:left;">
+Alan
+</td>
+<td style="text-align:left;">
+LOWENTHAL
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+VARGAS, Juan
+</td>
+<td style="text-align:left;">
+juan vargas|vargas|vargas|(^|senator |representative )vargasvargas,
+juan|vargas juan|vargas, jrepresentative vargas/td&gt;
+</td>
+<td style="text-align:left;">
+21314
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+-0.402
+</td>
+<td style="text-align:left;">
+0.085
+</td>
+<td style="text-align:left;">
+Juan
+</td>
+<td style="text-align:left;">
+VARGAS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+PETERS, Scott
+</td>
+<td style="text-align:left;">
+scott peters|scott harvey peters|peters|scott h peters|(^|senator
+|representative )peters{1,4}ca|peters, scott|peters scott|peters,
+srepresentative peterss h peters
+</td>
+<td style="text-align:left;">
+21315
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+-0.182
+</td>
+<td style="text-align:left;">
+-0.03
+</td>
+<td style="text-align:left;">
+Scott
+</td>
+<td style="text-align:left;">
+PETERS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+DESAULNIER, Mark James
+</td>
+<td style="text-align:left;">
+mark desaulnier|mark james desaulnier|desaulnier|mark j
+desaulnier|desaulnier|(^|senator |representative )desaulnierdesaulnier,
+mark|desaulnier mark|desaulnier, mrepresentative desaulnierm j
+desaulnier
+</td>
+<td style="text-align:left;">
+21504
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+-0.53
+</td>
+<td style="text-align:left;">
+-0.364
+</td>
+<td style="text-align:left;">
+Mark
+</td>
+<td style="text-align:left;">
+DESAULNIER
 </td>
 </tr>
 </tbody>
@@ -950,7 +2002,7 @@ ryan
 common human typos and OCR errors that frustrate matching. Some of these
 corrections are currently supplied by <code>MemberNameTypos.R</code>. In
 future versions, <code>typos</code> will be supplied as a dataframe
-instead, and all types of corrections (cleaning, typos, OCR erros) will
+instead, and all types of corrections (cleaning, typos, OCR errors) will
 be optional. Additionally, users will be able to customize the
 <code>typos</code> dataframe and provide it as an argument to
 <code>extractMemberNames()</code>.</p>
@@ -1392,12 +2444,12 @@ dataframe of the names and ICPSR ID numbers of members of Congress in a
 supplied vector of text.</p>
 <ul>
 <li>in the future, <code><a href="../reference/extractMemberName.html">extractMemberName()</a></code> may default to
-returning a list of dataframes the same length of the supplied data</li>
+returning a list of dataframes the same length as the supplied data</li>
 </ul>
 <p>For example, we can use <code><a href="../reference/extractMemberName.html">extractMemberName()</a></code> to detect
 the names of members of Congress in the text of the Congressional
-Record. Let’s start with text of the Congressional Record from 3/1/2007,
-scraped and parsed using methods described <a href="https://github.com/judgelord/cr" class="external-link">here</a>.</p>
+Record. Let’s start with the text of the Congressional Record from
+3/1/2007, scraped and parsed using methods described <a href="https://github.com/judgelord/cr" class="external-link">here</a>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"cr2007_03_01"</span><span class="op">)</span>
 
@@ -1735,8 +2787,379 @@ Congressional Record Vol. 153, No. 35
 HON. JEFF MILLER;Mr. MILLER
 </td>
 <td style="text-align:left;">
-<code>YOU ARE OUR HEROES''; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-3 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436-3.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. TOM LANTOS;Mr. LANTOS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; COMMEMORATING THE 46TH ANNIVERSARY OF THE PEACE CORPS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-4 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436-4.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. RODNEY P. FRELINGHUYSEN;Mr. FRELINGHUYSEN &lt;/td&gt;    &lt;td style="text-align:left;"&gt; TRIBUTE TO THE RIVERDALE VOLUNTEER FIRE DEPARTMENT; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-1 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. SAM GRAVES;Mr. GRAVES &lt;/td&gt;    &lt;td style="text-align:left;"&gt; RECOGNIZING CHRISTOPHER BLAKE FOR ACHIEVING THE RANK OF EAGLE SCOUT; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-2 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-2.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. TOM DAVIS;Mr. TOM DAVIS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; RECOGNIZING THE FAIRFAX COUNTY CHAMBER OF COMMERCE 2007 VALOR AWARD RECIPIENTS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-3 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-3.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. EDOLPHUS TOWNS;Mr. TOWNS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; SIKH EDITOR WRITES TO PRESIDENT BUSH, URGES SUPPORT FOR SIKH FREEDOM; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-4 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-4.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. HENRY E. BROWN;Mr. BROWN &lt;/td&gt;    &lt;td style="text-align:left;"&gt; SPIRIT OF SOUTH CAROLINA LAUNCHES HOPE FOR STUDENTS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-1 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. ELEANOR HOLMES NORTON;Ms. NORTON &lt;/td&gt;    &lt;td style="text-align:left;"&gt; INTRODUCTION OF THE DISTRICT OF COLUMBIA DISTRICT ATTORNEY ESTABLISHMENT ACT OF 2007; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-2 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE439-2.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. MICHAEL F. DOYLE;Mr. DOYLE &lt;/td&gt;    &lt;td style="text-align:left;"&gt; TRIBUTE TO ROBERT L. PITTS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-1 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE439.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. LAMAR SMITH;Mr. SMITH &lt;/td&gt;    &lt;td style="text-align:left;"&gt; TRIBUTE TO DALETTA ANDREAS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-2 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-2.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. BRAD ELLSWORTH;Mr. ELLSWORTH &lt;/td&gt;    &lt;td style="text-align:left;"&gt; RECOGNIZING EVANSVILLE MATER DEI WRESTLING TEAM; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-3 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-3.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. JOHN SHIMKUS;Mr. SHIMKUS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; RECOGNIZING SPC. RYAN C. GARBS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-4 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-4.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. THOMAS E. PETRI;Mr. PETRI &lt;/td&gt;    &lt;td style="text-align:left;"&gt; INTRODUCTION OF THE PUSH POLL DISCLOSURE ACT OF 2007; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-5 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-5.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. GABRIELLE GIFFORDS;Ms. GIFFORDS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; CROSS PARTY LINES TO PASS COMPREHENSIVE IMMIGRATION REFORM; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-1 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. ZACH WAMP;Mr. WAMP &lt;/td&gt;    &lt;td style="text-align:left;"&gt; CLAUDE RAMSEY POST OFFICE; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-2 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-2.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. RON PAUL;Mr. PAUL &lt;/td&gt;    &lt;td style="text-align:left;"&gt; THE PORT OF GALVESTON: A SOURCE OF ECONOMIC GROWTH FOR TEXAS AND THE NATION; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-3 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-3.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. ROBERT A. BRADY;Mr. BRADY &lt;/td&gt;    &lt;td style="text-align:left;"&gt; A TRIBUTE TO THE BEREAN INSTITUTE; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-4 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-4.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. PATRICK J. KENNEDY;Mr. KENNEDY &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NATIONAL EATING DISORDERS AWARENESS WEEK; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-1 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. SAM GRAVES;Mr. GRAVES &lt;/td&gt;    &lt;td style="text-align:left;"&gt; RECOGNIZING MIKE KEMNA; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-2 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-2.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. TOM DAVIS;Mr. TOM DAVIS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; RECOGNIZING THE FAIRFAX COUNTY CHAMBER OF COMMERCE 2007 VALOR AWARD RECIPIENTS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-3 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-3.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. RAY &lt;/td&gt;    &lt;td style="text-align:left;"&gt; A TRIBUTE TO JAMES GHIGLIERI OF TOLUCA, ILLINOIS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-4 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-4.htm &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. MIKE McINTYRE;Mr. McINTYRE &lt;/td&gt;    &lt;td style="text-align:left;"&gt; TRIBUTE TO PRIVATE JOSHUA</code>JOSH’’
-ROY MOZINGO; Congressional Record Vol. 153, No. 35
+YOU ARE OUR HEROES’’; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-3</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436-3.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436-3.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. TOM LANTOS;Mr. LANTOS
+</td>
+<td style="text-align:left;">
+COMMEMORATING THE 46TH ANNIVERSARY OF THE PEACE CORPS; Congressional
+Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-4</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436-4.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436-4.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. RODNEY P. FRELINGHUYSEN;Mr. FRELINGHUYSEN
+</td>
+<td style="text-align:left;">
+TRIBUTE TO THE RIVERDALE VOLUNTEER FIRE DEPARTMENT; Congressional Record
+Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-1</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. SAM GRAVES;Mr. GRAVES
+</td>
+<td style="text-align:left;">
+RECOGNIZING CHRISTOPHER BLAKE FOR ACHIEVING THE RANK OF EAGLE SCOUT;
+Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-2</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-2.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-2.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. TOM DAVIS;Mr. TOM DAVIS
+</td>
+<td style="text-align:left;">
+RECOGNIZING THE FAIRFAX COUNTY CHAMBER OF COMMERCE 2007 VALOR AWARD
+RECIPIENTS; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-3</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-3.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-3.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. EDOLPHUS TOWNS;Mr. TOWNS
+</td>
+<td style="text-align:left;">
+SIKH EDITOR WRITES TO PRESIDENT BUSH, URGES SUPPORT FOR SIKH FREEDOM;
+Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-4</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-4.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-4.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. HENRY E. BROWN;Mr. BROWN
+</td>
+<td style="text-align:left;">
+SPIRIT OF SOUTH CAROLINA LAUNCHES HOPE FOR STUDENTS; Congressional
+Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-1</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. ELEANOR HOLMES NORTON;Ms. NORTON
+</td>
+<td style="text-align:left;">
+INTRODUCTION OF THE DISTRICT OF COLUMBIA DISTRICT ATTORNEY ESTABLISHMENT
+ACT OF 2007; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-2</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE439-2.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE439-2.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. MICHAEL F. DOYLE;Mr. DOYLE
+</td>
+<td style="text-align:left;">
+TRIBUTE TO ROBERT L. PITTS; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-1</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE439.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE439.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. LAMAR SMITH;Mr. SMITH
+</td>
+<td style="text-align:left;">
+TRIBUTE TO DALETTA ANDREAS; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-2</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-2.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-2.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. BRAD ELLSWORTH;Mr. ELLSWORTH
+</td>
+<td style="text-align:left;">
+RECOGNIZING EVANSVILLE MATER DEI WRESTLING TEAM; Congressional Record
+Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-3</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-3.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-3.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. JOHN SHIMKUS;Mr. SHIMKUS
+</td>
+<td style="text-align:left;">
+RECOGNIZING SPC. RYAN C. GARBS; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-4</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-4.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-4.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. THOMAS E. PETRI;Mr. PETRI
+</td>
+<td style="text-align:left;">
+INTRODUCTION OF THE PUSH POLL DISCLOSURE ACT OF 2007; Congressional
+Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-5" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-5</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-5.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-5.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. GABRIELLE GIFFORDS;Ms. GIFFORDS
+</td>
+<td style="text-align:left;">
+CROSS PARTY LINES TO PASS COMPREHENSIVE IMMIGRATION REFORM;
+Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-1</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. ZACH WAMP;Mr. WAMP
+</td>
+<td style="text-align:left;">
+CLAUDE RAMSEY POST OFFICE; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-2</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-2.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-2.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. RON PAUL;Mr. PAUL
+</td>
+<td style="text-align:left;">
+THE PORT OF GALVESTON: A SOURCE OF ECONOMIC GROWTH FOR TEXAS AND THE
+NATION; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-3</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-3.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-3.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. ROBERT A. BRADY;Mr. BRADY
+</td>
+<td style="text-align:left;">
+A TRIBUTE TO THE BEREAN INSTITUTE; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-4</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-4.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-4.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. PATRICK J. KENNEDY;Mr. KENNEDY
+</td>
+<td style="text-align:left;">
+NATIONAL EATING DISORDERS AWARENESS WEEK; Congressional Record Vol. 153,
+No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-1</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. SAM GRAVES;Mr. GRAVES
+</td>
+<td style="text-align:left;">
+RECOGNIZING MIKE KEMNA; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-2</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-2.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-2.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. TOM DAVIS;Mr. TOM DAVIS
+</td>
+<td style="text-align:left;">
+RECOGNIZING THE FAIRFAX COUNTY CHAMBER OF COMMERCE 2007 VALOR AWARD
+RECIPIENTS; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-3</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-3.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-3.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. RAY
+</td>
+<td style="text-align:left;">
+A TRIBUTE TO JAMES GHIGLIERI OF TOLUCA, ILLINOIS; Congressional Record
+Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-4</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-4.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-4.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. MIKE McINTYRE;Mr. McINTYRE
+</td>
+<td style="text-align:left;">
+TRIBUTE TO PRIVATE JOSHUA JOSH’’ ROY MOZINGO; Congressional Record Vol.
+153, No. 35
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-5" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-5</a>
@@ -1943,18 +3366,6 @@ CELLULOSIC ETHANOL TECHNOLOGY; Congressional Record Vol. 153, No. 35
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cr2007_03_01</span><span class="op">$</span><span class="va">url</span><span class="op">)</span> </code></pre></div>
-<pre><code><span class="co">#&gt; [1] "https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-2"</span>
-<span class="co">#&gt; [2] "https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-3"</span>
-<span class="co">#&gt; [3] "https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-4"</span>
-<span class="co">#&gt; [4] "https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-5"</span>
-<span class="co">#&gt; [5] "https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-1"</span>
-<span class="co">#&gt; [6] "https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-2"</span></code></pre>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cr2007_03_01</span><span class="op">$</span><span class="va">speaker</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">#&gt; [1] "HON. SAM GRAVES;Mr. GRAVES"          "HON. MARK UDALL;Mr. UDALL"           "HON. JAMES R. LANGEVIN;Mr. LANGEVIN" "HON. JIM COSTA;Mr. COSTA"            "HON. SAM GRAVES;Mr. GRAVES"         </span>
-<span class="co">#&gt; [6] "HON. SANFORD D. BISHOP;Mr. BISHOP"</span></code></pre>
 <p>This is an extremely simple example because the text strings
 containing the names of the members of Congress (<code>speaker</code>)
 are short and do not contain much other text. However,
@@ -1964,7 +3375,7 @@ formatted or where they contain common typos introduced by humans or
 common OCR errors. Indeed, these functions were developed to identify
 members of Congress in ugly text data like <a href="https://judgelord.github.io/corr/corr_pres.html#22" class="external-link">this</a>.</p>
 <p>To better match member names, this function currently requires
-either</p>
+either:</p>
 <ul>
 <li>a column “congress” (this can be created from a date) or</li>
 <li>a vector of congresses to limit the search to
@@ -1974,7 +3385,7 @@ either</p>
 <h4 id="extractmembername">
 <code>extractMemberName()</code><a class="anchor" aria-label="anchor" href="#extractmembername"></a>
 </h4>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cr2007_03_01</span><span class="op">$</span><span class="va">congress</span> <span class="op">&lt;-</span> <span class="fl">110</span>
 
 <span class="co"># extract legislator names and match to voteview ICPSR numbers</span>
@@ -1987,7 +3398,7 @@ either</p>
 <pre><code><span class="co">#&gt; <span style="color: #00BB00;">Searching  data for members of the 110th, n = 154 (123 distinct strings).</span></span></code></pre>
 <pre><code><span class="co">#&gt; Names matched in 7 seconds</span></code></pre>
 <pre><code><span class="co">#&gt; Joining, by = c("congress", "pattern", "first_name", "last_name")</span></code></pre>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cr</span> |&gt; <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; ">
 <table class="table table" style="margin-left: auto; margin-right: auto;">
@@ -2092,7 +3503,7 @@ Samuel
 GRAVES
 </td>
 <td style="text-align:left;">
-missouri
+26
 </td>
 </tr>
 <tr>
@@ -2146,7 +3557,7 @@ Mark
 UDALL
 </td>
 <td style="text-align:left;">
-colorado
+6
 </td>
 </tr>
 <tr>
@@ -2199,7 +3610,7 @@ James
 LANGEVIN
 </td>
 <td style="text-align:left;">
-rhode island
+41
 </td>
 </tr>
 <tr>
@@ -2251,7 +3662,7 @@ Jim
 COSTA
 </td>
 <td style="text-align:left;">
-california
+5
 </td>
 </tr>
 <tr>
@@ -2303,7 +3714,7 @@ Samuel
 GRAVES
 </td>
 <td style="text-align:left;">
-missouri
+26
 </td>
 </tr>
 <tr>
@@ -2356,7 +3767,7 @@ Sanford
 BISHOP
 </td>
 <td style="text-align:left;">
-georgia
+11
 </td>
 </tr>
 <tr>
@@ -2408,7 +3819,7 @@ Edolphus
 TOWNS
 </td>
 <td style="text-align:left;">
-new york
+33
 </td>
 </tr>
 <tr>
@@ -2461,7 +3872,7 @@ Thomas
 DAVIS
 </td>
 <td style="text-align:left;">
-virginia
+48
 </td>
 </tr>
 <tr>
@@ -2514,7 +3925,7 @@ Samuel
 GRAVES
 </td>
 <td style="text-align:left;">
-missouri
+26
 </td>
 </tr>
 <tr>
@@ -2567,7 +3978,7 @@ Mark
 UDALL
 </td>
 <td style="text-align:left;">
-colorado
+6
 </td>
 </tr>
 <tr>
@@ -2587,8 +3998,8 @@ FRELINGHUYSEN, Rodney P.
 hon rodney p frelinghuysen;mr frelinghuysen
 </td>
 <td style="text-align:left;">
-rodney frelinghuysen|rodney p
-frelinghuysen|frelinghuysen|frelinghuysen|(^|senator |representative
+rodney frelinghuysen|rodney p frelinghuysen|
+frelinghuysen|frelinghuysen|(^|senator |representative
 )frelinghuysenfrelinghuysen, rodney|frelinghuysen rodney|frelinghuysen,
 rrepresentative frelinghuysenr p frelinghuysen
 </td>
@@ -2621,7 +4032,7 @@ Rodney
 FRELINGHUYSEN
 </td>
 <td style="text-align:left;">
-new jersey
+31
 </td>
 </tr>
 <tr>
@@ -2672,7 +4083,7 @@ Jim
 COSTA
 </td>
 <td style="text-align:left;">
-california
+5
 </td>
 </tr>
 <tr>
@@ -2725,7 +4136,7 @@ Thomas
 DAVIS
 </td>
 <td style="text-align:left;">
-virginia
+48
 </td>
 </tr>
 <tr>
@@ -2778,7 +4189,7 @@ Sanford
 BISHOP
 </td>
 <td style="text-align:left;">
-georgia
+11
 </td>
 </tr>
 <tr>
@@ -2831,7 +4242,7 @@ James
 LANGEVIN
 </td>
 <td style="text-align:left;">
-rhode island
+41
 </td>
 </tr>
 <tr>
@@ -2883,7 +4294,7 @@ Edolphus
 TOWNS
 </td>
 <td style="text-align:left;">
-new york
+33
 </td>
 </tr>
 <tr>
@@ -2935,7 +4346,7 @@ Darlene
 HOOLEY
 </td>
 <td style="text-align:left;">
-oregon
+38
 </td>
 </tr>
 <tr>
@@ -2973,8 +4384,1115 @@ House
 HON. JEFF MILLER;Mr. MILLER
 </td>
 <td style="text-align:left;">
-<code>YOU ARE OUR HEROES''; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-3 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436-3.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Jefferson &lt;/td&gt;    &lt;td style="text-align:left;"&gt; MILLER &lt;/td&gt;    &lt;td style="text-align:left;"&gt; florida &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000019 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000019 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 14837 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; LANTOS, Thomas Peter &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon tom lantos;mr lantos &lt;/td&gt;    &lt;td style="text-align:left;"&gt; thomas lantos|thomas peter lantos|\bt lantos|thomas p lantos|tom lantos|tom peter lantos|tom p lantos|(^|senator |representative )lantos\b|lantos, tom|lantos, thomas|lantos thomas|lantos, t\b|representative lantos\b|t p lantos &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. TOM LANTOS;Mr. LANTOS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; COMMEMORATING THE 46TH ANNIVERSARY OF THE PEACE CORPS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-4 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436-4.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Thomas &lt;/td&gt;    &lt;td style="text-align:left;"&gt; LANTOS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; california &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000020 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000020 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 29541 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; FRELINGHUYSEN, Rodney P. &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon rodney p frelinghuysen;mr frelinghuysen &lt;/td&gt;    &lt;td style="text-align:left;"&gt; rodney frelinghuysen|rodney p frelinghuysen|\br frelinghuysen|\bna frelinghuysen|(^|senator |representative )frelinghuysen\b|frelinghuysen, rodney|frelinghuysen rodney|frelinghuysen, r\b|representative frelinghuysen\b|r p frelinghuysen &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. RODNEY P. FRELINGHUYSEN;Mr. FRELINGHUYSEN &lt;/td&gt;    &lt;td style="text-align:left;"&gt; TRIBUTE TO THE RIVERDALE VOLUNTEER FIRE DEPARTMENT; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-1 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Rodney &lt;/td&gt;    &lt;td style="text-align:left;"&gt; FRELINGHUYSEN &lt;/td&gt;    &lt;td style="text-align:left;"&gt; new jersey &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000021 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000021 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 20124 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; GRAVES, Samuel &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon sam graves;mr graves &lt;/td&gt;    &lt;td style="text-align:left;"&gt; samuel graves|\bs graves|sam graves|(^|senator |representative )graves\b|graves, sam|graves, samuel|graves samuel|graves, s\b|representative graves\b &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. SAM GRAVES;Mr. GRAVES &lt;/td&gt;    &lt;td style="text-align:left;"&gt; RECOGNIZING CHRISTOPHER BLAKE FOR ACHIEVING THE RANK OF EAGLE SCOUT; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-2 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-2.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Samuel &lt;/td&gt;    &lt;td style="text-align:left;"&gt; GRAVES &lt;/td&gt;    &lt;td style="text-align:left;"&gt; missouri &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000022 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000022 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 29576 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; DAVIS, Thomas M., III &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon tom davis;mr tom davis &lt;/td&gt;    &lt;td style="text-align:left;"&gt; thomas davis|thomas m davis|\bt davis|tom davis|tom m davis|(^|senator |representative )davis\b.{1,4}va|davis, tom|davis, thomas|davis thomas|davis, t\b|representative davis\b.{1,4}va|t m davis &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. TOM DAVIS;Mr. TOM DAVIS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; RECOGNIZING THE FAIRFAX COUNTY CHAMBER OF COMMERCE 2007 VALOR AWARD RECIPIENTS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-3 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-3.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Thomas &lt;/td&gt;    &lt;td style="text-align:left;"&gt; DAVIS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; virginia &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000023 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000023 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 15072 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; TOWNS, Edolphus &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon edolphus towns;mr towns &lt;/td&gt;    &lt;td style="text-align:left;"&gt; edolphus towns|\be towns|ed towns|(^|senator |representative )towns\b|towns, ed|towns, edolphus|towns edolphus|towns, e\b|representative towns\b &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. EDOLPHUS TOWNS;Mr. TOWNS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; SIKH EDITOR WRITES TO PRESIDENT BUSH, URGES SUPPORT FOR SIKH FREEDOM; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-4 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-4.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Edolphus &lt;/td&gt;    &lt;td style="text-align:left;"&gt; TOWNS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; new york &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000024 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000024 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 20137 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; BROWN, Henry Edward, Jr. &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon henry e brown;mr brown &lt;/td&gt;    &lt;td style="text-align:left;"&gt; henry brown|henry edward brown|\bh brown|henry e brown|(^|senator |representative )brown\b.{1,4}sc|brown, henry|brown henry|brown, h\b|representative brown\b.{1,4}sc|h e brown &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. HENRY E. BROWN;Mr. BROWN &lt;/td&gt;    &lt;td style="text-align:left;"&gt; SPIRIT OF SOUTH CAROLINA LAUNCHES HOPE FOR STUDENTS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-1 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Henry &lt;/td&gt;    &lt;td style="text-align:left;"&gt; BROWN &lt;/td&gt;    &lt;td style="text-align:left;"&gt; south carolina &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000025 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000025 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon eleanor holmes norton;ms norton &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 404error &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. ELEANOR HOLMES NORTON;Ms. NORTON &lt;/td&gt;    &lt;td style="text-align:left;"&gt; INTRODUCTION OF THE DISTRICT OF COLUMBIA DISTRICT ATTORNEY ESTABLISHMENT ACT OF 2007; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-2 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE439-2.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000026 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000026 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 29561 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; DOYLE, Michael F. &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon michael f doyle;mr doyle &lt;/td&gt;    &lt;td style="text-align:left;"&gt; michael doyle|michael f doyle|\bm doyle|mike doyle|mike f doyle|(^|senator |representative )doyle\b|doyle, mike|doyle, michael|doyle michael|doyle, m\b|representative doyle\b|m f doyle &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. MICHAEL F. DOYLE;Mr. DOYLE &lt;/td&gt;    &lt;td style="text-align:left;"&gt; TRIBUTE TO ROBERT L. PITTS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-1 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE439.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Michael &lt;/td&gt;    &lt;td style="text-align:left;"&gt; DOYLE &lt;/td&gt;    &lt;td style="text-align:left;"&gt; pennsylvania &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000027 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000027 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 15445 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; SMITH, Lamar Seeligson &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon lamar smith;mr smith &lt;/td&gt;    &lt;td style="text-align:left;"&gt; lamar smith|lamar seeligson smith|\bl smith|lamar s smith|(^|senator |representative )smith\b.{1,4}tx|smith, lamar|smith lamar|smith, l\b|representative smith\b.{1,4}tx|l s smith &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. LAMAR SMITH;Mr. SMITH &lt;/td&gt;    &lt;td style="text-align:left;"&gt; TRIBUTE TO DALETTA ANDREAS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-2 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-2.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Lamar &lt;/td&gt;    &lt;td style="text-align:left;"&gt; SMITH &lt;/td&gt;    &lt;td style="text-align:left;"&gt; texas &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000028 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000028 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 20718 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; ELLSWORTH, Brad &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon brad ellsworth;mr ellsworth &lt;/td&gt;    &lt;td style="text-align:left;"&gt; brad ellsworth|\bb ellsworth|bradley ellsworth|(^|senator |representative )ellsworth\b|ellsworth, bradley|ellsworth, brad|ellsworth brad|ellsworth, b\b|representative ellsworth\b &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. BRAD ELLSWORTH;Mr. ELLSWORTH &lt;/td&gt;    &lt;td style="text-align:left;"&gt; RECOGNIZING EVANSVILLE MATER DEI WRESTLING TEAM; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-3 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-3.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Brad &lt;/td&gt;    &lt;td style="text-align:left;"&gt; ELLSWORTH &lt;/td&gt;    &lt;td style="text-align:left;"&gt; indiana &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000029 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000029 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 29718 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; SHIMKUS, John M. &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon john shimkus;mr shimkus &lt;/td&gt;    &lt;td style="text-align:left;"&gt; john shimkus|john m shimkus|\bj shimkus|\bna shimkus|(^|senator |representative )shimkus\b|shimkus, john|shimkus john|shimkus, j\b|representative shimkus\b|j m shimkus &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. JOHN SHIMKUS;Mr. SHIMKUS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; RECOGNIZING SPC. RYAN C. GARBS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-4 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-4.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; John &lt;/td&gt;    &lt;td style="text-align:left;"&gt; SHIMKUS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; illinois &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000030 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000030 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 14675 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; PETRI, Thomas Evert &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon thomas e petri;mr petri &lt;/td&gt;    &lt;td style="text-align:left;"&gt; thomas petri|thomas evert petri|\bt petri|thomas e petri|tom petri|tom evert petri|tom e petri|(^|senator |representative )petri\b|petri, tom|petri, thomas|petri thomas|petri, t\b|representative petri\b|t e petri &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. THOMAS E. PETRI;Mr. PETRI &lt;/td&gt;    &lt;td style="text-align:left;"&gt; INTRODUCTION OF THE PUSH POLL DISCLOSURE ACT OF 2007; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-5 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-5.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Thomas &lt;/td&gt;    &lt;td style="text-align:left;"&gt; PETRI &lt;/td&gt;    &lt;td style="text-align:left;"&gt; wisconsin &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000031 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000031 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 20701 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; GIFFORDS, Gabrielle &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon gabrielle giffords;ms giffords &lt;/td&gt;    &lt;td style="text-align:left;"&gt; gabrielle giffords|\bg giffords|\bna giffords|(^|senator |representative )giffords\b|giffords, gabrielle|giffords gabrielle|giffords, g\b|representative giffords\b &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. GABRIELLE GIFFORDS;Ms. GIFFORDS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; CROSS PARTY LINES TO PASS COMPREHENSIVE IMMIGRATION REFORM; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-1 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Gabrielle &lt;/td&gt;    &lt;td style="text-align:left;"&gt; GIFFORDS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; arizona &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000032 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000032 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 29567 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; WAMP, Zachary Paul &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon zach wamp;mr wamp &lt;/td&gt;    &lt;td style="text-align:left;"&gt; zachary wamp|zachary paul wamp|\bz wamp|zachary p wamp|zach wamp|zach paul wamp|zach p wamp|(^|senator |representative )wamp\b|wamp, zach|wamp, zachary|wamp zachary|wamp, z\b|representative wamp\b|z p wamp &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. ZACH WAMP;Mr. WAMP &lt;/td&gt;    &lt;td style="text-align:left;"&gt; CLAUDE RAMSEY POST OFFICE; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-2 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-2.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Zachary &lt;/td&gt;    &lt;td style="text-align:left;"&gt; WAMP &lt;/td&gt;    &lt;td style="text-align:left;"&gt; tennessee &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000033 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000033 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 14290 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; PAUL, Ronald Ernest &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon ron paul;mr paul &lt;/td&gt;    &lt;td style="text-align:left;"&gt; ronald paul|ronald ernest paul|\br paul|ronald e paul|ron paul|ron ernest paul|ron e paul|(^|senator |representative )paul\b.{1,4}tx|paul, ron|paul, ronald|paul ronald|paul, r\b|representative paul\b.{1,4}tx|r e paul &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. RON PAUL;Mr. PAUL &lt;/td&gt;    &lt;td style="text-align:left;"&gt; THE PORT OF GALVESTON: A SOURCE OF ECONOMIC GROWTH FOR TEXAS AND THE NATION; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-3 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-3.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Ronald &lt;/td&gt;    &lt;td style="text-align:left;"&gt; PAUL &lt;/td&gt;    &lt;td style="text-align:left;"&gt; texas &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000034 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000034 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 29777 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; BRADY, Robert A. &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon robert a brady;mr brady &lt;/td&gt;    &lt;td style="text-align:left;"&gt; robert brady|robert a brady|\br brady|bob brady|bob a brady|\bb brady|(^|senator |representative )brady\b.{1,4}pa|brady, bob|brady, robert|brady robert|brady, r\b|brady, b\b|representative brady\b.{1,4}pa|r a brady &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. ROBERT A. BRADY;Mr. BRADY &lt;/td&gt;    &lt;td style="text-align:left;"&gt; A TRIBUTE TO THE BEREAN INSTITUTE; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-4 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-4.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Robert &lt;/td&gt;    &lt;td style="text-align:left;"&gt; BRADY &lt;/td&gt;    &lt;td style="text-align:left;"&gt; pennsylvania &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000035 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000035 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 29564 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; KENNEDY, Patrick Joseph &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon patrick j kennedy;mr kennedy &lt;/td&gt;    &lt;td style="text-align:left;"&gt; patrick kennedy|patrick joseph kennedy|\bp kennedy|patrick j kennedy|pat kennedy|pat joseph kennedy|pat j kennedy|(^|senator |representative )kennedy\b.{1,4}ri|kennedy, pat|kennedy, patrick|kennedy patrick|kennedy, p\b|representative kennedy\b|p j kennedy &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. PATRICK J. KENNEDY;Mr. KENNEDY &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NATIONAL EATING DISORDERS AWARENESS WEEK; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-1 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Patrick &lt;/td&gt;    &lt;td style="text-align:left;"&gt; KENNEDY &lt;/td&gt;    &lt;td style="text-align:left;"&gt; rhode island &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000036 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000036 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 20124 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; GRAVES, Samuel &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon sam graves;mr graves &lt;/td&gt;    &lt;td style="text-align:left;"&gt; samuel graves|\bs graves|sam graves|(^|senator |representative )graves\b|graves, sam|graves, samuel|graves samuel|graves, s\b|representative graves\b &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. SAM GRAVES;Mr. GRAVES &lt;/td&gt;    &lt;td style="text-align:left;"&gt; RECOGNIZING MIKE KEMNA; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-2 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-2.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Samuel &lt;/td&gt;    &lt;td style="text-align:left;"&gt; GRAVES &lt;/td&gt;    &lt;td style="text-align:left;"&gt; missouri &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000037 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000037 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 29576 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; DAVIS, Thomas M., III &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon tom davis;mr tom davis &lt;/td&gt;    &lt;td style="text-align:left;"&gt; thomas davis|thomas m davis|\bt davis|tom davis|tom m davis|(^|senator |representative )davis\b.{1,4}va|davis, tom|davis, thomas|davis thomas|davis, t\b|representative davis\b.{1,4}va|t m davis &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. TOM DAVIS;Mr. TOM DAVIS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; RECOGNIZING THE FAIRFAX COUNTY CHAMBER OF COMMERCE 2007 VALOR AWARD RECIPIENTS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-3 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-3.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; Thomas &lt;/td&gt;    &lt;td style="text-align:left;"&gt; DAVIS &lt;/td&gt;    &lt;td style="text-align:left;"&gt; virginia &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000038 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000038 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon ray &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 404error &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. RAY &lt;/td&gt;    &lt;td style="text-align:left;"&gt; A TRIBUTE TO JAMES GHIGLIERI OF TOLUCA, ILLINOIS; Congressional Record Vol. 153, No. 35 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-4 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-4.htm &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;    &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;   &lt;/tr&gt;   &lt;tr&gt;    &lt;td style="text-align:left;"&gt; 000039 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 000039 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 29746 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; McINTYRE, Mike &lt;/td&gt;    &lt;td style="text-align:left;"&gt; hon mike mcintyre;mr mcintyre &lt;/td&gt;    &lt;td style="text-align:left;"&gt; mike mcintyre|\bm mcintyre|michael mcintyre|(^|senator |representative )mcintyre\b|mcintyre, michael|mcintyre, mike|mcintyre mike|mcintyre, m\b|representative mcintyre\b &lt;/td&gt;    &lt;td style="text-align:left;"&gt; House &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; 2007-03-01 &lt;/td&gt;    &lt;td style="text-align:left;"&gt; HON. MIKE McINTYRE;Mr. McINTYRE &lt;/td&gt;    &lt;td style="text-align:left;"&gt; TRIBUTE TO PRIVATE JOSHUA</code>JOSH’’
-ROY MOZINGO; Congressional Record Vol. 153, No. 35
+YOU ARE OUR HEROES’’; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-3</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436-3.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436-3.htm</a>
+</td>
+<td style="text-align:left;">
+Jefferson
+</td>
+<td style="text-align:left;">
+MILLER
+</td>
+<td style="text-align:left;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000019
+</td>
+<td style="text-align:left;">
+000019
+</td>
+<td style="text-align:left;">
+14837
+</td>
+<td style="text-align:left;">
+LANTOS, Thomas Peter
+</td>
+<td style="text-align:left;">
+hon tom lantos;mr lantos
+</td>
+<td style="text-align:left;">
+thomas lantos|thomas peter lantos|lantos|thomas p lantos|tom lantos|tom
+peter lantos|tom p lantos|(^|senator |representative )lantoslantos,
+tom|lantos, thomas|lantos thomas|lantos, trepresentative lantost p
+lantos
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. TOM LANTOS;Mr. LANTOS
+</td>
+<td style="text-align:left;">
+COMMEMORATING THE 46TH ANNIVERSARY OF THE PEACE CORPS; Congressional
+Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-4</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436-4.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436-4.htm</a>
+</td>
+<td style="text-align:left;">
+Thomas
+</td>
+<td style="text-align:left;">
+LANTOS
+</td>
+<td style="text-align:left;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000020
+</td>
+<td style="text-align:left;">
+000020
+</td>
+<td style="text-align:left;">
+29541
+</td>
+<td style="text-align:left;">
+FRELINGHUYSEN, Rodney P.
+</td>
+<td style="text-align:left;">
+hon rodney p frelinghuysen;mr frelinghuysen
+</td>
+<td style="text-align:left;">
+rodney frelinghuysen|rodney p frelinghuysen|
+frelinghuysen|frelinghuysen|(^|senator |representative
+)frelinghuysenfrelinghuysen, rodney|frelinghuysen rodney|frelinghuysen,
+rrepresentative frelinghuysenr p frelinghuysen
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. RODNEY P. FRELINGHUYSEN;Mr. FRELINGHUYSEN
+</td>
+<td style="text-align:left;">
+TRIBUTE TO THE RIVERDALE VOLUNTEER FIRE DEPARTMENT; Congressional Record
+Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-1</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE436.htm</a>
+</td>
+<td style="text-align:left;">
+Rodney
+</td>
+<td style="text-align:left;">
+FRELINGHUYSEN
+</td>
+<td style="text-align:left;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000021
+</td>
+<td style="text-align:left;">
+000021
+</td>
+<td style="text-align:left;">
+20124
+</td>
+<td style="text-align:left;">
+GRAVES, Samuel
+</td>
+<td style="text-align:left;">
+hon sam graves;mr graves
+</td>
+<td style="text-align:left;">
+samuel graves|graves|sam graves|(^|senator |representative
+)gravesgraves, sam|graves, samuel|graves samuel|graves, srepresentative
+graves/td&gt;
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. SAM GRAVES;Mr. GRAVES
+</td>
+<td style="text-align:left;">
+RECOGNIZING CHRISTOPHER BLAKE FOR ACHIEVING THE RANK OF EAGLE SCOUT;
+Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-2</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-2.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-2.htm</a>
+</td>
+<td style="text-align:left;">
+Samuel
+</td>
+<td style="text-align:left;">
+GRAVES
+</td>
+<td style="text-align:left;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000022
+</td>
+<td style="text-align:left;">
+000022
+</td>
+<td style="text-align:left;">
+29576
+</td>
+<td style="text-align:left;">
+DAVIS, Thomas M., III
+</td>
+<td style="text-align:left;">
+hon tom davis;mr tom davis
+</td>
+<td style="text-align:left;">
+thomas davis|thomas m davis|davis|tom davis|tom m davis|(^|senator
+|representative )davis{1,4}va|davis, tom|davis, thomas|davis
+thomas|davis, trepresentative davis{1,4}va|t m davis
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. TOM DAVIS;Mr. TOM DAVIS
+</td>
+<td style="text-align:left;">
+RECOGNIZING THE FAIRFAX COUNTY CHAMBER OF COMMERCE 2007 VALOR AWARD
+RECIPIENTS; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-3</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-3.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-3.htm</a>
+</td>
+<td style="text-align:left;">
+Thomas
+</td>
+<td style="text-align:left;">
+DAVIS
+</td>
+<td style="text-align:left;">
+48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000023
+</td>
+<td style="text-align:left;">
+000023
+</td>
+<td style="text-align:left;">
+15072
+</td>
+<td style="text-align:left;">
+TOWNS, Edolphus
+</td>
+<td style="text-align:left;">
+hon edolphus towns;mr towns
+</td>
+<td style="text-align:left;">
+edolphus towns|towns|ed towns|(^|senator |representative )townstowns,
+ed|towns, edolphus|towns edolphus|towns, erepresentative towns/td&gt;
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. EDOLPHUS TOWNS;Mr. TOWNS
+</td>
+<td style="text-align:left;">
+SIKH EDITOR WRITES TO PRESIDENT BUSH, URGES SUPPORT FOR SIKH FREEDOM;
+Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-4</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-4.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437-4.htm</a>
+</td>
+<td style="text-align:left;">
+Edolphus
+</td>
+<td style="text-align:left;">
+TOWNS
+</td>
+<td style="text-align:left;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000024
+</td>
+<td style="text-align:left;">
+000024
+</td>
+<td style="text-align:left;">
+20137
+</td>
+<td style="text-align:left;">
+BROWN, Henry Edward, Jr. 
+</td>
+<td style="text-align:left;">
+hon henry e brown;mr brown
+</td>
+<td style="text-align:left;">
+henry brown|henry edward brown|brown|henry e brown|(^|senator
+|representative )brown{1,4}sc|brown, henry|brown henry|brown,
+hrepresentative brown{1,4}sc|h e brown
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. HENRY E. BROWN;Mr. BROWN
+</td>
+<td style="text-align:left;">
+SPIRIT OF SOUTH CAROLINA LAUNCHES HOPE FOR STUDENTS; Congressional
+Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-1</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE437.htm</a>
+</td>
+<td style="text-align:left;">
+Henry
+</td>
+<td style="text-align:left;">
+BROWN
+</td>
+<td style="text-align:left;">
+42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000025
+</td>
+<td style="text-align:left;">
+000025
+</td>
+<td style="text-align:left;">
+21993
+</td>
+<td style="text-align:left;">
+NORTON, Eleanor Holmes
+</td>
+<td style="text-align:left;">
+hon eleanor holmes norton;ms norton
+</td>
+<td style="text-align:left;">
+eleanor norton|eleanor holmes norton|norton|eleanor h
+norton|norton|(^|senator |representative )norton{1,4}dc|norton,
+eleanor|norton eleanor|norton, erepresentative norton{1,4}dc|e h norton
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. ELEANOR HOLMES NORTON;Ms. NORTON
+</td>
+<td style="text-align:left;">
+INTRODUCTION OF THE DISTRICT OF COLUMBIA DISTRICT ATTORNEY ESTABLISHMENT
+ACT OF 2007; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-2</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE439-2.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE439-2.htm</a>
+</td>
+<td style="text-align:left;">
+Eleanor
+</td>
+<td style="text-align:left;">
+NORTON
+</td>
+<td style="text-align:left;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000026
+</td>
+<td style="text-align:left;">
+000026
+</td>
+<td style="text-align:left;">
+29561
+</td>
+<td style="text-align:left;">
+DOYLE, Michael F.
+</td>
+<td style="text-align:left;">
+hon michael f doyle;mr doyle
+</td>
+<td style="text-align:left;">
+michael doyle|michael f doyle|doyle|mike doyle|mike f doyle|(^|senator
+|representative )doyledoyle, mike|doyle, michael|doyle michael|doyle,
+mrepresentative doylem f doyle
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. MICHAEL F. DOYLE;Mr. DOYLE
+</td>
+<td style="text-align:left;">
+TRIBUTE TO ROBERT L. PITTS; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-1</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE439.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE439.htm</a>
+</td>
+<td style="text-align:left;">
+Michael
+</td>
+<td style="text-align:left;">
+DOYLE
+</td>
+<td style="text-align:left;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000027
+</td>
+<td style="text-align:left;">
+000027
+</td>
+<td style="text-align:left;">
+15445
+</td>
+<td style="text-align:left;">
+SMITH, Lamar Seeligson
+</td>
+<td style="text-align:left;">
+hon lamar smith;mr smith
+</td>
+<td style="text-align:left;">
+lamar smith|lamar seeligson smith|smith|lamar s smith|(^|senator
+|representative )smith{1,4}tx|smith, lamar|smith lamar|smith,
+lrepresentative smith{1,4}tx|l s smith
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. LAMAR SMITH;Mr. SMITH
+</td>
+<td style="text-align:left;">
+TRIBUTE TO DALETTA ANDREAS; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-2</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-2.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-2.htm</a>
+</td>
+<td style="text-align:left;">
+Lamar
+</td>
+<td style="text-align:left;">
+SMITH
+</td>
+<td style="text-align:left;">
+45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000028
+</td>
+<td style="text-align:left;">
+000028
+</td>
+<td style="text-align:left;">
+20718
+</td>
+<td style="text-align:left;">
+ELLSWORTH, Brad
+</td>
+<td style="text-align:left;">
+hon brad ellsworth;mr ellsworth
+</td>
+<td style="text-align:left;">
+brad ellsworth|ellsworth|bradley ellsworth|(^|senator |representative
+)ellsworth{1,4}in|ellsworth, bradley|ellsworth, brad|ellsworth
+brad|ellsworth, brepresentative ellsworth{1,4}in
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. BRAD ELLSWORTH;Mr. ELLSWORTH
+</td>
+<td style="text-align:left;">
+RECOGNIZING EVANSVILLE MATER DEI WRESTLING TEAM; Congressional Record
+Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-3</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-3.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-3.htm</a>
+</td>
+<td style="text-align:left;">
+Brad
+</td>
+<td style="text-align:left;">
+ELLSWORTH
+</td>
+<td style="text-align:left;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000029
+</td>
+<td style="text-align:left;">
+000029
+</td>
+<td style="text-align:left;">
+29718
+</td>
+<td style="text-align:left;">
+SHIMKUS, John M.
+</td>
+<td style="text-align:left;">
+hon john shimkus;mr shimkus
+</td>
+<td style="text-align:left;">
+john shimkus|john m shimkus|shimkus|shimkus|(^|senator |representative
+)shimkusshimkus, john|shimkus john|shimkus, jrepresentative shimkusj m
+shimkus
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. JOHN SHIMKUS;Mr. SHIMKUS
+</td>
+<td style="text-align:left;">
+RECOGNIZING SPC. RYAN C. GARBS; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-4</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-4.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-4.htm</a>
+</td>
+<td style="text-align:left;">
+John
+</td>
+<td style="text-align:left;">
+SHIMKUS
+</td>
+<td style="text-align:left;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000030
+</td>
+<td style="text-align:left;">
+000030
+</td>
+<td style="text-align:left;">
+14675
+</td>
+<td style="text-align:left;">
+PETRI, Thomas Evert
+</td>
+<td style="text-align:left;">
+hon thomas e petri;mr petri
+</td>
+<td style="text-align:left;">
+thomas petri|thomas evert petri|petri|thomas e petri|tom petri|tom evert
+petri|tom e petri|(^|senator |representative )petripetri, tom|petri,
+thomas|petri thomas|petri, trepresentative petrit e petri
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. THOMAS E. PETRI;Mr. PETRI
+</td>
+<td style="text-align:left;">
+INTRODUCTION OF THE PUSH POLL DISCLOSURE ACT OF 2007; Congressional
+Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-5" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-5</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-5.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440-5.htm</a>
+</td>
+<td style="text-align:left;">
+Thomas
+</td>
+<td style="text-align:left;">
+PETRI
+</td>
+<td style="text-align:left;">
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000031
+</td>
+<td style="text-align:left;">
+000031
+</td>
+<td style="text-align:left;">
+20701
+</td>
+<td style="text-align:left;">
+GIFFORDS, Gabrielle
+</td>
+<td style="text-align:left;">
+hon gabrielle giffords;ms giffords
+</td>
+<td style="text-align:left;">
+gabrielle giffords|giffords|giffords|(^|senator |representative
+)giffordsgiffords, gabrielle|giffords gabrielle|giffords,
+grepresentative giffords/td&gt;
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. GABRIELLE GIFFORDS;Ms. GIFFORDS
+</td>
+<td style="text-align:left;">
+CROSS PARTY LINES TO PASS COMPREHENSIVE IMMIGRATION REFORM;
+Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-1</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE440.htm</a>
+</td>
+<td style="text-align:left;">
+Gabrielle
+</td>
+<td style="text-align:left;">
+GIFFORDS
+</td>
+<td style="text-align:left;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000032
+</td>
+<td style="text-align:left;">
+000032
+</td>
+<td style="text-align:left;">
+29567
+</td>
+<td style="text-align:left;">
+WAMP, Zachary Paul
+</td>
+<td style="text-align:left;">
+hon zach wamp;mr wamp
+</td>
+<td style="text-align:left;">
+zachary wamp|zachary paul wamp|wamp|zachary p wamp|zach wamp|zach paul
+wamp|zach p wamp|(^|senator |representative )wampwamp, zach|wamp,
+zachary|wamp zachary|wamp, zrepresentative wampz p wamp
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. ZACH WAMP;Mr. WAMP
+</td>
+<td style="text-align:left;">
+CLAUDE RAMSEY POST OFFICE; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-2</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-2.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-2.htm</a>
+</td>
+<td style="text-align:left;">
+Zachary
+</td>
+<td style="text-align:left;">
+WAMP
+</td>
+<td style="text-align:left;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000033
+</td>
+<td style="text-align:left;">
+000033
+</td>
+<td style="text-align:left;">
+14290
+</td>
+<td style="text-align:left;">
+PAUL, Ronald Ernest
+</td>
+<td style="text-align:left;">
+hon ron paul;mr paul
+</td>
+<td style="text-align:left;">
+ronald paul|ronald ernest paul| paul|ronald e paul|ron paul|ron ernest
+paul|ron e paul|(^|senator |representative )paul{1,4}tx|paul, ron|paul,
+ronald|paul ronald|paul, rrepresentative paul{1,4}tx|r e paul
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. RON PAUL;Mr. PAUL
+</td>
+<td style="text-align:left;">
+THE PORT OF GALVESTON: A SOURCE OF ECONOMIC GROWTH FOR TEXAS AND THE
+NATION; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-3</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-3.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-3.htm</a>
+</td>
+<td style="text-align:left;">
+Ronald
+</td>
+<td style="text-align:left;">
+PAUL
+</td>
+<td style="text-align:left;">
+45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000034
+</td>
+<td style="text-align:left;">
+000034
+</td>
+<td style="text-align:left;">
+29777
+</td>
+<td style="text-align:left;">
+BRADY, Robert A.
+</td>
+<td style="text-align:left;">
+hon robert a brady;mr brady
+</td>
+<td style="text-align:left;">
+robert brady|robert a brady| brady|bob brady|bob a
+brady|brady|(^|senator |representative )brady{1,4}pa|brady, bob|brady,
+robert|brady robert|brady, rbrady, brepresentative brady{1,4}pa|r a
+brady
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. ROBERT A. BRADY;Mr. BRADY
+</td>
+<td style="text-align:left;">
+A TRIBUTE TO THE BEREAN INSTITUTE; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-4</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-4.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441-4.htm</a>
+</td>
+<td style="text-align:left;">
+Robert
+</td>
+<td style="text-align:left;">
+BRADY
+</td>
+<td style="text-align:left;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000035
+</td>
+<td style="text-align:left;">
+000035
+</td>
+<td style="text-align:left;">
+29564
+</td>
+<td style="text-align:left;">
+KENNEDY, Patrick Joseph
+</td>
+<td style="text-align:left;">
+hon patrick j kennedy;mr kennedy
+</td>
+<td style="text-align:left;">
+patrick kennedy|patrick joseph kennedy|kennedy|patrick j kennedy|pat
+kennedy|pat joseph kennedy|pat j kennedy|(^|senator |representative
+)kennedy{1,4}ri|kennedy, pat|kennedy, patrick|kennedy patrick|kennedy,
+prepresentative kennedyp j kennedy
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. PATRICK J. KENNEDY;Mr. KENNEDY
+</td>
+<td style="text-align:left;">
+NATIONAL EATING DISORDERS AWARENESS WEEK; Congressional Record Vol. 153,
+No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-1</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE441.htm</a>
+</td>
+<td style="text-align:left;">
+Patrick
+</td>
+<td style="text-align:left;">
+KENNEDY
+</td>
+<td style="text-align:left;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000036
+</td>
+<td style="text-align:left;">
+000036
+</td>
+<td style="text-align:left;">
+20124
+</td>
+<td style="text-align:left;">
+GRAVES, Samuel
+</td>
+<td style="text-align:left;">
+hon sam graves;mr graves
+</td>
+<td style="text-align:left;">
+samuel graves|graves|sam graves|(^|senator |representative
+)gravesgraves, sam|graves, samuel|graves samuel|graves, srepresentative
+graves/td&gt;
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. SAM GRAVES;Mr. GRAVES
+</td>
+<td style="text-align:left;">
+RECOGNIZING MIKE KEMNA; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-2</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-2.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-2.htm</a>
+</td>
+<td style="text-align:left;">
+Samuel
+</td>
+<td style="text-align:left;">
+GRAVES
+</td>
+<td style="text-align:left;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000037
+</td>
+<td style="text-align:left;">
+000037
+</td>
+<td style="text-align:left;">
+29576
+</td>
+<td style="text-align:left;">
+DAVIS, Thomas M., III
+</td>
+<td style="text-align:left;">
+hon tom davis;mr tom davis
+</td>
+<td style="text-align:left;">
+thomas davis|thomas m davis|davis|tom davis|tom m davis|(^|senator
+|representative )davis{1,4}va|davis, tom|davis, thomas|davis
+thomas|davis, trepresentative davis{1,4}va|t m davis
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. TOM DAVIS;Mr. TOM DAVIS
+</td>
+<td style="text-align:left;">
+RECOGNIZING THE FAIRFAX COUNTY CHAMBER OF COMMERCE 2007 VALOR AWARD
+RECIPIENTS; Congressional Record Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-3</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-3.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-3.htm</a>
+</td>
+<td style="text-align:left;">
+Thomas
+</td>
+<td style="text-align:left;">
+DAVIS
+</td>
+<td style="text-align:left;">
+48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000038
+</td>
+<td style="text-align:left;">
+000038
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+hon ray
+</td>
+<td style="text-align:left;">
+404error
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. RAY
+</td>
+<td style="text-align:left;">
+A TRIBUTE TO JAMES GHIGLIERI OF TOLUCA, ILLINOIS; Congressional Record
+Vol. 153, No. 35
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-4</a>
+</td>
+<td style="text-align:left;">
+<a href="https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-4.htm" class="external-link uri">https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE442-4.htm</a>
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+000039
+</td>
+<td style="text-align:left;">
+000039
+</td>
+<td style="text-align:left;">
+29746
+</td>
+<td style="text-align:left;">
+McINTYRE, Mike
+</td>
+<td style="text-align:left;">
+hon mike mcintyre;mr mcintyre
+</td>
+<td style="text-align:left;">
+mike mcintyre|mcintyre|michael mcintyre|(^|senator |representative
+)mcintyremcintyre, michael|mcintyre, mike|mcintyre mike|mcintyre,
+mrepresentative mcintyre/td&gt;
+</td>
+<td style="text-align:left;">
+House
+</td>
+<td style="text-align:left;">
+110
+</td>
+<td style="text-align:left;">
+2007-03-01
+</td>
+<td style="text-align:left;">
+HON. MIKE McINTYRE;Mr. McINTYRE
+</td>
+<td style="text-align:left;">
+TRIBUTE TO PRIVATE JOSHUA JOSH’’ ROY MOZINGO; Congressional Record Vol.
+153, No. 35
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-5" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-5</a>
@@ -2989,7 +5507,7 @@ Mike
 McINTYRE
 </td>
 <td style="text-align:left;">
-north carolina
+34
 </td>
 </tr>
 <tr>
@@ -3042,7 +5560,7 @@ Addison
 WILSON
 </td>
 <td style="text-align:left;">
-south carolina
+42
 </td>
 </tr>
 <tr>
@@ -3095,7 +5613,7 @@ Michael
 THOMPSON
 </td>
 <td style="text-align:left;">
-california
+5
 </td>
 </tr>
 <tr>
@@ -3148,7 +5666,7 @@ Dennis
 MOORE
 </td>
 <td style="text-align:left;">
-kansas
+17
 </td>
 </tr>
 <tr>
@@ -3200,7 +5718,7 @@ Gregory
 MEEKS
 </td>
 <td style="text-align:left;">
-new york
+33
 </td>
 </tr>
 <tr>
@@ -3221,8 +5739,9 @@ hon michael c burgess;mr burgess
 </td>
 <td style="text-align:left;">
 michael burgess|michael c burgess|burgess|mike burgess|mike c
-burgess|(^|senator |representative )burgessburgess, mike|burgess,
-michael|burgess michael|burgess, mrepresentative burgessm c burgess
+burgess|(^|senator |representative )burgess{1,4}tx|burgess,
+mike|burgess, michael|burgess michael|burgess, mrepresentative
+burgess{1,4}tx|m c burgess
 </td>
 <td style="text-align:left;">
 House
@@ -3253,7 +5772,7 @@ Michael
 BURGESS
 </td>
 <td style="text-align:left;">
-texas
+45
 </td>
 </tr>
 <tr>
@@ -3306,7 +5825,7 @@ Mike
 HONDA
 </td>
 <td style="text-align:left;">
-california
+5
 </td>
 </tr>
 <tr>
@@ -3359,7 +5878,7 @@ Elijah
 CUMMINGS
 </td>
 <td style="text-align:left;">
-maryland
+21
 </td>
 </tr>
 <tr>
@@ -3411,7 +5930,7 @@ John
 CONYERS
 </td>
 <td style="text-align:left;">
-michigan
+23
 </td>
 </tr>
 <tr>
@@ -3464,7 +5983,7 @@ Thomas
 DAVIS
 </td>
 <td style="text-align:left;">
-virginia
+48
 </td>
 </tr>
 <tr>
@@ -3567,7 +6086,7 @@ Tim
 MAHONEY
 </td>
 <td style="text-align:left;">
-florida
+10
 </td>
 </tr>
 </tbody>
@@ -3588,15 +6107,13 @@ multiple members are detected, there may be multiple matches per
 <h4 id="augmentcongress">
 <code>augmentCongress()</code><a class="anchor" aria-label="anchor" href="#augmentcongress"></a>
 </h4>
-<p><code>augmentCongress()</code> will augments a dataframe that
-includes at least one unique identifier to include a suite of other
-common identifiers.</p>
+<p><code>augmentCongress()</code> will augment a dataframe that includes
+at least one unique identifier to include a suite of other common
+identifiers.</p>
 <p>Because <code>extractMemberName</code> links each detected name to
 ICPSR IDs from voteview.com, we already have some information, like
-party (<code>party_name</code>), state, district, and ideology scores
-(<code>nominate.dim1</code>) for each legislator detected in the
-text.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+state and district for each legislator detected in the text.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'dplyr'</span></code></pre>
@@ -3609,8 +6126,8 @@ text.</p>
 <pre><code><span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span></code></pre>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">full_join</a></span><span class="op">(</span><span class="va">cr</span>, <span class="va">members</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">data_row_id</span>, <span class="va">match_id</span>, <span class="va">bioname</span>, <span class="va">icpsr</span>, <span class="va">congress</span>, <span class="va">state</span>, <span class="va">district_code</span>, <span class="va">party_name</span>, <span class="va">nominate.dim1</span>, <span class="va">url</span><span class="op">)</span> |&gt; <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">full_join</a></span><span class="op">(</span><span class="va">cr</span>, <span class="va">members</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">data_row_id</span>, <span class="va">match_id</span>, <span class="va">bioname</span>, <span class="va">icpsr</span>, <span class="va">congress</span>, <span class="va">state</span>, <span class="va">district_code</span>, <span class="va">url</span><span class="op">)</span> |&gt; <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">#&gt; Joining, by = c("icpsr", "bioname", "pattern", "chamber", "congress", "first_name", "last_name", "state")</span></code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; ">
 <table class="table table" style="margin-left: auto; margin-right: auto;">
@@ -3637,12 +6154,6 @@ state
 district_code
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-party_name
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-nominate.dim1
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 url
 </th>
 </tr></thead>
@@ -3664,16 +6175,10 @@ GRAVES, Samuel
 110
 </td>
 <td style="text-align:left;">
-missouri
+26
 </td>
 <td style="text-align:left;">
 6
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.442
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-2</a>
@@ -3696,16 +6201,10 @@ UDALL, Mark
 110
 </td>
 <td style="text-align:left;">
-colorado
+6
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.353
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-3</a>
@@ -3728,16 +6227,10 @@ LANGEVIN, James
 110
 </td>
 <td style="text-align:left;">
-rhode island
+41
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.375
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-4</a>
@@ -3760,16 +6253,10 @@ COSTA, Jim
 110
 </td>
 <td style="text-align:left;">
-california
+5
 </td>
 <td style="text-align:left;">
 20
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.191
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-5" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-5</a>
@@ -3792,16 +6279,10 @@ GRAVES, Samuel
 110
 </td>
 <td style="text-align:left;">
-missouri
+26
 </td>
 <td style="text-align:left;">
 6
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.442
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-1</a>
@@ -3824,16 +6305,10 @@ BISHOP, Sanford Dixon, Jr. 
 110
 </td>
 <td style="text-align:left;">
-georgia
+11
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.282
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-2</a>
@@ -3856,16 +6331,10 @@ TOWNS, Edolphus
 110
 </td>
 <td style="text-align:left;">
-new york
+33
 </td>
 <td style="text-align:left;">
 10
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.519
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-3</a>
@@ -3888,16 +6357,10 @@ DAVIS, Thomas M., III
 110
 </td>
 <td style="text-align:left;">
-virginia
+48
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.282
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-1</a>
@@ -3920,16 +6383,10 @@ GRAVES, Samuel
 110
 </td>
 <td style="text-align:left;">
-missouri
+26
 </td>
 <td style="text-align:left;">
 6
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.442
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E433-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E433-2</a>
@@ -3952,16 +6409,10 @@ UDALL, Mark
 110
 </td>
 <td style="text-align:left;">
-colorado
+6
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.353
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E433-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E433-3</a>
@@ -3984,16 +6435,10 @@ FRELINGHUYSEN, Rodney P.
 110
 </td>
 <td style="text-align:left;">
-new jersey
+31
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.292
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E433-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E433-1</a>
@@ -4016,16 +6461,10 @@ COSTA, Jim
 110
 </td>
 <td style="text-align:left;">
-california
+5
 </td>
 <td style="text-align:left;">
 20
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.191
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E434-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E434-2</a>
@@ -4048,16 +6487,10 @@ DAVIS, Thomas M., III
 110
 </td>
 <td style="text-align:left;">
-virginia
+48
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.282
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E434-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E434-3</a>
@@ -4080,16 +6513,10 @@ BISHOP, Sanford Dixon, Jr. 
 110
 </td>
 <td style="text-align:left;">
-georgia
+11
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.282
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E434-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E434-4</a>
@@ -4112,16 +6539,10 @@ LANGEVIN, James
 110
 </td>
 <td style="text-align:left;">
-rhode island
+41
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.375
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E434-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E434-1</a>
@@ -4144,16 +6565,10 @@ TOWNS, Edolphus
 110
 </td>
 <td style="text-align:left;">
-new york
+33
 </td>
 <td style="text-align:left;">
 10
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.519
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E435-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E435-1</a>
@@ -4176,16 +6591,10 @@ HOOLEY, Darlene
 110
 </td>
 <td style="text-align:left;">
-oregon
+38
 </td>
 <td style="text-align:left;">
 5
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.315
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-2</a>
@@ -4208,16 +6617,10 @@ MILLER, Jefferson B. (Jeff)
 110
 </td>
 <td style="text-align:left;">
-florida
+10
 </td>
 <td style="text-align:left;">
 1
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.633
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-3</a>
@@ -4240,16 +6643,10 @@ LANTOS, Thomas Peter
 110
 </td>
 <td style="text-align:left;">
-california
+5
 </td>
 <td style="text-align:left;">
 12
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.376
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-4</a>
@@ -4272,16 +6669,10 @@ FRELINGHUYSEN, Rodney P.
 110
 </td>
 <td style="text-align:left;">
-new jersey
+31
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.292
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E436-1</a>
@@ -4304,16 +6695,10 @@ GRAVES, Samuel
 110
 </td>
 <td style="text-align:left;">
-missouri
+26
 </td>
 <td style="text-align:left;">
 6
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.442
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-2</a>
@@ -4336,16 +6721,10 @@ DAVIS, Thomas M., III
 110
 </td>
 <td style="text-align:left;">
-virginia
+48
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.282
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-3</a>
@@ -4368,16 +6747,10 @@ TOWNS, Edolphus
 110
 </td>
 <td style="text-align:left;">
-new york
+33
 </td>
 <td style="text-align:left;">
 10
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.519
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-4</a>
@@ -4400,16 +6773,10 @@ BROWN, Henry Edward, Jr. 
 110
 </td>
 <td style="text-align:left;">
-south carolina
+42
 </td>
 <td style="text-align:left;">
 1
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.367
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E437-1</a>
@@ -4423,25 +6790,19 @@ Republican Party
 000025
 </td>
 <td style="text-align:left;">
-NA
+NORTON, Eleanor Holmes
 </td>
 <td style="text-align:left;">
-NA
+21993
 </td>
 <td style="text-align:left;">
 110
 </td>
 <td style="text-align:left;">
-NA
+9
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+1
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-2</a>
@@ -4464,16 +6825,10 @@ DOYLE, Michael F.
 110
 </td>
 <td style="text-align:left;">
-pennsylvania
+39
 </td>
 <td style="text-align:left;">
 14
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.33
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E439-1</a>
@@ -4496,16 +6851,10 @@ SMITH, Lamar Seeligson
 110
 </td>
 <td style="text-align:left;">
-texas
+45
 </td>
 <td style="text-align:left;">
 21
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.425
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-2</a>
@@ -4528,16 +6877,10 @@ ELLSWORTH, Brad
 110
 </td>
 <td style="text-align:left;">
-indiana
+15
 </td>
 <td style="text-align:left;">
 8
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.106
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-3</a>
@@ -4560,16 +6903,10 @@ SHIMKUS, John M.
 110
 </td>
 <td style="text-align:left;">
-illinois
+14
 </td>
 <td style="text-align:left;">
 19
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.375
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-4</a>
@@ -4592,16 +6929,10 @@ PETRI, Thomas Evert
 110
 </td>
 <td style="text-align:left;">
-wisconsin
+51
 </td>
 <td style="text-align:left;">
 6
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.379
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-5" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-5</a>
@@ -4624,16 +6955,10 @@ GIFFORDS, Gabrielle
 110
 </td>
 <td style="text-align:left;">
-arizona
+3
 </td>
 <td style="text-align:left;">
 8
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.11
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E440-1</a>
@@ -4656,16 +6981,10 @@ WAMP, Zachary Paul
 110
 </td>
 <td style="text-align:left;">
-tennessee
+44
 </td>
 <td style="text-align:left;">
 3
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.428
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-2</a>
@@ -4688,16 +7007,10 @@ PAUL, Ronald Ernest
 110
 </td>
 <td style="text-align:left;">
-texas
+45
 </td>
 <td style="text-align:left;">
 14
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.863
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-3</a>
@@ -4720,16 +7033,10 @@ BRADY, Robert A.
 110
 </td>
 <td style="text-align:left;">
-pennsylvania
+39
 </td>
 <td style="text-align:left;">
 1
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.484
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-4</a>
@@ -4752,16 +7059,10 @@ KENNEDY, Patrick Joseph
 110
 </td>
 <td style="text-align:left;">
-rhode island
+41
 </td>
 <td style="text-align:left;">
 1
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.409
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E441-1</a>
@@ -4784,16 +7085,10 @@ GRAVES, Samuel
 110
 </td>
 <td style="text-align:left;">
-missouri
+26
 </td>
 <td style="text-align:left;">
 6
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.442
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-2</a>
@@ -4816,16 +7111,10 @@ DAVIS, Thomas M., III
 110
 </td>
 <td style="text-align:left;">
-virginia
+48
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.282
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-3</a>
@@ -4854,12 +7143,6 @@ NA
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-4</a>
 </td>
 </tr>
@@ -4880,16 +7163,10 @@ McINTYRE, Mike
 110
 </td>
 <td style="text-align:left;">
-north carolina
+34
 </td>
 <td style="text-align:left;">
 7
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.148
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-5" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-5</a>
@@ -4912,16 +7189,10 @@ WILSON, Addison Graves (Joe)
 110
 </td>
 <td style="text-align:left;">
-south carolina
+42
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.538
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E442-1</a>
@@ -4944,16 +7215,10 @@ THOMPSON, Michael
 110
 </td>
 <td style="text-align:left;">
-california
+5
 </td>
 <td style="text-align:left;">
 1
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.395
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E443-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E443-2</a>
@@ -4976,16 +7241,10 @@ MOORE, Dennis
 110
 </td>
 <td style="text-align:left;">
-kansas
+17
 </td>
 <td style="text-align:left;">
 3
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.267
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E443-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E443-3</a>
@@ -5008,16 +7267,10 @@ MEEKS, Gregory W.
 110
 </td>
 <td style="text-align:left;">
-new york
+33
 </td>
 <td style="text-align:left;">
 6
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.413
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E443-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E443-1</a>
@@ -5040,16 +7293,10 @@ BURGESS, Michael C.
 110
 </td>
 <td style="text-align:left;">
-texas
+45
 </td>
 <td style="text-align:left;">
 26
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.576
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E444-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E444-2</a>
@@ -5072,16 +7319,10 @@ HONDA, Mike
 110
 </td>
 <td style="text-align:left;">
-california
+5
 </td>
 <td style="text-align:left;">
 15
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.529
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E444-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E444-3</a>
@@ -5104,16 +7345,10 @@ CUMMINGS, Elijah Eugene
 110
 </td>
 <td style="text-align:left;">
-maryland
+21
 </td>
 <td style="text-align:left;">
 7
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.438
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E444-4" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E444-4</a>
@@ -5136,16 +7371,10 @@ CONYERS, John, Jr. 
 110
 </td>
 <td style="text-align:left;">
-michigan
+23
 </td>
 <td style="text-align:left;">
 14
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.658
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E444-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E444-1</a>
@@ -5168,16 +7397,10 @@ DAVIS, Thomas M., III
 110
 </td>
 <td style="text-align:left;">
-virginia
+48
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-Republican Party
-</td>
-<td style="text-align:left;">
-0.282
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E445-2" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E445-2</a>
@@ -5206,12 +7429,6 @@ NA
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E445-3" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E445-3</a>
 </td>
 </tr>
@@ -5232,16 +7449,10 @@ MAHONEY, Tim
 110
 </td>
 <td style="text-align:left;">
-florida
+10
 </td>
 <td style="text-align:left;">
 16
-</td>
-<td style="text-align:left;">
-Democratic Party
-</td>
-<td style="text-align:left;">
--0.163
 </td>
 <td style="text-align:left;">
 <a href="https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E445-1" class="external-link uri">https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E445-1</a>
@@ -5254,12 +7465,10 @@ Democratic Party
 <li>
 <input type="checkbox" disabled>
 integrate with <code>congress</code> and/or <code>congressData</code>.
-For example, we may want a function, <code>augmentCongress</code> to
-simply join in identifiers for other datasets on ICPSR numbers. Perhaps
-this is best left to <code>congress</code>.</li>
+For example, <code>augmentCongress</code> may simply join in identifiers
+for other datasets on ICPSR numbers. Perhaps this is best left to
+<code>congress</code>.</li>
 </ul>
-<pre><code><span class="co"># add other common unique identifiers</span>
-<span class="va">cr_augmented</span> <span class="op">&lt;-</span> <span class="fu">augmentCongress</span><span class="op">(</span><span class="va">cr</span><span class="op">)</span></code></pre>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
