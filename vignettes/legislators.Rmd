@@ -56,7 +56,7 @@ kable <- function(...){
 
 <img src="../man/figures/logo.png" width="100" />
 
-### A package to detect  U.S. legislator names in messy text with typos and inconsistent name formats
+### Detect U.S. legislator names in messy text with typos and inconsistent name formats
 
 
 Install this package with 
@@ -140,21 +140,9 @@ cr |> kable()
 
 ---
 
-In this example, all observations are in the 110th Congress, so we only search for members who served in the 110th. Because each row's `speaker` text contains only one member in this case, `data_row_id` and `match_id` are the same. Where multiple members are detected, there may be multiple matches per `data_row_id`.
-
-# TODO 
-
-###  `augmentCongress()`
-
-`augmentCongress()` will augment a dataframe that includes at least one unique identifier to include a suite of other common identifiers.
-
-Because `extractMemberName` links each detected name to ICPSR IDs from voteview.com, we already have some information, like state and district for each legislator detected in the text. 
-
-```{r, warning=FALSE, message=FALSE}
-library(dplyr)
-
-left_join(cr, members) |> select(data_row_id, match_id, bioname, icpsr, congress, state_abbrev, district_code, url) |> kable()
-```
+In this example, all observations are in the 110th Congress, so we only search for members who served in the 110th. Because each row's `speaker` text contains only one member in this case, `data_row_id` and `match_id` are the same. Where multiple members are detected, there may be multiple matches per `data_row_id`. 
 
 
-- [ ] integrate with `congress` and/or `congressData` packages. For example, `augmentCongress` may simply join in identifiers for other datasets on ICPSR numbers. Perhaps this is best left to `congress`. 
+Because `extractMemberName` links each detected name to ICPSR IDs from voteview.com, we already have some information, like state and district for each legislator detected in the text (scroll all the way to the right). 
+
+Other data from voteview.com and other sources can be merged in on `icpsr`. 

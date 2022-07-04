@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 <img src="man/figures/logo.png" width="200" />
 
-## Tools to detect U.S. legislator names in messy text with typos and inconsistent name formats
+## Detect U.S. legislator names in messy text with typos and inconsistent name formats
 
 
 ### Installation
@@ -108,24 +108,11 @@ cr
 
 In this example, all observations are in the 110th Congress, so we only search for members who served in the 110th. Because each row's `speaker` text contains only one member in this case, `data_row_id` and `match_id` are the same. Where multiple members are detected, there may be multiple matches per `data_row_id`.
 
+
+Because `extractMemberName` links each detected name to ICPSR IDs from voteview.com, we already have some information, like state and district for each legislator detected in the text (scroll all the way to the right). 
+
+
+
 ## TODO 
 
-###  `augmentCongress()`
-
-`augmentCongress()` will augment a dataframe that includes at least one unique identifier to include a suite of other common identifiers.
-
-Because `extractMemberName` links each detected name to ICPSR IDs from voteview.com, we already have some information, like state and district for each legislator detected in the text. 
-
-```{r, message=FALSE, warning=FALSE}
-library(dplyr)
-
-left_join(cr, members) |> select(data_row_id, match_id, bioname, icpsr, congress, state_abbrev, district_code, url)
-```
-
-
-- [ ] integrate with the [`congress`](https://github.com/ippsr/congress) and/or `congressData` packages. For example, we may want `augmentCongress` to simply join in identifiers for other datasets on ICPSR numbers. Perhaps this is best left to `congress`. 
-
-```
-# add other common unique identifiers
-cr_augmented <- augmentCongress(cr)
-```
+- [ ] integrate with the [`congress`](https://github.com/ippsr/congress) and/or `congressData` packages. For example, we may want a function `augmentCongress` to simply join in identifiers for other datasets on ICPSR numbers. Perhaps this is best left to `congress`. 
