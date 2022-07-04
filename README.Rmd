@@ -45,6 +45,7 @@ data("members")
 members
 ```
 
+---
 
 Before searching the text, several functions clean it and "fix" common human typos and OCR errors that frustrate matching. Some of these corrections are currently supplied by `MemberNameTypos.R`. In future versions, `typos` will be supplied as a dataframe instead, and all types of corrections (cleaning, typos, OCR errors) will be optional. Additionally, users will be able to customize the `typos` dataframe and provide it as an argument to `extractMemberNames()`. 
 
@@ -54,6 +55,7 @@ data("typos")
 typos
 ```
 
+---
 
 ## Basic Usage
 
@@ -79,8 +81,6 @@ data("cr2007_03_01")
 cr2007_03_01
 
 head(cr2007_03_01$url)
-
-head(cr2007_03_01$speaker)
 ```
 
 
@@ -100,7 +100,7 @@ cr2007_03_01$congress <- 110
 cr <- extractMemberName(data = cr2007_03_01, 
                         col_name = "speaker", # The text strings to search
                         congresses = 110, # This argument is not required in this case because the data contain a "congress" column
-                        members = members # Member names augmented from voteview come with this package, but users can also supply a customised data frame
+                        members = members # Member names augmented from voteview come with this package, but users can also supply a customized data frame
                         )
 
 cr
@@ -116,10 +116,10 @@ In this example, all observations are in the 110th Congress, so we only search f
 
 Because `extractMemberName` links each detected name to ICPSR IDs from voteview.com, we already have some information, like state and district for each legislator detected in the text. 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(dplyr)
 
-full_join(cr, members) |> select(data_row_id, match_id, bioname, icpsr, congress, state, district_code, url)
+left_join(cr, members) |> select(data_row_id, match_id, bioname, icpsr, congress, state_abbrev, district_code, url)
 ```
 
 

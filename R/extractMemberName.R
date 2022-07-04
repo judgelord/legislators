@@ -20,14 +20,15 @@ extractMemberName <- function(data,
     data %<>% select(-chamber)
   }
 
-  if("state" %in% names(data)){
-    # FIXME add state_abbrev to string if not NA
-    data %<>% mutate(string = ifelse(!is.na(state),
-                                     paste(string, "-", stateFromFull(state)),
+  if("state_abbrev" %in% names(data)){
+    #add state_abbrev to string if not NA
+    # FIXME should do the same for "state" (state full names) as well, converting to abbrev
+    data %<>% mutate(string = ifelse(!is.na(state_abbrev),
+                                     paste(string, "-", state_abbrev),
                                      string))
 
-    # drop state
-    data %<>% select(-state)
+    # drop state_abbrev
+    data %<>% select(-state_abbrev)
   }
 
   t <- Sys.time()
@@ -118,9 +119,9 @@ extractMemberName <- function(data,
   # New ID since function may split out multiple members if found
   data$ID <- 1:nrow(data) %>% formatC(width=6, flag="0")
 
-  # trying this out adding chamber and state from member data becasuse scripts use them post extractmembername sometimes,
+  # trying this out adding chamber and state_abbrev from member data becasuse scripts use them post extractmembername sometimes,
   # should not increase n because pattern is already unique to icpsr in a chamber, right?
-  data %<>% left_join(members %>% select(icpsr, pattern, bioname, first_name, last_name, congress, chamber, state) %>% distinct() ) %>%
+  data %<>% left_join(members %>% select(icpsr, pattern, bioname, first_name, last_name, congress, chamber, state_abbrev, district_code) %>% distinct() ) %>%
     distinct()
 
   data$icpsr %<>% as.numeric()

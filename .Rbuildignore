@@ -6,3 +6,4 @@
 ^pkgdown$
 ^data/make_members$
 ^data/raw$
+^archive$
