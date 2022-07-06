@@ -3,7 +3,7 @@
 
 <img src="man/figures/logo.png" width="200" />
 
-## Tools to detect U.S. legislator names in messy text with typos and inconsistent name formats
+## Detect U.S. legislator names in messy text with typos and inconsistent name formats
 
 ### Installation
 
@@ -20,12 +20,12 @@ names of members of Congress. This dataframe builds on the basic
 structure of voteview.com data, especially the `bioname` field. From
 this and other corrections, it constructs a regular expression search
 `pattern` and conditions under which this pattern should yield a match
-(e.g. when that pattern has a unique match to a member of Congress in a
+(e.g., when that pattern has a unique match to a member of Congress in a
 given Congress). `pattern` differs from Congress to Congress because
 some member move from the House to the Senate and because members with
 similar names join or leave Congress. Users can customize the provided
 `members` data and supply their updated version to
-`extractMemberNames()`.
+`extractMemberName()`.
 
 ``` r
 data("members")
@@ -55,8 +55,8 @@ human typos and OCR errors that frustrate matching. Some of these
 corrections are currently supplied by `MemberNameTypos.R`. In future
 versions, `typos` will be supplied as a dataframe instead, and all types
 of corrections (cleaning, typos, OCR errors) will be optional.
-Additionally, users will be able to customize the `typos` dataframe and
-provide it as an argument to `extractMemberNames()`.
+Additionally, users can customize the `typos` dataframe and provide it
+as an argument to `extractMemberName()`.
 
 ``` r
 data("typos")
@@ -187,45 +187,37 @@ text contains only one member in this case, `data_row_id` and `match_id`
 are the same. Where multiple members are detected, there may be multiple
 matches per `data_row_id`.
 
-## TODO
-
-### `augmentCongress()`
-
-`augmentCongress()` will augment a dataframe that includes at least one
-unique identifier to include a suite of other common identifiers.
-
 Because `extractMemberName` links each detected name to ICPSR IDs from
 voteview.com, we already have some information, like state and district
-for each legislator detected in the text.
+for each legislator detected in the text (scroll to the right).
 
-``` r
-library(dplyr)
+## TODO
 
-left_join(cr, members) |> select(data_row_id, match_id, bioname, icpsr, congress, state_abbrev, district_code, url)
-```
+### Vignettes
 
-    #> # A tibble: 193 × 8
-    #>    data_row_id match_id bioname                    icpsr congress state_abbrev district_code url                                                                                                  
-    #>    <chr>       <chr>    <chr>                      <dbl>    <dbl> <chr>                <dbl> <chr>                                                                                                
-    #>  1 000001      000001   GRAVES, Samuel             20124      110 MO                       6 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-2
-    #>  2 000002      000002   UDALL, Mark                29906      110 CO                       2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-3
-    #>  3 000003      000003   LANGEVIN, James            20136      110 RI                       2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-4
-    #>  4 000004      000004   COSTA, Jim                 20501      110 CA                      20 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-5
-    #>  5 000005      000005   GRAVES, Samuel             20124      110 MO                       6 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-1
-    #>  6 000006      000006   BISHOP, Sanford Dixon, Jr. 29339      110 GA                       2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-2
-    #>  7 000007      000007   TOWNS, Edolphus            15072      110 NY                      10 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-3
-    #>  8 000008      000008   DAVIS, Thomas M., III      29576      110 VA                      11 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-1
-    #>  9 000009      000009   GRAVES, Samuel             20124      110 MO                       6 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E433-2
-    #> 10 000010      000010   UDALL, Mark                29906      110 CO                       2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E433-3
-    #> # … with 183 more rows
+-   [ ] Add a vignette using messy OCRed legislator letters to FERC from
+    replication data for [“Legislator Advocacy on Behalf of Constituents
+    and Corporate Donors”](https://judgelord.github.io/research/ferc/)
+-   [ ] Add a vignette using [public comment
+    data](https://github.com/judgelord/rulemaking) (sparse legislator
+    names)
+
+### Functions
 
 -   [ ] integrate with the
     [`congress`](https://github.com/ippsr/congress) and/or
-    `congressData` packages. For example, we may want `augmentCongress`
-    to simply join in identifiers for other datasets on ICPSR numbers.
-    Perhaps this is best left to `congress`.
+    [`congressData`](https://github.com/IPPSR/congress) packages. For
+    example, we may want a function (`augmentCongress` or
+    `augment_legislators`?) to join in identifiers for other datasets on
+    ICPSR numbers. Perhaps this is best left to users using the
+    `congress` package.
+-   [ ] Additionally, `committees.R` provides a crosswalk for Stewart
+    ICPSR numbers
 
-<!-- -->
+### Documentation
 
-    # add other common unique identifiers
-    cr_augmented <- augmentCongress(cr)
+-   [ ] Document helper functions for `extractMemberName()`
+-   [ ] Document additional functions that help prep text for best
+    matching
+-   [ ] Document example data (including FERC and public comment data
+    for new vignettes)

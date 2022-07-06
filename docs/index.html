@@ -71,8 +71,8 @@
 <div class="row">
   <main id="main" class="col-md-9"><p><img src="reference/figures/logo.png" width="200"></p>
 <div class="section level2">
-<h2 id="tools-to-detect-us-legislator-names-in-messy-text-with-typos-and-inconsistent-name-formats">Tools to detect U.S. legislator names in messy text with typos and
-inconsistent name formats<a class="anchor" aria-label="anchor" href="#tools-to-detect-us-legislator-names-in-messy-text-with-typos-and-inconsistent-name-formats"></a>
+<h2 id="detect-us-legislator-names-in-messy-text-with-typos-and-inconsistent-name-formats">Detect U.S. legislator names in messy text with typos and
+inconsistent name formats<a class="anchor" aria-label="anchor" href="#detect-us-legislator-names-in-messy-text-with-typos-and-inconsistent-name-formats"></a>
 </h2>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -90,13 +90,13 @@ permutations of the names of members of Congress. This dataframe builds
 on the basic structure of voteview.com data, especially the
 <code>bioname</code> field. From this and other corrections, it
 constructs a regular expression search <code>pattern</code> and
-conditions under which this pattern should yield a match (e.g. when that
-pattern has a unique match to a member of Congress in a given Congress).
-<code>pattern</code> differs from Congress to Congress because some
-member move from the House to the Senate and because members with
-similar names join or leave Congress. Users can customize the provided
-<code>members</code> data and supply their updated version to
-<code>extractMemberNames()</code>.</p>
+conditions under which this pattern should yield a match (e.g., when
+that pattern has a unique match to a member of Congress in a given
+Congress). <code>pattern</code> differs from Congress to Congress
+because some member move from the House to the Senate and because
+members with similar names join or leave Congress. Users can customize
+the provided <code>members</code> data and supply their updated version
+to <code><a href="reference/extractMemberName.html">extractMemberName()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"members"</span><span class="op">)</span>
 
@@ -121,9 +121,9 @@ common human typos and OCR errors that frustrate matching. Some of these
 corrections are currently supplied by <code>MemberNameTypos.R</code>. In
 future versions, <code>typos</code> will be supplied as a dataframe
 instead, and all types of corrections (cleaning, typos, OCR errors) will
-be optional. Additionally, users will be able to customize the
-<code>typos</code> dataframe and provide it as an argument to
-<code>extractMemberNames()</code>.</p>
+be optional. Additionally, users can customize the <code>typos</code>
+dataframe and provide it as an argument to
+<code><a href="reference/extractMemberName.html">extractMemberName()</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"typos"</span><span class="op">)</span>
 
@@ -241,50 +241,65 @@ only search for members who served in the 110th. Because each row’s
 <code>data_row_id</code> and <code>match_id</code> are the same. Where
 multiple members are detected, there may be multiple matches per
 <code>data_row_id</code>.</p>
+<p>Because <code>extractMemberName</code> links each detected name to
+ICPSR IDs from voteview.com, we already have some information, like
+state and district for each legislator detected in the text (scroll to
+the right).</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="todo">TODO<a class="anchor" aria-label="anchor" href="#todo"></a>
 </h2>
 <div class="section level3">
-<h3 id="augmentcongress">
-<code>augmentCongress()</code><a class="anchor" aria-label="anchor" href="#augmentcongress"></a>
+<h3 id="vignettes">Vignettes<a class="anchor" aria-label="anchor" href="#vignettes"></a>
 </h3>
-<p><code>augmentCongress()</code> will augment a dataframe that includes
-at least one unique identifier to include a suite of other common
-identifiers.</p>
-<p>Because <code>extractMemberName</code> links each detected name to
-ICPSR IDs from voteview.com, we already have some information, like
-state and district for each legislator detected in the text.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-
-<span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">cr</span>, <span class="va">members</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">data_row_id</span>, <span class="va">match_id</span>, <span class="va">bioname</span>, <span class="va">icpsr</span>, <span class="va">congress</span>, <span class="va">state_abbrev</span>, <span class="va">district_code</span>, <span class="va">url</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 193 × 8</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    data_row_id match_id bioname                    icpsr congress state_abbrev district_code url                                                                                                  </span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;                      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;                                                                                                </span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 000001      000001   GRAVES, Samuel             20124      110 MO                       6 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-2</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 000002      000002   UDALL, Mark                29906      110 CO                       2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-3</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 000003      000003   LANGEVIN, James            20136      110 RI                       2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-4</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 000004      000004   COSTA, Jim                 20501      110 CA                      20 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-5</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 000005      000005   GRAVES, Samuel             20124      110 MO                       6 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-1</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 000006      000006   BISHOP, Sanford Dixon, Jr. 29339      110 GA                       2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-2</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 000007      000007   TOWNS, Edolphus            15072      110 NY                      10 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-3</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 000008      000008   DAVIS, Thomas M., III      29576      110 VA                      11 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-1</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 000009      000009   GRAVES, Samuel             20124      110 MO                       6 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E433-2</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 000010      000010   UDALL, Mark                29906      110 CO                       2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E433-3</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 183 more rows</span></span></code></pre></div>
+<ul class="task-list">
+<li>
+<input type="checkbox" disabled>
+Add a vignette using messy OCRed legislator letters to FERC from
+replication data for <a href="https://judgelord.github.io/research/ferc/" class="external-link">“Legislator Advocacy
+on Behalf of Constituents and Corporate Donors”</a>
+</li>
+<li>
+<input type="checkbox" disabled>
+Add a vignette using <a href="https://github.com/judgelord/rulemaking" class="external-link">public comment data</a>
+(sparse legislator names)</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
+</h3>
 <ul class="task-list">
 <li>
 <input type="checkbox" disabled>
 integrate with the <a href="https://github.com/ippsr/congress" class="external-link"><code>congress</code></a>
-and/or <code>congressData</code> packages. For example, we may want
-<code>augmentCongress</code> to simply join in identifiers for other
-datasets on ICPSR numbers. Perhaps this is best left to
-<code>congress</code>.</li>
+and/or <a href="https://github.com/IPPSR/congress" class="external-link"><code>congressData</code></a>
+packages. For example, we may want a function
+(<code>augmentCongress</code> or <code>augment_legislators</code>?) to
+join in identifiers for other datasets on ICPSR numbers. Perhaps this is
+best left to users using the <code>congress</code> package.</li>
+<li>
+<input type="checkbox" disabled>
+Additionally, <code>committees.R</code> provides a crosswalk for Stewart
+ICPSR numbers</li>
 </ul>
-<!-- --><div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add other common unique identifiers</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>cr_augmented <span class="ot">&lt;-</span> <span class="fu">augmentCongress</span>(cr)</span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h3>
+<ul class="task-list">
+<li>
+<input type="checkbox" disabled>
+Document helper functions for <code><a href="reference/extractMemberName.html">extractMemberName()</a></code>
+</li>
+<li>
+<input type="checkbox" disabled>
+Document additional functions that help prep text for best matching</li>
+<li>
+<input type="checkbox" disabled>
+Document example data (including FERC and public comment data for new
+vignettes)</li>
+</ul>
 </div>
 </div>
 

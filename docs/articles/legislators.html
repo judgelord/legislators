@@ -76,7 +76,7 @@
                         <h4 data-toc-skip class="author">Devin
 Judge-Lord</h4>
             
-            <h4 data-toc-skip class="date">2022-07-04</h4>
+            <h4 data-toc-skip class="date">2022-07-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/judgelord/legislators/blob/HEAD/vignettes/legislators.Rmd" class="external-link"><code>vignettes/legislators.Rmd</code></a></small>
       <div class="d-none name"><code>legislators.Rmd</code></div>
@@ -107,7 +107,7 @@ Congress in a given Congress). <code>pattern</code> differs from
 Congress to Congress because some member move from the House to the
 Senate and because members with similar names join or leave Congress.
 Users can customize the provided <code>members</code> data and supply
-their updated version to <code>extractMemberNames()</code>.</p>
+their updated version to <code><a href="../reference/extractMemberName.html">extractMemberName()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"members"</span><span class="op">)</span>
 
@@ -1700,11 +1700,11 @@ future versions, <code>typos</code> will be supplied as a dataframe
 instead, and all types of corrections (cleaning, typos, OCR errors) will
 be optional. Additionally, users will be able to customize the
 <code>typos</code> dataframe and provide it as an argument to
-<code>extractMemberNames()</code>.</p>
+<code><a href="../reference/extractMemberName.html">extractMemberName()</a></code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"typos"</span><span class="op">)</span>
 
-<span class="va">typos</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="va">typos</span> |&gt; <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; ">
 <table class="table table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
