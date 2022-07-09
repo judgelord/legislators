@@ -54,9 +54,7 @@ kable <- function(...){
 ```
 
 
-<img src="../man/figures/logo.png" width="100" />
-
-### Detect U.S. legislator names in messy text with typos and inconsistent name formats
+### Find U.S. legislator names in messy text with typos and inconsistent name formats
 
 
 Install this package with 

@@ -1,6 +1,6 @@
 Package: legislators
 Type: Package
-Title: Detect legislator names in messy text
+Title: Find legislator names in messy text
 Version: 0.0.0.1000
 Authors@R: 
     c(person(given = "Devin",
@@ -10,10 +10,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-4384-4380")),
       person(given = "Maggie",
            family = "Nead",
-           role = c("aut")),
-      person("Noah", "Greifer", role = c("aut"), 
-         email = "ngreifer@iq.harvard.edu",
-	       comment = c(ORCID="0000-0003-3067-7154")))
+           role = c("aut")))
 Maintainer: The package maintainer <DevinJudgeLord@fas.harvard.edu>
 Description: A suite of functions to detect U.S. legislator names in messy text with typos and inconsistent name formats.
     Example data from the Congressional Record and congressional letters to the Federal Energy Regulatory Commission are provided.
@@ -23,9 +20,12 @@ LazyData: true
 URL: https://judgelord.github.io/legislators/, https://github.com/judgelord/legislators
 BugReports: https://github.com/judgelord/legislators/issues
 Imports:
-	tidyverse,
 	crayon,
-	magrittr
+	magrittr,
+	dplyr,
+	stringr,
+	tidyr,
+	purrr
 Depends: 
     R (>= 3.5.0)
 Suggests:
@@ -33,4 +33,3 @@ Suggests:
     	knitr, 
     	rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.1.2

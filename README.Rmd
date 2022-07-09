@@ -21,9 +21,9 @@ knitr::opts_chunk$set(
 ```
 
 
-<img src="man/figures/logo.png" width="200" />
 
-## Detect U.S. legislator names in messy text with typos and inconsistent name formats
+## legislators: Find legislator names in messy text <img src="man/figures/logo.png" align="right" width="150"/> [![CRAN status](https://www.r-pkg.org/badges/version/legislators)](https://CRAN.R-project.org/package=legislators)
+
 
 
 ### Installation
@@ -56,6 +56,8 @@ typos
 ```
 
 ---
+
+#  Find U.S. legislator names in messy text with typos and inconsistent name formats
 
 ## Basic Usage
 
@@ -115,6 +117,11 @@ Because `extractMemberName` links each detected name to ICPSR IDs from voteview.
 
 ## TODO 
 
+### Dynamic data 
+
+- [ ] make some kind of version-controlled spreadsheet where users can submit additional nicknames, maiden names, etc. to augment the voteview data. This is currently done in data/make_members/nameCongress.R, but it would not be easy for users to edit and then re-make the regex table.
+- [ ] make some sort of version-controlled spreadsheet where users can submit common typos they find. Currently, typos.R generates typos.rda, which is loaded with the package.
+ 
 ### Vignettes
 
 - [ ] Add a vignette using messy OCRed legislator letters to FERC from replication data for ["Legislator Advocacy on Behalf of Constituents and Corporate Donors"](https://judgelord.github.io/research/ferc/)
@@ -122,6 +129,8 @@ Because `extractMemberName` links each detected name to ICPSR IDs from voteview.
 
 ### Functions 
 
+- [ ] `extractMemberName()` needs options to supply custom typos and additions to the main regex table
+- [ ] correcting OCR errors and typos should be optional in `extractMemberName()`
 - [ ] integrate with the [`congress`](https://github.com/ippsr/congress) and/or [`congressData`](https://github.com/IPPSR/congress) packages. For example, we may want a function (`augmentCongress` or `augment_legislators`?) to join in identifiers for other datasets on ICPSR numbers. Perhaps this is best left to users using the `congress` package. 
 - [ ] Additionally, `committees.R` provides a crosswalk for Stewart ICPSR numbers
 

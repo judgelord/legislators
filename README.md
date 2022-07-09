@@ -1,9 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<img src="man/figures/logo.png" width="200" />
-
-## Detect U.S. legislator names in messy text with typos and inconsistent name formats
+## legislators: Find legislator names in messy text <img src="man/figures/logo.png" align="right" width="150"/> [![CRAN status](https://www.r-pkg.org/badges/version/legislators)](https://CRAN.R-project.org/package=legislators)
 
 ### Installation
 
@@ -81,6 +79,8 @@ typos
 
 ------------------------------------------------------------------------
 
+# Find U.S. legislator names in messy text with typos and inconsistent name formats
+
 ## Basic Usage
 
 The main function is `extractMemberName()` returns a dataframe of the
@@ -102,18 +102,18 @@ cr2007_03_01
 ```
 
     #> # A tibble: 154 × 5
-    #>    date       speaker                             header                                                            url                                          url_txt                                
-    #>    <date>     <chr>                               <chr>                                                             <chr>                                        <chr>                                  
-    #>  1 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING JARRETT MUCK FOR ACHIEVING THE RANK OF EAGLE SCOUT; … https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…
-    #>  2 2007-03-01 HON. MARK UDALL;Mr. UDALL           INTRODUCING A CONCURRENT RESOLUTION HONORING THE 50TH ANNIVERSAR… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…
-    #>  3 2007-03-01 HON. JAMES R. LANGEVIN;Mr. LANGEVIN BIOSURVEILLANCE ENHANCEMENT ACT OF 2007; Congressional Record Vo… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…
-    #>  4 2007-03-01 HON. JIM COSTA;Mr. COSTA            A TRIBUTE TO THE LIFE OF MRS. VERNA DUTY; Congressional Record V… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…
-    #>  5 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING JARRETT MUCK FOR ACHIEVING THE RANK OF EAGLE SCOUT    https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…
-    #>  6 2007-03-01 HON. SANFORD D. BISHOP;Mr. BISHOP   IN HONOR OF SYNOVUS BEING NAMED ONE OF THE BEST COMPANIES IN AME… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…
-    #>  7 2007-03-01 HON. EDOLPHUS TOWNS;Mr. TOWNS       NEW PUNJAB CHIEF MINISTER URGED TO WORK FOR SIKH SOVEREIGNTY; Co… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…
-    #>  8 2007-03-01 HON. TOM DAVIS;Mr. TOM DAVIS        HONORING THE 30TH ANNIVERSARY OF THE BAILEY'S CROSSROADS ROTARY … https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…
-    #>  9 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING BRIAN PATRICK WESSLING FOR ACHIEVING THE RANK OF EAG… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…
-    #> 10 2007-03-01 HON. MARK UDALL;Mr. UDALL           INTRODUCTION OF ROYALTY-IN-KIND FOR ENERGY ASSISTANCE LEGISLATIO… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…
+    #>    date       speaker                             header                                                                                                                                   url   url_txt
+    #>    <date>     <chr>                               <chr>                                                                                                                                    <chr> <chr>  
+    #>  1 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING JARRETT MUCK FOR ACHIEVING THE RANK OF EAGLE SCOUT; Congressional Record Vol. 153, No. 35                                    http… https:…
+    #>  2 2007-03-01 HON. MARK UDALL;Mr. UDALL           INTRODUCING A CONCURRENT RESOLUTION HONORING THE 50TH ANNIVERSARY OF THE INTERNATIONAL GEOPHYSICAL YEAR (IGY); Congressional Record Vol… http… https:…
+    #>  3 2007-03-01 HON. JAMES R. LANGEVIN;Mr. LANGEVIN BIOSURVEILLANCE ENHANCEMENT ACT OF 2007; Congressional Record Vol. 153, No. 35                                                           http… https:…
+    #>  4 2007-03-01 HON. JIM COSTA;Mr. COSTA            A TRIBUTE TO THE LIFE OF MRS. VERNA DUTY; Congressional Record Vol. 153, No. 35                                                          http… https:…
+    #>  5 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING JARRETT MUCK FOR ACHIEVING THE RANK OF EAGLE SCOUT                                                                           http… https:…
+    #>  6 2007-03-01 HON. SANFORD D. BISHOP;Mr. BISHOP   IN HONOR OF SYNOVUS BEING NAMED ONE OF THE BEST COMPANIES IN AMERICA; Congressional Record Vol. 153, No. 35                              http… https:…
+    #>  7 2007-03-01 HON. EDOLPHUS TOWNS;Mr. TOWNS       NEW PUNJAB CHIEF MINISTER URGED TO WORK FOR SIKH SOVEREIGNTY; Congressional Record Vol. 153, No. 35                                      http… https:…
+    #>  8 2007-03-01 HON. TOM DAVIS;Mr. TOM DAVIS        HONORING THE 30TH ANNIVERSARY OF THE BAILEY'S CROSSROADS ROTARY CLUB; Congressional Record Vol. 153, No. 35                              http… https:…
+    #>  9 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING BRIAN PATRICK WESSLING FOR ACHIEVING THE RANK OF EAGLE SCOUT; Congressional Record Vol. 153, No. 35                          http… https:…
+    #> 10 2007-03-01 HON. MARK UDALL;Mr. UDALL           INTRODUCTION OF ROYALTY-IN-KIND FOR ENERGY ASSISTANCE LEGISLATION; Congressional Record Vol. 153, No. 35                                 http… https:…
     #> # … with 144 more rows
 
 ``` r
@@ -167,18 +167,18 @@ cr
 ```
 
     #> # A tibble: 193 × 17
-    #>    data_row_id match_id icpsr bioname                    string   pattern         chamber congress date       speaker  header       url       url_txt    first_name last_name state_abbrev district_code
-    #>    <chr>       <chr>    <dbl> <chr>                      <chr>    <chr>           <chr>      <dbl> <date>     <chr>    <chr>        <chr>     <chr>      <chr>      <chr>     <chr>                <dbl>
-    #>  1 000001      000001   20124 GRAVES, Samuel             hon sam… "samuel graves… House        110 2007-03-01 HON. SA… RECOGNIZING… https://… https://w… Samuel     GRAVES    MO                       6
-    #>  2 000002      000002   29906 UDALL, Mark                hon mar… "mark udall|\\… House        110 2007-03-01 HON. MA… INTRODUCING… https://… https://w… Mark       UDALL     CO                       2
-    #>  3 000003      000003   20136 LANGEVIN, James            hon jam… "james langevi… House        110 2007-03-01 HON. JA… BIOSURVEILL… https://… https://w… James      LANGEVIN  RI                       2
-    #>  4 000004      000004   20501 COSTA, Jim                 hon jim… "jim costa|\\b… House        110 2007-03-01 HON. JI… A TRIBUTE T… https://… https://w… Jim        COSTA     CA                      20
-    #>  5 000005      000005   20124 GRAVES, Samuel             hon sam… "samuel graves… House        110 2007-03-01 HON. SA… RECOGNIZING… https://… https://w… Samuel     GRAVES    MO                       6
-    #>  6 000006      000006   29339 BISHOP, Sanford Dixon, Jr. hon san… "sanford bisho… House        110 2007-03-01 HON. SA… IN HONOR OF… https://… https://w… Sanford    BISHOP    GA                       2
-    #>  7 000007      000007   15072 TOWNS, Edolphus            hon edo… "edolphus town… House        110 2007-03-01 HON. ED… NEW PUNJAB … https://… https://w… Edolphus   TOWNS     NY                      10
-    #>  8 000008      000008   29576 DAVIS, Thomas M., III      hon tom… "thomas davis|… House        110 2007-03-01 HON. TO… HONORING TH… https://… https://w… Thomas     DAVIS     VA                      11
-    #>  9 000009      000009   20124 GRAVES, Samuel             hon sam… "samuel graves… House        110 2007-03-01 HON. SA… RECOGNIZING… https://… https://w… Samuel     GRAVES    MO                       6
-    #> 10 000010      000010   29906 UDALL, Mark                hon mar… "mark udall|\\… House        110 2007-03-01 HON. MA… INTRODUCTIO… https://… https://w… Mark       UDALL     CO                       2
+    #>    data_row_id match_id icpsr bioname                    string                         pattern chamber congress date       speaker header url   url_txt first_name last_name state_abbrev district_code
+    #>    <chr>       <chr>    <dbl> <chr>                      <chr>                          <chr>   <chr>      <dbl> <date>     <chr>   <chr>  <chr> <chr>   <chr>      <chr>     <chr>                <dbl>
+    #>  1 000001      000001   20124 GRAVES, Samuel             hon sam graves;mr graves       "samue… House        110 2007-03-01 HON. S… RECOG… http… https:… Samuel     GRAVES    MO                       6
+    #>  2 000002      000002   29906 UDALL, Mark                hon mark udall;mr udall        "mark … House        110 2007-03-01 HON. M… INTRO… http… https:… Mark       UDALL     CO                       2
+    #>  3 000003      000003   20136 LANGEVIN, James            hon james r langevin;mr lange… "james… House        110 2007-03-01 HON. J… BIOSU… http… https:… James      LANGEVIN  RI                       2
+    #>  4 000004      000004   20501 COSTA, Jim                 hon jim costa;mr costa         "jim c… House        110 2007-03-01 HON. J… A TRI… http… https:… Jim        COSTA     CA                      20
+    #>  5 000005      000005   20124 GRAVES, Samuel             hon sam graves;mr graves       "samue… House        110 2007-03-01 HON. S… RECOG… http… https:… Samuel     GRAVES    MO                       6
+    #>  6 000006      000006   29339 BISHOP, Sanford Dixon, Jr. hon sanford d bishop;mr bishop "sanfo… House        110 2007-03-01 HON. S… IN HO… http… https:… Sanford    BISHOP    GA                       2
+    #>  7 000007      000007   15072 TOWNS, Edolphus            hon edolphus towns;mr towns    "edolp… House        110 2007-03-01 HON. E… NEW P… http… https:… Edolphus   TOWNS     NY                      10
+    #>  8 000008      000008   29576 DAVIS, Thomas M., III      hon tom davis;mr tom davis     "thoma… House        110 2007-03-01 HON. T… HONOR… http… https:… Thomas     DAVIS     VA                      11
+    #>  9 000009      000009   20124 GRAVES, Samuel             hon sam graves;mr graves       "samue… House        110 2007-03-01 HON. S… RECOG… http… https:… Samuel     GRAVES    MO                       6
+    #> 10 000010      000010   29906 UDALL, Mark                hon mark udall;mr udall        "mark … House        110 2007-03-01 HON. M… INTRO… http… https:… Mark       UDALL     CO                       2
     #> # … with 183 more rows
 
 In this example, all observations are in the 110th Congress, so we only
@@ -193,6 +193,17 @@ for each legislator detected in the text (scroll to the right).
 
 ## TODO
 
+### Dynamic data
+
+-   [ ] make some kind of version-controlled spreadsheet where users can
+    submit additional nicknames, maiden names, etc. to augment the
+    voteview data. This is currently done in
+    data/make_members/nameCongress.R, but it would not be easy for users
+    to edit and then re-make the regex table.
+-   [ ] make some sort of version-controlled spreadsheet where users can
+    submit common typos they find. Currently, typos.R generates
+    typos.rda, which is loaded with the package.
+
 ### Vignettes
 
 -   [ ] Add a vignette using messy OCRed legislator letters to FERC from
@@ -204,6 +215,10 @@ for each legislator detected in the text (scroll to the right).
 
 ### Functions
 
+-   [ ] `extractMemberName()` needs options to supply custom typos and
+    additions to the main regex table
+-   [ ] correcting OCR errors and typos should be optional in
+    `extractMemberName()`
 -   [ ] integrate with the
     [`congress`](https://github.com/ippsr/congress) and/or
     [`congressData`](https://github.com/IPPSR/congress) packages. For

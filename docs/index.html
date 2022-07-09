@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="A suite of functions to detect U.S. legislator names in messy text with typos and inconsistent name formats.
     Example data from the Congressional Record and congressional letters to the Federal Energy Regulatory Commission are provided.">
-<title>Detect legislator names in messy text • legislators</title>
+<title>Find legislator names in messy text • legislators</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -18,7 +18,7 @@
 <link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Detect legislator names in messy text">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Find legislator names in messy text">
 <meta property="og:description" content="A suite of functions to detect U.S. legislator names in messy text with typos and inconsistent name formats.
     Example data from the Congressional Record and congressional letters to the Federal Energy Regulatory Commission are provided.">
 <meta property="og:image" content="/logo.png">
@@ -69,10 +69,10 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><p><img src="reference/figures/logo.png" width="200"></p>
-<div class="section level2">
-<h2 id="detect-us-legislator-names-in-messy-text-with-typos-and-inconsistent-name-formats">Detect U.S. legislator names in messy text with typos and
-inconsistent name formats<a class="anchor" aria-label="anchor" href="#detect-us-legislator-names-in-messy-text-with-typos-and-inconsistent-name-formats"></a>
+  <main id="main" class="col-md-9"><div class="section level2">
+<h2 id="legislators-find-legislator-names-in-messy-text--cran-status">legislators: Find legislator names in messy text
+<img src="reference/figures/logo.png" align="right" width="150"><a href="https://CRAN.R-project.org/package=legislators" class="external-link"><img src="https://www.r-pkg.org/badges/version/legislators" alt="CRAN status"></a>
+<a class="anchor" aria-label="anchor" href="#legislators-find-legislator-names-in-messy-text--cran-status"></a>
 </h2>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -144,6 +144,12 @@ dataframe and provide it as an argument to
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 470 more rows</span></span></code></pre></div>
 <hr>
 </div>
+<div class="section level1">
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="find-us-legislator-names-in-messy-text-with-typos-and-inconsistent-name-formats">Find U.S. legislator names in messy text with typos and inconsistent
+name formats<a class="anchor" aria-label="anchor" href="#find-us-legislator-names-in-messy-text-with-typos-and-inconsistent-name-formats"></a>
+</h1>
+</div>
 <div class="section level2">
 <h2 id="basic-usage">Basic Usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
 </h2>
@@ -163,18 +169,18 @@ Record. Let’s start with text from the Congressional Record from
 
 <span class="va">cr2007_03_01</span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 154 × 5</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date       speaker                             header                                                            url                                          url_txt                                </span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;                               &lt;chr&gt;                                                             &lt;chr&gt;                                        &lt;chr&gt;                                  </span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING JARRETT MUCK FOR ACHIEVING THE RANK OF EAGLE SCOUT; … https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 2007-03-01 HON. MARK UDALL;Mr. UDALL           INTRODUCING A CONCURRENT RESOLUTION HONORING THE 50TH ANNIVERSAR… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 2007-03-01 HON. JAMES R. LANGEVIN;Mr. LANGEVIN BIOSURVEILLANCE ENHANCEMENT ACT OF 2007; Congressional Record Vo… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 2007-03-01 HON. JIM COSTA;Mr. COSTA            A TRIBUTE TO THE LIFE OF MRS. VERNA DUTY; Congressional Record V… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING JARRETT MUCK FOR ACHIEVING THE RANK OF EAGLE SCOUT    https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 2007-03-01 HON. SANFORD D. BISHOP;Mr. BISHOP   IN HONOR OF SYNOVUS BEING NAMED ONE OF THE BEST COMPANIES IN AME… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 2007-03-01 HON. EDOLPHUS TOWNS;Mr. TOWNS       NEW PUNJAB CHIEF MINISTER URGED TO WORK FOR SIKH SOVEREIGNTY; Co… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 2007-03-01 HON. TOM DAVIS;Mr. TOM DAVIS        HONORING THE 30TH ANNIVERSARY OF THE BAILEY'S CROSSROADS ROTARY … https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING BRIAN PATRICK WESSLING FOR ACHIEVING THE RANK OF EAG… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2007-03-01 HON. MARK UDALL;Mr. UDALL           INTRODUCTION OF ROYALTY-IN-KIND FOR ENERGY ASSISTANCE LEGISLATIO… https://www.congress.gov/congressional-reco… https://www.congress.gov/117/crec/2007…</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date       speaker                             header                                                                                                                                   url   url_txt</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;                               &lt;chr&gt;                                                                                                                                    &lt;chr&gt; &lt;chr&gt;  </span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING JARRETT MUCK FOR ACHIEVING THE RANK OF EAGLE SCOUT; Congressional Record Vol. 153, No. 35                                    http… https:…</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 2007-03-01 HON. MARK UDALL;Mr. UDALL           INTRODUCING A CONCURRENT RESOLUTION HONORING THE 50TH ANNIVERSARY OF THE INTERNATIONAL GEOPHYSICAL YEAR (IGY); Congressional Record Vol… http… https:…</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 2007-03-01 HON. JAMES R. LANGEVIN;Mr. LANGEVIN BIOSURVEILLANCE ENHANCEMENT ACT OF 2007; Congressional Record Vol. 153, No. 35                                                           http… https:…</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 2007-03-01 HON. JIM COSTA;Mr. COSTA            A TRIBUTE TO THE LIFE OF MRS. VERNA DUTY; Congressional Record Vol. 153, No. 35                                                          http… https:…</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING JARRETT MUCK FOR ACHIEVING THE RANK OF EAGLE SCOUT                                                                           http… https:…</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 2007-03-01 HON. SANFORD D. BISHOP;Mr. BISHOP   IN HONOR OF SYNOVUS BEING NAMED ONE OF THE BEST COMPANIES IN AMERICA; Congressional Record Vol. 153, No. 35                              http… https:…</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 2007-03-01 HON. EDOLPHUS TOWNS;Mr. TOWNS       NEW PUNJAB CHIEF MINISTER URGED TO WORK FOR SIKH SOVEREIGNTY; Congressional Record Vol. 153, No. 35                                      http… https:…</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 2007-03-01 HON. TOM DAVIS;Mr. TOM DAVIS        HONORING THE 30TH ANNIVERSARY OF THE BAILEY'S CROSSROADS ROTARY CLUB; Congressional Record Vol. 153, No. 35                              http… https:…</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING BRIAN PATRICK WESSLING FOR ACHIEVING THE RANK OF EAGLE SCOUT; Congressional Record Vol. 153, No. 35                          http… https:…</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2007-03-01 HON. MARK UDALL;Mr. UDALL           INTRODUCTION OF ROYALTY-IN-KIND FOR ENERGY ASSISTANCE LEGISLATION; Congressional Record Vol. 153, No. 35                                 http… https:…</span></span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 144 more rows</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cr2007_03_01</span><span class="op">$</span><span class="va">url</span><span class="op">)</span></code></pre></div>
@@ -222,18 +228,18 @@ either:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cr</span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 193 × 17</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    data_row_id match_id icpsr bioname                    string   pattern         chamber congress date       speaker  header       url       url_txt    first_name last_name state_abbrev district_code</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;    &lt;chr&gt;           &lt;chr&gt;      &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;                &lt;dbl&gt;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 000001      000001   20124 GRAVES, Samuel             hon sam… "samuel graves… House        110 2007-03-01 HON. SA… RECOGNIZING… https://… https://w… Samuel     GRAVES    MO                       6</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 000002      000002   29906 UDALL, Mark                hon mar… "mark udall|\\… House        110 2007-03-01 HON. MA… INTRODUCING… https://… https://w… Mark       UDALL     CO                       2</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 000003      000003   20136 LANGEVIN, James            hon jam… "james langevi… House        110 2007-03-01 HON. JA… BIOSURVEILL… https://… https://w… James      LANGEVIN  RI                       2</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 000004      000004   20501 COSTA, Jim                 hon jim… "jim costa|\\b… House        110 2007-03-01 HON. JI… A TRIBUTE T… https://… https://w… Jim        COSTA     CA                      20</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 000005      000005   20124 GRAVES, Samuel             hon sam… "samuel graves… House        110 2007-03-01 HON. SA… RECOGNIZING… https://… https://w… Samuel     GRAVES    MO                       6</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 000006      000006   29339 BISHOP, Sanford Dixon, Jr. hon san… "sanford bisho… House        110 2007-03-01 HON. SA… IN HONOR OF… https://… https://w… Sanford    BISHOP    GA                       2</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 000007      000007   15072 TOWNS, Edolphus            hon edo… "edolphus town… House        110 2007-03-01 HON. ED… NEW PUNJAB … https://… https://w… Edolphus   TOWNS     NY                      10</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 000008      000008   29576 DAVIS, Thomas M., III      hon tom… "thomas davis|… House        110 2007-03-01 HON. TO… HONORING TH… https://… https://w… Thomas     DAVIS     VA                      11</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 000009      000009   20124 GRAVES, Samuel             hon sam… "samuel graves… House        110 2007-03-01 HON. SA… RECOGNIZING… https://… https://w… Samuel     GRAVES    MO                       6</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 000010      000010   29906 UDALL, Mark                hon mar… "mark udall|\\… House        110 2007-03-01 HON. MA… INTRODUCTIO… https://… https://w… Mark       UDALL     CO                       2</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    data_row_id match_id icpsr bioname                    string                         pattern chamber congress date       speaker header url   url_txt first_name last_name state_abbrev district_code</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;                          &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;                &lt;dbl&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 000001      000001   20124 GRAVES, Samuel             hon sam graves;mr graves       "samue… House        110 2007-03-01 HON. S… RECOG… http… https:… Samuel     GRAVES    MO                       6</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 000002      000002   29906 UDALL, Mark                hon mark udall;mr udall        "mark … House        110 2007-03-01 HON. M… INTRO… http… https:… Mark       UDALL     CO                       2</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 000003      000003   20136 LANGEVIN, James            hon james r langevin;mr lange… "james… House        110 2007-03-01 HON. J… BIOSU… http… https:… James      LANGEVIN  RI                       2</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 000004      000004   20501 COSTA, Jim                 hon jim costa;mr costa         "jim c… House        110 2007-03-01 HON. J… A TRI… http… https:… Jim        COSTA     CA                      20</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 000005      000005   20124 GRAVES, Samuel             hon sam graves;mr graves       "samue… House        110 2007-03-01 HON. S… RECOG… http… https:… Samuel     GRAVES    MO                       6</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 000006      000006   29339 BISHOP, Sanford Dixon, Jr. hon sanford d bishop;mr bishop "sanfo… House        110 2007-03-01 HON. S… IN HO… http… https:… Sanford    BISHOP    GA                       2</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 000007      000007   15072 TOWNS, Edolphus            hon edolphus towns;mr towns    "edolp… House        110 2007-03-01 HON. E… NEW P… http… https:… Edolphus   TOWNS     NY                      10</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 000008      000008   29576 DAVIS, Thomas M., III      hon tom davis;mr tom davis     "thoma… House        110 2007-03-01 HON. T… HONOR… http… https:… Thomas     DAVIS     VA                      11</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 000009      000009   20124 GRAVES, Samuel             hon sam graves;mr graves       "samue… House        110 2007-03-01 HON. S… RECOG… http… https:… Samuel     GRAVES    MO                       6</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 000010      000010   29906 UDALL, Mark                hon mark udall;mr udall        "mark … House        110 2007-03-01 HON. M… INTRO… http… https:… Mark       UDALL     CO                       2</span></span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 183 more rows</span></span></code></pre></div>
 <p>In this example, all observations are in the 110th Congress, so we
 only search for members who served in the 110th. Because each row’s
@@ -250,6 +256,23 @@ the right).</p>
 <div class="section level2">
 <h2 id="todo">TODO<a class="anchor" aria-label="anchor" href="#todo"></a>
 </h2>
+<div class="section level3">
+<h3 id="dynamic-data">Dynamic data<a class="anchor" aria-label="anchor" href="#dynamic-data"></a>
+</h3>
+<ul class="task-list">
+<li>
+<input type="checkbox" disabled>
+make some kind of version-controlled spreadsheet where users can submit
+additional nicknames, maiden names, etc. to augment the voteview data.
+This is currently done in data/make_members/nameCongress.R, but it would
+not be easy for users to edit and then re-make the regex table.</li>
+<li>
+<input type="checkbox" disabled>
+make some sort of version-controlled spreadsheet where users can submit
+common typos they find. Currently, typos.R generates typos.rda, which is
+loaded with the package.</li>
+</ul>
+</div>
 <div class="section level3">
 <h3 id="vignettes">Vignettes<a class="anchor" aria-label="anchor" href="#vignettes"></a>
 </h3>
@@ -270,6 +293,14 @@ Add a vignette using <a href="https://github.com/judgelord/rulemaking" class="ex
 <h3 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
 </h3>
 <ul class="task-list">
+<li>
+<input type="checkbox" disabled><code><a href="reference/extractMemberName.html">extractMemberName()</a></code> needs options to supply custom typos
+and additions to the main regex table</li>
+<li>
+<input type="checkbox" disabled>
+correcting OCR errors and typos should be optional in
+<code><a href="reference/extractMemberName.html">extractMemberName()</a></code>
+</li>
 <li>
 <input type="checkbox" disabled>
 integrate with the <a href="https://github.com/ippsr/congress" class="external-link"><code>congress</code></a>
@@ -300,6 +331,7 @@ Document additional functions that help prep text for best matching</li>
 Document example data (including FERC and public comment data for new
 vignettes)</li>
 </ul>
+</div>
 </div>
 </div>
 
@@ -333,7 +365,6 @@ vignettes)</li>
 <ul class="list-unstyled">
 <li>Devin Judge-Lord <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4384-4380" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Maggie Nead <br><small class="roles"> Author </small>  </li>
-<li>Noah Greifer <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-3067-7154" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
@@ -345,7 +376,7 @@ vignettes)</li>
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Devin Judge-Lord, Maggie Nead, Noah Greifer.</p>
+<p>Developed by Devin Judge-Lord, Maggie Nead.</p>
 </div>
 
 <div class="pkgdown-footer-right">
