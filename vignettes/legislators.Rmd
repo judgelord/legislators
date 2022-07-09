@@ -24,8 +24,6 @@ knitr::opts_chunk$set(
   R.options = list(width = 200)
 )
 
-library(knitr)
-library(kableExtra) # Table formatting and pipe (|>)
 
 str_fix <- function(x){
   stringr::str_replace_all(x, "\\$", "\\\\$") |> 
@@ -37,13 +35,13 @@ kable <- function(...){
   if (knitr::is_latex_output()){
     head(..., 25) |>
       knitr::kable(booktabs = TRUE, format = 'latex') |>
-      kable_styling(latex_options = c("striped", "scale_down", "HOLD_position"))
+      kableExtra::kable_styling(latex_options = c("striped", "scale_down", "HOLD_position"))
   } else {
     head(..., 50) |>
       dplyr::mutate_all(str_fix) |>
     knitr::kable(escape = TRUE) |>
       kableExtra::kable_styling() |>
-      scroll_box(height = "400px")
+      kableExtra::scroll_box(height = "400px")
   }
 }
 

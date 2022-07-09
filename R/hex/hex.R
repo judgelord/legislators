@@ -1,8 +1,6 @@
 # install.packages("hexSticker")
 # https://thenounproject.com/icon/document-4959325/
 
-library(hexSticker)
-
 hexSticker::sticker("man/figures/sticker3.png",
                     package="legislators",
                     p_size=24,

@@ -5,8 +5,6 @@
 #' addFirst() adds first names given last names, but only to last names that are unique in congress. This should be used with caution.
 ##########################################################################################################
 
-library(crayon)
-
 ## FOR TESTING, use names that are failing to match
 if(F){
   # data frame of names that were recently failing to match for testing

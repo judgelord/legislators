@@ -2,9 +2,6 @@
 # FREQUENT TYPOS WHERE WE CAN JUST REPLACE THEM REGARDLESS OF THE WORDS BEFORE AND AFTER (i.e. we are very confident that this is what they should be)
 # THERE IS NOTHING ELSE IT COULD POSSIBLY BE
 
-library(magrittr)
-library(tidyverse)
-
 typos_clear <- dplyr::tribble(
   ~correct, ~typos,
   "Dennis", "Denhis",

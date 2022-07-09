@@ -1,6 +1,6 @@
 Package: legislators
 Type: Package
-Title: Find legislator names in messy text
+Title: Find Legislator Names in Messy Text
 Version: 0.0.0.1000
 Authors@R: 
     c(person(given = "Devin",
