@@ -61,11 +61,11 @@ typos
 
 ## Basic Usage
 
-The main function is `extractMemberName()` returns a dataframe of the names and ICPSR ID numbers of members of Congress in a supplied vector of text. 
+The main function, `extractMemberName()`, returns a dataframe of the names and ICPSR ID numbers of members of Congress in a supplied vector of text. 
 
-- in the future, `extractMemberName()` may default to returning a list of dataframes the same length as the supplied data
+> in the future, `extractMemberName()` may default to returning a list of dataframes the same length as the supplied data
 
-For example, we can use `extractMemberName()` to detect the names of members of Congress in the text of the Congressional Record. Let's start with text from the Congressional Record from 3/1/2007, scraped and parsed using methods described [here](https://github.com/judgelord/cr). 
+For example, we can use `extractMemberName()` to detect the names of members of Congress in the text of the Congressional Record. Let's start with text from the Congressional Record from 3/1/2007, scraped and parsed using methods described [here](https://judgelord.github.io/congressionalrecord/). 
 
 ```{r, eval = FALSE, include= FALSE}
 # clean up example data from cr repo
@@ -86,23 +86,28 @@ head(cr2007_03_01$url)
 ```
 
 
-This is an extremely simple example because the text strings containing the names of the members of Congress (`speaker`) are short and do not contain much other text. However, `extractMemberName()` can also search longer and much messier texts, including text where names are not consistently formatted or where they contain common typos introduced by humans or common OCR errors. Indeed, these functions were developed to identify members of Congress in ugly text data like [this](https://judgelord.github.io/corr/corr_pres.html#22). 
+This is an extremely simple example because the text strings containing the names of the members of Congress in the `speaker` column are short, consistently formatted, and do not contain much other text. However, `extractMemberName()` can also search much longer and messier texts, including text where names are not consistently formatted or where they contain common typos introduced by humans or common OCR errors. Indeed, these functions were developed to identify members of Congress in ugly text data like [this](https://judgelord.github.io/corr/corr_pres.html#22). 
 
 To better match member names, this function currently requires either:
 
 - a column "congress" (this can be created from a date) or 
-- a vector of congresses to limit the search to (`congresses`)
+- a vector of congresses to limit the search to supplied to the `congresses` argument
+
+For illustration, I show both options in the example below.
+
+Member names augmented from voteview come with the legislators package, but users can also supply a customized version of these data to the `members` argument.
 
 ### `extractMemberName()`
 
 ```{r, message=TRUE}
+# adding a column named "congress"
 cr2007_03_01$congress <- 110
 
 # extract legislator names and match to voteview ICPSR numbers
 cr <- extractMemberName(data = cr2007_03_01, 
                         col_name = "speaker", # The text strings to search
                         congresses = 110, # This argument is not required in this case because the data contain a "congress" column
-                        members = members # Member names augmented from voteview come with this package, but users can also supply a customized data frame
+                        members = members
                         )
 
 cr
