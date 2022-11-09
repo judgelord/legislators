@@ -568,7 +568,7 @@ extractName <- function(string, data, members){
 
 # A function to map over congresses
 # one congress at a time
-extractNamesPerCongress <- function(congress_i, data, members = members){
+.extractNamesPerCongress <- function(congress_i, data, members = members){
 
   # subset to one congress
   data %<>% filter(congress == congress_i)
@@ -577,7 +577,7 @@ extractNamesPerCongress <- function(congress_i, data, members = members){
   # FIXME with purrr error handeling?
 
   # if congress not in members file
-  if(!congress_i %in% members$congress & "DATE" %in% names(data)){
+  if(!congress_i %in% members$congress && "DATE" %in% names(data)){
 
     top5 <- nrow(data)
     if(top5>5){top5<-5}
