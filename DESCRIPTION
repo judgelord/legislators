@@ -20,12 +20,12 @@ LazyData: true
 URL: https://judgelord.github.io/legislators/, https://github.com/judgelord/legislators
 BugReports: https://github.com/judgelord/legislators/issues
 Imports:
-	crayon,
 	magrittr,
-	dplyr,
+	dplyr (>= 1.0.1),
 	stringr,
 	tidyr,
-	purrr
+	chk,
+	pbapply
 Depends: 
     R (>= 3.5.0)
 Suggests:
@@ -33,3 +33,5 @@ Suggests:
     	knitr, 
     	rmarkdown
 VignetteBuilder: knitr
+RoxygenNote: 7.2.1
+Roxygen: list(markdown = TRUE)
