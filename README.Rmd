@@ -91,7 +91,7 @@ Member names augmented from voteview come with the `legislators` package, but us
 cr <- extractMemberName(data = cr2007_03_01, 
                         col_name = "speaker", # The text strings to search
                         congress = 110,
-                        cl = 4
+                        cl = 4 #Use 4 cores (on Mac)
 )
 
 cr
@@ -126,5 +126,5 @@ Because `extractMemberName()` links each detected name to ICPSR IDs from votevie
 ### Documentation 
 
 - [ ] Document helper functions for `extractMemberName()`
-- [ ] Document additional functions that help prep text for best matching
+- [X] Document additional functions that help prep text for best matching
 - [ ] Document example data (including FERC and public comment data for new vignettes)

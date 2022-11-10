@@ -2,6 +2,6 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @import magrittr
+#' @importFrom dplyr `%>%`
 ## usethis namespace: end
 NULL

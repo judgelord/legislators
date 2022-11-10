@@ -20,7 +20,6 @@ LazyData: true
 URL: https://judgelord.github.io/legislators/, https://github.com/judgelord/legislators
 BugReports: https://github.com/judgelord/legislators/issues
 Imports:
-	magrittr,
 	dplyr (>= 1.0.1),
 	stringr,
 	tidyr,

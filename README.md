@@ -31,27 +31,16 @@ data("members")
 head(members)
 ```
 
-    #>   congress   chamber                      bioname
-    #> 1      117 President           TRUMP, Donald John
-    #> 2      117 President BIDEN, Joseph Robinette, Jr.
-    #> 3      117     House          ROGERS, Mike Dennis
-    #> 4      117     House                SEWELL, Terri
-    #> 5      117     House                   BROOKS, Mo
-    #> 6      117     House           PALMER, Gary James
-    #>                                                                                                                                                                                                                                                          pattern
-    #> 1                                              donald trump|donald john trump|\\bd trump|donald j trump|don trump|don john trump|don j trump|(^|senator |representative )trump\\b|trump, don|trump, donald|trump donald|trump, d\\b|president trump\\b|d j trump
-    #> 2                                    joseph biden|joseph robinette biden|\\bj biden|joseph r biden|joe biden|joe robinette biden|joe r biden|(^|senator |representative )biden\\b|biden, joe|biden, joseph|biden joseph|biden, j\\b|president biden\\b|j r biden
-    #> 3 mike rogers|mike dennis rogers|\\bm rogers|mike d rogers|michael rogers|michael dennis rogers|michael d rogers|(^|senator |representative )rogers\\b.{1,4}al|rogers, michael|rogers, mike|rogers mike|rogers, m\\b|representative rogers\\b.{1,4}al|m d rogers
-    #> 4                                                                                         terri sewell|\\bt sewell|terri a sewell|\\bna sewell|(^|senator |representative )sewell\\b|sewell, terri|sewell terri|sewell, t\\b|representative sewell\\b|t a sewell
-    #> 5                                                                                                                            mo brooks|\\bm brooks|\\bna brooks|(^|senator |representative )brooks\\b|brooks, mo|brooks mo|brooks, m\\b|representative brooks\\b
-    #> 6                                                                           gary palmer|gary james palmer|\\bg palmer|gary j palmer|\\bna palmer|(^|senator |representative )palmer\\b|palmer, gary|palmer gary|palmer, g\\b|representative palmer\\b|g j palmer
-    #>   icpsr state_abbrev district_code first_name last_name
-    #> 1 99912          USA             0     Donald     TRUMP
-    #> 2 99913          USA             0     Joseph     BIDEN
-    #> 3 20301           AL             3       Mike    ROGERS
-    #> 4 21102           AL             7      Terri    SEWELL
-    #> 5 21193           AL             5         Mo    BROOKS
-    #> 6 21500           AL             6       Gary    PALMER
+    #> # A tibble: 6 × 9
+    #>   congress chamber   bioname                      pattern                                                                                                          icpsr state…¹ distr…² first…³ last_…⁴
+    #>      <dbl> <chr>     <chr>                        <chr>                                                                                                            <dbl> <chr>     <dbl> <chr>   <chr>  
+    #> 1      117 President TRUMP, Donald John           "donald trump|donald john trump|\\bd trump|donald j trump|don trump|don john trump|don j trump|(^|senator |repr… 99912 USA           0 Donald  TRUMP  
+    #> 2      117 President BIDEN, Joseph Robinette, Jr. "joseph biden|joseph robinette biden|\\bj biden|joseph r biden|joe biden|joe robinette biden|joe r biden|(^|sen… 99913 USA           0 Joseph  BIDEN  
+    #> 3      117 House     ROGERS, Mike Dennis          "mike rogers|mike dennis rogers|\\bm rogers|mike d rogers|michael rogers|michael dennis rogers|michael d rogers… 20301 AL            3 Mike    ROGERS 
+    #> 4      117 House     SEWELL, Terri                "terri sewell|\\bt sewell|terri a sewell|\\bna sewell|(^|senator |representative )sewell\\b|sewell, terri|sewel… 21102 AL            7 Terri   SEWELL 
+    #> 5      117 House     BROOKS, Mo                   "mo brooks|\\bm brooks|\\bna brooks|(^|senator |representative )brooks\\b|brooks, mo|brooks mo|brooks, m\\b|rep… 21193 AL            5 Mo      BROOKS 
+    #> 6      117 House     PALMER, Gary James           "gary palmer|gary james palmer|\\bg palmer|gary j palmer|\\bna palmer|(^|senator |representative )palmer\\b|pal… 21500 AL            6 Gary    PALMER 
+    #> # … with abbreviated variable names ¹​state_abbrev, ²​district_code, ³​first_name, ⁴​last_name
 
 ------------------------------------------------------------------------
 
@@ -68,13 +57,15 @@ data("typos")
 head(typos)
 ```
 
-    #>                                                                                                    typos           correct
-    #> 1                                                                                             ( 0 | 0, )                o 
-    #> 2                                                       aaron( | [a-z]* )s chock($| |,|;)|s chock, aaron      aaron schock
-    #> 3                                           adam( | [a-z]* )(schif|sdxiff)($| |,|;)|(schif|sdxiff), adam       adam schiff
-    #> 4 adrian( | [a-z]* )espaillat|espaillat, adrian|adriano( | [a-z]* )espaillet($| |,|;)|espaillet, adriano adriano espaillat
-    #> 5                                                             al( | [a-z]* )fianken($| |,|;)|fianken, al        al franken
-    #> 6                                              (alccc|ateee)( | [a-z]* )hastings|hastings, (alccc|ateee)    alcee hastings
+    #> # A tibble: 6 × 2
+    #>   typos                                                                                                  correct            
+    #>   <chr>                                                                                                  <chr>              
+    #> 1 ( 0 | 0, )                                                                                             " o "              
+    #> 2 aaron( | [a-z]* )s chock($| |,|;)|s chock, aaron                                                       "aaron schock"     
+    #> 3 adam( | [a-z]* )(schif|sdxiff)($| |,|;)|(schif|sdxiff), adam                                           "adam schiff"      
+    #> 4 adrian( | [a-z]* )espaillat|espaillat, adrian|adriano( | [a-z]* )espaillet($| |,|;)|espaillet, adriano "adriano espaillat"
+    #> 5 al( | [a-z]* )fianken($| |,|;)|fianken, al                                                             "al franken"       
+    #> 6 (alccc|ateee)( | [a-z]* )hastings|hastings, (alccc|ateee)                                              "alcee hastings"
 
 ------------------------------------------------------------------------
 
@@ -101,20 +92,15 @@ data("cr2007_03_01")
 head(cr2007_03_01)
 ```
 
-    #>         date                             speaker                                                                                                                                               header
-    #> 1 2007-03-01          HON. SAM GRAVES;Mr. GRAVES                                                RECOGNIZING JARRETT MUCK FOR ACHIEVING THE RANK OF EAGLE SCOUT; Congressional Record Vol. 153, No. 35
-    #> 2 2007-03-01           HON. MARK UDALL;Mr. UDALL INTRODUCING A CONCURRENT RESOLUTION HONORING THE 50TH ANNIVERSARY OF THE INTERNATIONAL GEOPHYSICAL YEAR (IGY); Congressional Record Vol. 153, No. 35
-    #> 3 2007-03-01 HON. JAMES R. LANGEVIN;Mr. LANGEVIN                                                                       BIOSURVEILLANCE ENHANCEMENT ACT OF 2007; Congressional Record Vol. 153, No. 35
-    #> 4 2007-03-01            HON. JIM COSTA;Mr. COSTA                                                                      A TRIBUTE TO THE LIFE OF MRS. VERNA DUTY; Congressional Record Vol. 153, No. 35
-    #> 5 2007-03-01          HON. SAM GRAVES;Mr. GRAVES                                                                                       RECOGNIZING JARRETT MUCK FOR ACHIEVING THE RANK OF EAGLE SCOUT
-    #> 6 2007-03-01   HON. SANFORD D. BISHOP;Mr. BISHOP                                          IN HONOR OF SYNOVUS BEING NAMED ONE OF THE BEST COMPANIES IN AMERICA; Congressional Record Vol. 153, No. 35
-    #>                                                                                                     url                                                                                url_txt
-    #> 1 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-2 https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE431-2.htm
-    #> 2 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-3 https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE431-3.htm
-    #> 3 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-4 https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE431-4.htm
-    #> 4 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-5 https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE431-5.htm
-    #> 5 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E431-1   https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE431.htm
-    #> 6 https://www.congress.gov/congressional-record/2007/03/01/extensions-of-remarks-section/article/E432-2 https://www.congress.gov/117/crec/2007/03/01/modified/CREC-2007-03-01-pt1-PgE432-2.htm
+    #> # A tibble: 6 × 5
+    #>   date       speaker                             header                                                                                                                                    url   url_txt
+    #>   <date>     <chr>                               <chr>                                                                                                                                     <chr> <chr>  
+    #> 1 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING JARRETT MUCK FOR ACHIEVING THE RANK OF EAGLE SCOUT; Congressional Record Vol. 153, No. 35                                     http… https:…
+    #> 2 2007-03-01 HON. MARK UDALL;Mr. UDALL           INTRODUCING A CONCURRENT RESOLUTION HONORING THE 50TH ANNIVERSARY OF THE INTERNATIONAL GEOPHYSICAL YEAR (IGY); Congressional Record Vol.… http… https:…
+    #> 3 2007-03-01 HON. JAMES R. LANGEVIN;Mr. LANGEVIN BIOSURVEILLANCE ENHANCEMENT ACT OF 2007; Congressional Record Vol. 153, No. 35                                                            http… https:…
+    #> 4 2007-03-01 HON. JIM COSTA;Mr. COSTA            A TRIBUTE TO THE LIFE OF MRS. VERNA DUTY; Congressional Record Vol. 153, No. 35                                                           http… https:…
+    #> 5 2007-03-01 HON. SAM GRAVES;Mr. GRAVES          RECOGNIZING JARRETT MUCK FOR ACHIEVING THE RANK OF EAGLE SCOUT                                                                            http… https:…
+    #> 6 2007-03-01 HON. SANFORD D. BISHOP;Mr. BISHOP   IN HONOR OF SYNOVUS BEING NAMED ONE OF THE BEST COMPANIES IN AMERICA; Congressional Record Vol. 153, No. 35                               http… https:…
 
 ``` r
 head(cr2007_03_01$url)
@@ -156,7 +142,7 @@ the `members` argument.
 cr <- extractMemberName(data = cr2007_03_01, 
                         col_name = "speaker", # The text strings to search
                         congress = 110,
-                        cl = 4
+                        cl = 4 #Use 4 cores (on Mac)
 )
 ```
 
@@ -230,7 +216,7 @@ for each legislator detected in the text (scroll to the right).
 ### Documentation
 
 - [ ] Document helper functions for `extractMemberName()`
-- [ ] Document additional functions that help prep text for best
+- [x] Document additional functions that help prep text for best
   matching
 - [ ] Document example data (including FERC and public comment data for
   new vignettes)

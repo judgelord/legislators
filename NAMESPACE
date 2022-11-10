@@ -2,4 +2,4 @@
 
 export(extractMemberName)
 export(fix_typos)
-import(magrittr)
+importFrom(dplyr,`%>%`)
