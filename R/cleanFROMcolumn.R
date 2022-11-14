@@ -3,69 +3,77 @@
 # It is used in extractMemberNames etc. to preprocess text.
 cleanFROMcolumn <- function(FROM){
 
+  #gsub() appropriate for piping
+  #Can use stringr::str_replace_all() but maybe regex rules are different,
+  #e.g., https://stackoverflow.com/q/62471164/6348551
+  psub <- function(x, pattern, replacement, ...) {
+    gsub(pattern = pattern, replacement = replacement, x = x, ...)
+  }
+
   # remove +
-  FROM %<>% str_remove('\\+') %>% str_remove("—")
+  FROM %>%
+    stringr::str_remove('\\+') %>%
+    stringr::str_remove("\u2014") %>% #em dash
 
-  # remove common names in quotes
-  FROM <- gsub('\\"(Bill|Bobby|Buddy|GT|Buck|Chuck|Hank|Rick|Duke|Randy|Andy)\\"', "", FROM, ignore.case = TRUE)
+    # remove common names in quotes
+    psub(sprintf('\\"(%s)\\"', common_names),
+         "", ignore.case = TRUE)  %>%
 
-  # remove common names in parentheses
-  FROM <- gsub('\\((Bill|Bobby|Buddy|GT|Buck|Chuck|Hank|Rick|Duke|Randy|Andy)\\)', "", FROM, ignore.case = TRUE)
+    # remove common names in parentheses
+    psub(sprintf('\\((%s)\\)', common_names),
+         "", ignore.case = TRUE) %>%
 
+    # remove paragraph breaks
+    stringr::str_replace_all("\n", " ") %>%
 
-  # remove paragraph breaks
-  FROM %<>% str_replace_all("\n", " ")
+    # remove extra white space inside strings
+    stringr::str_squish() %>%
 
-  # remove extra white space inside strings
-  FROM %<>% str_squish()
+    # fix misplaced commas
+    #FROM <- gsub("(\\w+) ,(\\w+)|(\\w+) , (\\w+)", "\\1, \\2", FROM)
+    stringr::str_replace_all(" , | ,|,", ", ") %>%
 
-  # fix misplaced commas
-  #FROM <- gsub("(\\w+) ,(\\w+)|(\\w+) , (\\w+)", "\\1, \\2", FROM)
-  FROM  %<>% str_replace_all(" , | ,|,", ", ")
+    # remove extra white space inside strings again
+    stringr::str_squish() %>%
 
-  # remove extra white space inside strings again
-  FROM %<>% str_squish()
+    # remove
+    stringr::str_remove(generational_suffixes) %>%
 
-  # remove
-  FROM %<>% str_remove(" Jr\\.| Jr| III| II| Ii| IV| ll| \\(Il\\)|, JR\\.")
+    # replace with comma
+    stringr::str_replace(post_nominal_letters, replacement = ",") %>%
 
-  # replace with comma
-  FROM %<>% str_replace(pattern = " Jr,| CPA,| M\\.D\\.,| MD,| M\\.C\\.,| P\\.E\\.,| Ii,",
-                        replacement = ",")
+    # remove paragraph breaks
+    stringr::str_replace_all("\n", " ") %>%
 
-  # remove paragraph breaks
-  FROM %<>% str_replace_all("\n", " ")
+    # remove extra white space inside strings again
+    stringr::str_squish() %>%
 
-  # remove extra white space inside strings again
-  FROM %<>% str_squish()
+    # Delete titles that appear after a commma
+    # FROM %<>% str_replace(", (SEN|Sen)(-|\\b)", ", ")
+    #FROM <- gsub(", (REP|Rep)(-|\\b)", ", ", FROM)
 
-  # Delete titles that appear after a commma
-  # FROM %<>% str_replace(", (SEN|Sen)(-|\\b)", ", ")
-  #FROM <- gsub(", (REP|Rep)(-|\\b)", ", ", FROM)
+    # Replace titles at the beginning of a string or not after a comma
+    stringr::str_replace("\\b(SEN|Sen)( |- | - |\\. |\\.)|^S( |- | - |\\. |\\.)",
+                "Senator ") %>%
 
-  # Replace titles at the beginning of a string or not after a comma
-  FROM %<>% str_replace("\\b(SEN|Sen)( |- | - |\\. |\\.)|^S( |- | - |\\. |\\.)",
-                        "Senator ")
+    stringr::str_replace("\\b(REP|Rep)( |- | - |\\. |\\.)|^R( |- | - |\\. |\\.)|Congressman|Congresswoman",
+                "Representative ") %>%
 
-  FROM %<>% str_replace("\\b(REP|Rep)( |- | - |\\. |\\.)|^R( |- | - |\\. |\\.)|Congressman|Congresswoman",
-                        "Representative ")
+    # trim down extra spaces
+    stringr::str_squish() %>%
 
-  # trim down extra spaces
-  FROM %<>% str_squish()
+    # remove periods
+    stringr::str_replace_all("\\.", " ") %>%
+    stringr::str_squish() %>%
 
-  # remove periods
-  FROM %<>% str_replace_all("\\.", " ") %>% str_squish()
+    #removing double commas
+    stringr::str_replace(",+ |, ,", ", ") %>%
+    stringr::str_replace(",+ |, ,", ", ") %>%
+    stringr::str_replace_all(",,", ",") %>%
 
-  #removing double commas
-  FROM %<>% str_replace(",+ |, ,", ", ")
-  FROM %<>% str_replace(",+ |, ,", ", ")
-  FROM %<>% str_replace_all(",,", ",")
+    #removing spaces before commas
+    stringr::str_replace(" ,", ", ") %>%
 
-  #removing spaces before commas
-  FROM %<>% str_replace(" ,", ", ")
-
-  # replace spaces with a single space
-  FROM %<>% str_squish()
-
-  return(FROM)
+    # replace spaces with a single space
+    stringr::str_squish()
 }

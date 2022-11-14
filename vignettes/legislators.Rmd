@@ -127,7 +127,7 @@ cr2007_03_01$congress <- 110
 # extract legislator names and match to voteview ICPSR numbers
 cr <- extractMemberName(data = cr2007_03_01, 
                         col_name = "speaker", # The text strings to search
-                        congresses = 110, # This argument is not required in this case because the data contain a "congress" column
+                        congress = "congress", # This argument is not required in this case because the data contain a "congress" column
                         members = members # Member names augmented from voteview come with this package, but users can also supply a customised data frame
                         )
 

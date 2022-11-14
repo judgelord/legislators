@@ -7,3 +7,5 @@
 ^data/make_members$
 ^data/raw$
 ^archive$
+^_dev$
+^README\.Rmd$
