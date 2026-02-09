@@ -28,19 +28,24 @@ similar names join or leave Congress. Users can customize the provided
 ``` r
 data("members")
 
+dim(members)
+```
+
+    #> [1] 49938     9
+
+``` r
 head(members)
 ```
 
     #> # A tibble: 6 × 9
-    #>   congress chamber   bioname                      pattern                                                                                                          icpsr state…¹ distr…² first…³ last_…⁴
-    #>      <dbl> <chr>     <chr>                        <chr>                                                                                                            <dbl> <chr>     <dbl> <chr>   <chr>  
-    #> 1      117 President TRUMP, Donald John           "donald trump|donald john trump|\\bd trump|donald j trump|don trump|don john trump|don j trump|(^|senator |repr… 99912 USA           0 Donald  TRUMP  
-    #> 2      117 President BIDEN, Joseph Robinette, Jr. "joseph biden|joseph robinette biden|\\bj biden|joseph r biden|joe biden|joe robinette biden|joe r biden|(^|sen… 99913 USA           0 Joseph  BIDEN  
-    #> 3      117 House     ROGERS, Mike Dennis          "mike rogers|mike dennis rogers|\\bm rogers|mike d rogers|michael rogers|michael dennis rogers|michael d rogers… 20301 AL            3 Mike    ROGERS 
-    #> 4      117 House     SEWELL, Terri                "terri sewell|\\bt sewell|terri a sewell|\\bna sewell|(^|senator |representative )sewell\\b|sewell, terri|sewel… 21102 AL            7 Terri   SEWELL 
-    #> 5      117 House     BROOKS, Mo                   "mo brooks|\\bm brooks|\\bna brooks|(^|senator |representative )brooks\\b|brooks, mo|brooks mo|brooks, m\\b|rep… 21193 AL            5 Mo      BROOKS 
-    #> 6      117 House     PALMER, Gary James           "gary palmer|gary james palmer|\\bg palmer|gary j palmer|\\bna palmer|(^|senator |representative )palmer\\b|pal… 21500 AL            6 Gary    PALMER 
-    #> # … with abbreviated variable names ¹​state_abbrev, ²​district_code, ³​first_name, ⁴​last_name
+    #>   congress chamber   bioname                      pattern                                                                                          icpsr state_abbrev district_code first_name last_name
+    #>      <dbl> <chr>     <chr>                        <chr>                                                                                            <dbl> <chr>                <dbl> <chr>      <chr>    
+    #> 1      117 President TRUMP, Donald John           "donald trump|donald john trump|\\bd trump|donald j trump|don trump|don john trump|don j trump|… 99912 USA                      0 Donald     TRUMP    
+    #> 2      117 President BIDEN, Joseph Robinette, Jr. "joseph biden|joseph robinette biden|\\bj biden|joseph r biden|joe biden|joe robinette biden|jo… 99913 USA                      0 Joseph     BIDEN    
+    #> 3      117 House     ROGERS, Mike Dennis          "mike rogers|mike dennis rogers|\\bm rogers|mike d rogers|michael rogers|michael dennis rogers|… 20301 AL                       3 Mike       ROGERS   
+    #> 4      117 House     SEWELL, Terri                "terri sewell|\\bt sewell|terri a sewell|\\bna sewell|(^|senator |representative )sewell\\b|sew… 21102 AL                       7 Terri      SEWELL   
+    #> 5      117 House     BROOKS, Mo                   "mo brooks|\\bm brooks|\\bna brooks|(^|senator |representative )brooks\\b|brooks, mo|brooks mo|… 21193 AL                       5 Mo         BROOKS   
+    #> 6      117 House     PALMER, Gary James           "gary palmer|gary james palmer|\\bg palmer|gary j palmer|\\bna palmer|(^|senator |representativ… 21500 AL                       6 Gary       PALMER
 
 ------------------------------------------------------------------------
 
@@ -166,7 +171,7 @@ cr
     #>  8       8 29576 DAVIS, Thomas M., III      DAVIS     Thomas          110 House   VA                      11 2007-03-01 hon tom davis;mr tom davis       HONORING THE 30TH ANNIVERSARY OF… http… https:…
     #>  9       9 20124 GRAVES, Samuel             GRAVES    Samuel          110 House   MO                       6 2007-03-01 hon sam graves;mr graves         RECOGNIZING BRIAN PATRICK WESSLI… http… https:…
     #> 10      10 29906 UDALL, Mark                UDALL     Mark            110 House   CO                       2 2007-03-01 hon mark udall;mr udall          INTRODUCTION OF ROYALTY-IN-KIND … http… https:…
-    #> # … with 183 more rows
+    #> # ℹ 183 more rows
 
 In this example, all observations are in the 110th Congress, so we only
 search for members who served in the 110th.

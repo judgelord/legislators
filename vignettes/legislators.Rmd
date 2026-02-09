@@ -11,6 +11,7 @@ vignette: >
 ---
 
 ```{r setup, include = FALSE}
+library(dplyr)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -71,7 +72,9 @@ This package relies on a dataframe of permutations of the names of members of Co
 ```{r}
 data("members")
 
-members |> kable()
+dim(members)
+
+members |> knitr::kable(escape = F)
 ```
 
 ---
@@ -81,7 +84,7 @@ Before searching the text, several functions clean it and "fix" common human typ
 ```{r}
 data("typos")
 
-typos |> kable()
+typos |> kable(escape = F)
 ```
 
 ---
@@ -95,11 +98,11 @@ The main function is `extractMemberName()` returns a dataframe of the names and 
 For example, we can use `extractMemberName()` to detect the names of members of Congress in the text of the Congressional Record. Let's start with the text of the Congressional Record from 3/1/2007, scraped and parsed using methods described [here](https://github.com/judgelord/cr). 
 
 ```{r, eval = FALSE, include= FALSE}
-# clean up example data from cr repo
-cr2007_03_01 %<>% 
-  select(date, speaker, header, url, url_txt) |>
-  #filter(!str_detect(chamber, "Ext")) |>
-  filter(!str_detect(speaker, "^NA$"))
+# clean up example data from congressionalrecord package
+cr2007_03_01 <- cr2007_03_01 |> 
+  dplyr::select(date, speaker, header, url, url_txt) |>
+  #filter(!stringr::str_detect(chamber, "Ext")) |>
+  dplyr::filter(!stringr::str_detect(speaker, "^NA$"))
 
 save(cr2007_03_01, file = here::here("data", "cr2007_03_01.rda"))
 ```
@@ -128,10 +131,10 @@ cr2007_03_01$congress <- 110
 cr <- extractMemberName(data = cr2007_03_01, 
                         col_name = "speaker", # The text strings to search
                         congress = "congress", # This argument is not required in this case because the data contain a "congress" column
-                        members = members # Member names augmented from voteview come with this package, but users can also supply a customised data frame
+                        members = members # Member names augmented from voteview come with this package, but users can also supply a customized data frame
                         )
 
-cr |> kable()
+cr |> knitr::kable()
 ```
 
 ---

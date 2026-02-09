@@ -40,6 +40,8 @@ This package relies on a dataframe (`members`) of permutations of the names of m
 ```{r}
 data("members")
 
+dim(members)
+
 head(members)
 ```
 

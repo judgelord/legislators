@@ -3,15 +3,15 @@
 \docType{data}
 \name{cr2007_03_01}
 \alias{cr2007_03_01}
-\title{Text of the Congressional Record from 3/1/2007}
+\title{Text of the Congressional Record from 3/1/2007, parsed by speaker}
 \format{
 A data frame with 154 rows and 5 variables:
 \describe{
-\item{\code{date}}{double COLUMN_DESCRIPTION}
-\item{\code{speaker}}{character COLUMN_DESCRIPTION}
-\item{\code{header}}{character COLUMN_DESCRIPTION}
-\item{\code{url}}{character COLUMN_DESCRIPTION}
-\item{\code{url_txt}}{character COLUMN_DESCRIPTION}
+\item{\code{date}}{date Congressional Record date}
+\item{\code{speaker}}{character speaker stated in the record}
+\item{\code{header}}{character header under which this text of the record appeared}
+\item{\code{url}}{character URL to the record html version of the page}
+\item{\code{url_txt}}{character URL to the record txt version of the page}
 }
 }
 \usage{

@@ -5,17 +5,19 @@
 \alias{members}
 \title{Names of members of the US Congress}
 \format{
-A data frame with 49938 rows and 9 variables:
-\describe{
-\item{\code{congress}}{double COLUMN_DESCRIPTION}
-\item{\code{chamber}}{character COLUMN_DESCRIPTION}
-\item{\code{bioname}}{character COLUMN_DESCRIPTION}
-\item{\code{pattern}}{character COLUMN_DESCRIPTION}
-\item{\code{icpsr}}{double COLUMN_DESCRIPTION}
-\item{\code{state_abbrev}}{character COLUMN_DESCRIPTION}
-\item{\code{district_code}}{double COLUMN_DESCRIPTION}
-\item{\code{first_name}}{character COLUMN_DESCRIPTION}
-\item{\code{last_name}}{character COLUMN_DESCRIPTION}
+A data frame with 51053 rows and 10 variables:
+ \describe{
+   \item{\code{congress}}{double The Congress}
+   \item{\code{chamber}}{character House or Senate}
+   \item{\code{bioname}}{character voteview.com name formatted LAST, First}
+   \item{\code{pattern}}{character Regular expression pattern for matching}
+   \item{\code{icpsr}}{double ICPSR ID}
+   \item{\code{state}}{double State code from voteview.com}}
+   \item{\code{state_abbrev}}{character State}
+   \item{\code{district_code}}{double District}
+   \item{\code{bioguide_id}}{character congress.gov Bioguid ID}
+   \item{\code{first_name}}{character First Name}
+   \item{\code{last_name}}{character Last Name}
 }
 }
 \usage{

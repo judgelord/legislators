@@ -4,8 +4,10 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^vignettes$
 ^data/make_members$
 ^data/raw$
 ^archive$
 ^_dev$
 ^README\.Rmd$
+^LICENSE\.md$
