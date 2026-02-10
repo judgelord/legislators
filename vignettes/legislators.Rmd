@@ -28,28 +28,32 @@ knitr::opts_chunk$set(
 
 str_fix <- function(x){
   stringr::str_replace_all(x, "\\$", "\\\\$") |> 
+    stringr::str_replace_all("\\|", "&vert;") |> 
     stringr::str_remove_all("`|\\\\bf|\\\\br")
 }
 
 # format kable for document type 
 kable <- function(...){
   if (knitr::is_latex_output()){
-    head(..., 25) |>
+    utils::head(..., 25) |>
       knitr::kable(booktabs = TRUE, format = 'latex') |>
       kableExtra::kable_styling(latex_options = c("striped", "scale_down", "HOLD_position"))
   } else {
-    head(..., 50) |>
+    utils::head(..., 50) |>
       dplyr::mutate_all(str_fix) |>
-    knitr::kable(escape = TRUE) |>
+    knitr::kable(escape = FALSE) |>
       kableExtra::kable_styling() |>
       kableExtra::scroll_box(height = "400px")
   }
 }
 
-# head <- function(...){
-#   head(...) |> 
-#   kable() 
-# }
+head <- function(...){
+ utils::head(...) |> 
+    dplyr::mutate_all(str_fix) |>
+    knitr::kable(escape = F, format = "html") |>  
+    kableExtra::kable_styling() |>
+    kableExtra::scroll_box(height = "400px")
+}
 ```
 
 
@@ -74,7 +78,7 @@ data("members")
 
 dim(members)
 
-members |> knitr::kable(escape = F)
+head(members)
 ```
 
 ---
@@ -84,7 +88,7 @@ Before searching the text, several functions clean it and "fix" common human typ
 ```{r}
 data("typos")
 
-typos |> kable(escape = F)
+head(typos)
 ```
 
 ---
@@ -110,7 +114,7 @@ save(cr2007_03_01, file = here::here("data", "cr2007_03_01.rda"))
 ```{r}
 data("cr2007_03_01")
 
-cr2007_03_01 |> kable()
+head(cr2007_03_01)
 ```
 
 ---
@@ -134,7 +138,7 @@ cr <- extractMemberName(data = cr2007_03_01,
                         members = members # Member names augmented from voteview come with this package, but users can also supply a customized data frame
                         )
 
-cr |> knitr::kable()
+head(cr)
 ```
 
 ---

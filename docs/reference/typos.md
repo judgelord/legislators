@@ -1,8 +1,9 @@
 # Common typos
 
 A dataset contain common typos. Used in the `typos` argument of
-[`fix_typos()`](fix_typos.md) and
-[`extractMemberName()`](extractMemberName.md).
+[`fix_typos()`](https://judgelord.github.io/legislators/reference/fix_typos.md)
+and
+[`extractMemberName()`](https://judgelord.github.io/legislators/reference/extractMemberName.md).
 
 ## Usage
 

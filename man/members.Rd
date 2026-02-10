@@ -12,7 +12,7 @@ A data frame with 51053 rows and 10 variables:
    \item{\code{bioname}}{character voteview.com name formatted LAST, First}
    \item{\code{pattern}}{character Regular expression pattern for matching}
    \item{\code{icpsr}}{double ICPSR ID}
-   \item{\code{state}}{double State code from voteview.com}}
+   \item{\code{state}}{double State code from voteview.com}
    \item{\code{state_abbrev}}{character State}
    \item{\code{district_code}}{double District}
    \item{\code{bioguide_id}}{character congress.gov Bioguid ID}

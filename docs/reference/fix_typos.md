@@ -1,9 +1,9 @@
 # Fix common typos
 
 `fix_typos()` standardizes a character vector for use in
-[`extractMemberName()`](extractMemberName.md) by applying some heuristic
-processing, setting all text to lowercase and, optionally, removing
-common typos if a list of such is supplied.
+[`extractMemberName()`](https://judgelord.github.io/legislators/reference/extractMemberName.md)
+by applying some heuristic processing, setting all text to lowercase
+and, optionally, removing common typos if a list of such is supplied.
 
 ## Usage
 
@@ -25,8 +25,10 @@ fix_typos(x, typos = legislators::typos, fix_ocr = TRUE, verbose = TRUE)
   values that should replace them. These are passed to the `pattern` and
   `replacement` arguments of
   [`stringr::str_replace_all()`](https://stringr.tidyverse.org/reference/str_replace.html).
-  By default, the [typos](typos.md) dataset that accompanies the package
-  is used. If `NULL`, no typos will be fixed.
+  By default, the
+  [typos](https://judgelord.github.io/legislators/reference/typos.md)
+  dataset that accompanies the package is used. If `NULL`, no typos will
+  be fixed.
 
 - fix_ocr:
 
@@ -47,5 +49,5 @@ DETAILS \#Explain processing
 
 ## See also
 
-[`extractMemberName()`](extractMemberName.md),
+[`extractMemberName()`](https://judgelord.github.io/legislators/reference/extractMemberName.md),
 [`stringr::str_replace_all()`](https://stringr.tidyverse.org/reference/str_replace.html)

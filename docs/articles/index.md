@@ -2,4 +2,4 @@
 
 ### All vignettes
 
-- [legislators](legislators.md):
+- [legislators](https://judgelord.github.io/legislators/articles/legislators.md):

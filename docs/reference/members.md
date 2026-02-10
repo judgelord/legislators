@@ -3,7 +3,7 @@
 A dataset of the names of all members of each United States Congress,
 including presidents. The `pattern` column serves as a lookup table to
 match members of Congress to text supplied to
-[`extractMemberName()`](extractMemberName.md).
+[`extractMemberName()`](https://judgelord.github.io/legislators/reference/extractMemberName.md).
 
 ## Usage
 
@@ -39,9 +39,25 @@ A data frame with 51053 rows and 10 variables:
 
   double State code from voteview.com
 
-`state_abbrev`character State `district_code`double District
-`bioguide_id`character congress.gov Bioguid ID `first_name`character
-First Name `last_name`character Last Name
+- `state_abbrev`:
+
+  character State
+
+- `district_code`:
+
+  double District
+
+- `bioguide_id`:
+
+  character congress.gov Bioguid ID
+
+- `first_name`:
+
+  character First Name
+
+- `last_name`:
+
+  character Last Name
 
 ## Details
 

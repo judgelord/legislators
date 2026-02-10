@@ -39,14 +39,17 @@ extractMemberName(
 - members:
 
   a regex table containing variations of congress member names. By
-  default, the [members](members.md) dataset accompanying the package is
-  used. This table must have the following columns:
+  default, the
+  [members](https://judgelord.github.io/legislators/reference/members.md)
+  dataset accompanying the package is used. This table must have the
+  following columns:
 
 - typos:
 
   a dataset from which to extract typos. By default, the
-  [typos](typos.md) dataset accompanying the package is used. This table
-  must have the following columns:
+  [typos](https://judgelord.github.io/legislators/reference/typos.md)
+  dataset accompanying the package is used. This table must have the
+  following columns:
 
 - congress:
 
@@ -77,7 +80,7 @@ extractMemberName(
 - fix_ocr:
 
   `logical`; whether to fix OCR errors. Passed to
-  [`fix_typos()`](fix_typos.md).
+  [`fix_typos()`](https://judgelord.github.io/legislators/reference/fix_typos.md).
 
 - verbose:
 
@@ -137,12 +140,13 @@ In addition, all other variable in `data`, including that named in
 `extractMemberName()` processes the variable named in `col_name`
 containing the text from which congress members' names are to be
 extracted. First, it passes the variable to
-[`fix_typos()`](fix_typos.md) to apply some heuristic processing, and,
-if `typos` is supplied, it fixes any found typos. Finally, it performs a
-regular expressions lookup to match congress members listed in `members`
-to the text. For each member in `members`, a regular expression match is
-performed to determine whether the text in the given row contains that
-member. This is done one congress at a time.
+[`fix_typos()`](https://judgelord.github.io/legislators/reference/fix_typos.md)
+to apply some heuristic processing, and, if `typos` is supplied, it
+fixes any found typos. Finally, it performs a regular expressions lookup
+to match congress members listed in `members` to the text. For each
+member in `members`, a regular expression match is performed to
+determine whether the text in the given row contains that member. This
+is done one congress at a time.
 
 When `chamber` or `state` are specified, the lookup for each member is
 restricted to the chamber or state of the member in `members`,
