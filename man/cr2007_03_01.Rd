@@ -3,24 +3,24 @@
 \docType{data}
 \name{cr2007_03_01}
 \alias{cr2007_03_01}
-\title{Text of the Congressional Record from 3/1/2007, parsed by speaker using the congressionalrecord package}
+\title{Text of the Congressional Record from 3/1/2007}
 \format{
-A data frame with 154 rows and 5 variables:
+A data frame with 154 rows and 4 variables:
 \describe{
-\item{\code{date}}{date Congressional Record date}
-\item{\code{congress}}{double session of Congress}
-\item{\code{speaker}}{character speaker stated in the record}
-\item{\code{header}}{character header under which this text of the record appeared}
-\item{\code{url}}{character URL to the record html version of the page}
+\item{\code{date}}{date Record date}
+\item{\code{congress}}{double congress}
+\item{\code{speaker}}{character speaker}
+\item{\code{header}}{character header under which the text appears}
+\item{\code{url}}{character url to the section of the Record where the text appears}
 }
 }
 \usage{
 cr2007_03_01
 }
 \description{
-Text of the Congressional Record from 3/1/2007, scraped and parsed using methods described \href{https://github.com/judgelord/congressionalrecord}{here}.
+Text of the Congressional Record from 3/1/2007, scraped and parsed using methods described \href{https://github.com/judgelord/cr}{here}.
 }
 \details{
-DETAILS
+A dataframe with parsed text from the U.S. Congressional Record for 2007-03=-01
 }
 \keyword{datasets}

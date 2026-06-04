@@ -8,5 +8,5 @@
 #'   \item{\code{header}}{character header under which the text appears}
 #'   \item{\code{url}}{character url to the section of the Record where the text appears}
 #'}
-#' @details DETAILS
+#' @details A dataframe with parsed text from the U.S. Congressional Record for 2007-03=-01
 "cr2007_03_01"

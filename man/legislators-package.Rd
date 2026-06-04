@@ -20,10 +20,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Devin Judge-Lord \email{devinjudgelord@fas.harvard.edu} (\href{https://orcid.org/0000-0002-4384-4380}{ORCID})
+\strong{Maintainer}: Devin Judge-Lord \email{judgelor@umich.edu} (\href{https://orcid.org/0000-0002-4384-4380}{ORCID})
 
 Authors:
 \itemize{
+  \item Noah Greifer
   \item Maggie Nead
 }
 
