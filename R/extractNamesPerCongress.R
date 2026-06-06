@@ -106,9 +106,19 @@ extractNamesPerCongress <- function(congress_i, data, members, col_name, congres
 
   data <- tidyr::unnest(data, {{member_row_match_col}}, keep_empty = TRUE)
 
+  # Save original values for columns that will be overwritten by members
+  orig_congress <- data$congress
+  orig_chamber <- data$chamber
+  orig_state_abbrev <- data$state_abbrev
+
   #Merge found units in members
   data <- dplyr::bind_cols(data[!names(data) %in% names(members)],
                            members[data[[member_row_match_col]],])
+
+  # Restore original values for unmatched rows (where member row is NA)
+  data$congress <- dplyr::coalesce(data$congress, orig_congress)
+  data$chamber <- dplyr::coalesce(data$chamber, orig_chamber)
+  data$state_abbrev <- dplyr::coalesce(data$state_abbrev, orig_state_abbrev)
 
   data[[member_row_match_col]] <- NULL
 
