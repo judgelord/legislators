@@ -1,7 +1,7 @@
 Package: legislators
 Type: Package
 Title: Find Legislator Names in Messy Text
-Version: 0.0.0.1001
+Version: 0.0.0.1002
 Authors@R: 
     c(person(given = "Devin",
            family = "Judge-Lord",
@@ -31,8 +31,7 @@ Imports:
 Depends: 
     R (>= 3.5.0)
 Suggests:
-      kableExtra,
-    	knitr, 
-    	rmarkdown
-RoxygenNote: 7.2.1
+    testthat (>= 3.0.0)
+RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)
+Config/testthat/edition: 3
